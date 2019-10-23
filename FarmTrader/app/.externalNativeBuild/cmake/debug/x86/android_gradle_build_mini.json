@@ -1,0 +1,18 @@
+{
+  "buildFiles": [
+    "/Users/mac/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/Users/mac/Library/Android/sdk/ndk-bundle/build/cmake/platforms.cmake",
+    "/Users/mac/Khoa/Android/TraVinh/TraVinh/app/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/mac/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/mac/Khoa/Android/TraVinh/TraVinh/app/.externalNativeBuild/cmake/debug/x86 --target clean"
+  ],
+  "libraries": {
+    "native-lib-Debug-x86": {
+      "artifactName": "native-lib",
+      "buildCommand": "/Users/mac/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /Users/mac/Khoa/Android/TraVinh/TraVinh/app/.externalNativeBuild/cmake/debug/x86 --target native-lib",
+      "abi": "x86",
+      "output": "/Users/mac/Khoa/Android/TraVinh/TraVinh/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so"
+    }
+  }
+}

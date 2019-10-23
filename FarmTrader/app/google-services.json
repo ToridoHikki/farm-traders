@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1070571899825",
+    "firebase_url": "https://mnvsgcoop.firebaseio.com",
+    "project_id": "mnvsgcoop",
+    "storage_bucket": "mnvsgcoop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070571899825:android:8e04cab5e2cbd9ce",
+        "android_client_info": {
+          "package_name": "vn.minerva.travinh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070571899825-qcs3p9s764oqsalou61livci1d8e17v2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHzi76i1JA4c5qCUvk4IraHBogYep50Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070571899825-qcs3p9s764oqsalou61livci1d8e17v2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070571899825-ncnf3kgq402u7mf3fsi07gqlcqo6q1r3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "minerva.coop"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

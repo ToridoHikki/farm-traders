@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?attr/selectableItemBackground"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingTop="@dimen/spacing_small"
+              android:paddingBottom="@dimen/spacing_small">
+
+    <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="@dimen/spacing_medium"
+            android:layout_height="@dimen/spacing_medium"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small" />
+
+    <TextView
+            android:id="@+id/tvContent"
+            style="@style/TEXT_NORMAL_SUPPER_BLACK"
+            tools:text="Quản lý báo giá" />
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TraVinh</string>
+    <string name="warning_check_server_again">Không kết nối được với máy chủ. Xin thử lại!</string>
+    <string name="error_system_msg">Hệ thống đang gặp sự cố, vui lòng thử lại!</string>
+    <string name="error_internet_connect">Không có internet!</string>
+    <string name="check_double_click_exit_app">Nhấn nút Back hai lần để thoát ứng dụng.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="error_title">Lỗi</string>
+
+    <string name="msg_update_app">Hiện nay đang có phiên bản mới. Cập nhật để sử dụng tốt hơn.</string>
+    <string name="msg_need_permission">Permissions are need for application.</string>
+    <string name="mgs_open_location">"Ứng dụng cần phải bật định vị. Bạn có muốn bật không?"</string>
+    <string name="title_update_app">"Thông báo cập nhật"</string>
+    <string name="text_force_login_user_not_support">Tài khoản này hiện chưa được hỗ trợ, vui lòng đăng nhập bằng tài khoản khác</string>
+    <string name="title_error_login">Login fail</string>
+
+    <string name="mgs_layout_empty">Tính năng đang cập nhật</string>
+
+    <string name="ACTION_CLOSE">Đóng</string>
+    <string name="ACTION_UPDATE">Cập nhật</string>
+    <string name="ACTION_SKIP">Bỏ qua</string>
+    <string name="ACTION_WANT">Muốn</string>
+    <string name="ACTION_RETRY">Thử lại</string>
+    <string name="ACTION_CANCEL">Hủy</string>
+    <string name="ACTION_NO">Không</string>
+    <string name="ACTION_YES">Có</string>
+    <string name="ACTION_OK">Đồng ý</string>
+
+
+
+    <!--For app-->
+    <!--Menu-->
+    <string name="action_settings">Settings</string>
+    <string name="action_maplayer">Lớp bản đồ</string>
+    <string name="action_search">Tìm kiếm</string>
+
+
+    <string name="title_logo">TRUNG TÂM THÔNG TIN VÀ ỨNG DỤNG KHOA HỌC CÔNG NGHỆ</string>
+    <string name="title_so_khoa_hoc">SỞ KHOA HỌC VÀ CÔNG NGHỆ TRÀ VINH</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="hint_username">Tài khoản</string>
+    <string name="helper_username">Nhập tên tài khoản của bạn</string>
+    <string name="helper_password">Nhập mật khẩu của bạn</string>
+    <string name="button_forget_password">Quên mật khẩu?</string>
+    <string name="button_login">Đăng Nhập</string>
+    <string name="msg_text_empty">Không được để trống</string>
+    <string name="tab_medical">Trạm Y Tế</string>
+    <string name="tab_gasoline">Trạm Xăng</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="hint_address">Địa chỉ</string>
+    <string name="hint_search">Tìm kiếm</string>
+    <string name="company">Doanh nghiệp</string>
+    <string name="gasoline">Trạm Xăng</string>
+    <string name="medical">Trạm Y Tế</string>
+    <string name="district">Quận/Huyện</string>
+    <string name="ward">Phường/Xã</string>
+    <string name="system">Hệ Thống</string>
+    <string name="logout">Đăng Xuất</string>
+    <string name="news">Tin tức</string>
+    <string name="geometry">ĐỊA LÝ</string>
+    <string name="manager">QUẢN LÝ</string>
+    <string name="account">Tài khoản</string>
+    <string name="tab_contact">Liên hệ</string>
+    <string name="tab_accreditation">Kiểm định</string>
+    <string name="tab_map">Bản đồ</string>
+    <string name="tab_device">Thiết bị</string>
+    <string name="tab_inspect">Thanh tra</string>
+    <string name="about">Liên hệ</string>
+    <string name="statistical">Thống kê</string>
+
+    <string name="text_dialog_logout">Bạn có muốn đăng xuất không?</string>
+
+</resources>
