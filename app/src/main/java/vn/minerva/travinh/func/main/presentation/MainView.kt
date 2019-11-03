@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import kotlinex.context.showAlert
 import kotlinex.mvpactivity.showErrorAlert
 import kotlinx.android.synthetic.main.layout_app_bar_menu_main.view.*
-import kotlinx.android.synthetic.main.layout_content_main.view.*
 import kotlinx.android.synthetic.main.layout_main.view.*
 import kotlinx.android.synthetic.main.layout_nav_header_main.view.*
+import kotlinx.android.synthetic.main.layout_toolbar.view.*
 import vn.minerva.core.app.util.image.GlideImageHelper
 import vn.minerva.core.app.view.loading.Loadinger
 import vn.minerva.core.base.domain.listener.OnActionData
@@ -30,7 +30,6 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
 
     protected val mainPresenter = MainPresenter(androidScreenNavigator)
     private var listMenuView: ListMenuView? = null
-
     private var emptyView: EmptyView? = null
 
     protected val loadingView = Loadinger.create(mvpActivity, mvpActivity.window)
@@ -42,6 +41,7 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         initHeaderView()
         initLayoutView()
         initEmptyView()
+        //initMedicalView()
     }
 
     private fun initHeaderView() {
@@ -97,7 +97,8 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
     override fun startMvpView() {
         mainPresenter.attachView(this)
         super.startMvpView()
-        listMenuView?.startMvpView()
+        listMenuView?.startMvpView()//%%%
+        //lát thêm MedicalVIew vào giống vậy
     }
 
     private fun initMenuView() {
@@ -114,6 +115,7 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         }
     }
 
+
     protected fun handleOnClickItemMenu(data: MenuViewModel) {
         if (actionMenuCurrent != data.action) {
             if (data.action != ActionMenu.ACTION_MENU_LOGOUT) {
@@ -127,12 +129,14 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
                     ActionMenu.ACTION_MENU_HEADER_PROFILE -> {
                         showProfileView()
                     }
+
                     else -> showEmptyView(data)
                 }
 
             }
         }
     }
+
 
 
     private fun closeMenu() {

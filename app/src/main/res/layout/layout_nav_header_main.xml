@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/side_nav_bar" />
+            app:srcCompat="@drawable/ima_travinh" />
 
     <LinearLayout
             android:id="@+id/view_group_nav_header_info"
@@ -44,6 +44,8 @@
         <TextView
                 android:id="@+id/text_view_nav_header_email"
                 android:layout_width="wrap_content"
+                android:text="@string/hint_email"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>

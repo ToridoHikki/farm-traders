@@ -41,6 +41,11 @@
                 android:name=".func.main.MainActivity"
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait" />
+        <activity android:name=".func.gasoline_store_detail.GasolineStoreDetailActivity"/>
+        <activity android:name=".func.gasoline_store.GasolineStoreActivity"/>
+        <activity android:name=".func.medical.MedicalActivity"/>
+        <activity android:name=".func.medical_detail.MedicalDetailActivity"/>
+        <activity android:name=".func.news.NewsActivity"/>
         <meta-data
                 android:name="io.fabric.ApiKey"
                 android:value="${FABRIC_API_KEY}" />

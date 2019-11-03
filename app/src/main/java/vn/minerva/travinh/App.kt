@@ -43,7 +43,7 @@ class App : Application() {
     private fun initFabricCrashlytics() {
         Fabric.with(this, Crashlytics.Builder().core(
             CrashlyticsCore.Builder()
-//                        .disabled(BuildConfig.DEBUG)
+                        .disabled(BuildConfig.DEBUG)
                 .build())
             .build())
     }

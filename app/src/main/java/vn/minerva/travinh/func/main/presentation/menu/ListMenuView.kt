@@ -47,6 +47,18 @@ class ListMenuView(mvpActivity: MvpActivity, recyclerView: RecyclerView, private
                         if (dataItem.action != ActionMenu.ACTION_MENU_LOGOUT) {
                             resetSelected(position)
                         }
+                        if (dataItem.action != ActionMenu.ACTION_MENU_MANAGER_COMPANY) {
+                            resetSelected(position)
+                        }
+                        if (dataItem.action != ActionMenu.ACTION_MENU_MANAGER_CLINICS) {
+                            resetSelected(position)
+                        }
+                        if (dataItem.action != ActionMenu.ACTION_MENU_MANAGER_GAS_STATION) {
+                            resetSelected(position)
+                        }
+                        if (dataItem.action != ActionMenu.ACTION_MENU_NEWS) {
+                            resetSelected(position)
+                        }
                         if (dataItem.isGroup) {
 
                         } else {

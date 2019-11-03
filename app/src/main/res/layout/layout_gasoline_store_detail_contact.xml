@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/gasContact"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:text="@string/store_owner"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailStoreOwner"
+            android:layout_width="match_parent"
+            android:text="Nguyễn Trọng Tính"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:text="@string/hint_address"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailStoreAddress"
+            android:layout_width="match_parent"
+            android:text="Ấp Trại Luận, Đại Phước, Càng Long"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:text="@string/phone_number"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailStorePhone"
+            android:layout_width="match_parent"
+            android:text="36556699"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:text="@string/company_owner"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailCompanyOwner"
+            android:layout_width="match_parent"
+            android:text="Trần Công Danh"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:text="@string/company_name"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailCompanyName"
+            android:layout_width="match_parent"
+            android:text="DNTN Ngân Thịnh"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:text="@string/company_address"
+            android:textColor="@color/color_blue_448ccb"
+            android:textSize="@dimen/dialog_message_text_size"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/tvGasDetailCompanyAddress"
+            android:layout_width="match_parent"
+            android:text="Ấp Trại Luân"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/suggestion_body_text_size"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

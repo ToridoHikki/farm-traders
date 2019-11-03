@@ -42,7 +42,8 @@
                         android:id="@+id/rvMenuItem"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" android:visibility="visible"
+                        tools:listitem="@layout/item_layout_menu_vholder"/>
             </android.support.design.widget.CoordinatorLayout>
 
         </android.support.design.widget.NavigationView>

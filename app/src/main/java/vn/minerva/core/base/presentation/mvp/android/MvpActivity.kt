@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.WindowManager
 import android.widget.Toast
 import com.orhanobut.logger.Logger
+//import com.orhanobut.logger.Logger
 import vn.minerva.core.base.domain.listener.OnActionNotify
 import vn.minerva.core.base.presentation.mvp.android.lifecycle.LifeCycleAndroidDispatcher
 import vn.minerva.core.base.presentation.mvp.android.lifecycle.LifeCycleAndroidMvpView
@@ -19,6 +20,8 @@ import vn.minerva.core.base.presentation.mvp.android.lifecycle.ViewResult
 import vn.minerva.core.base.presentation.mvp.base.lifecycle.LifeCycleDispatcherSetter
 import vn.minerva.travinh.R
 import vn.minerva.travinh.app.presentation.ActivityIntentInjector
+
+//import java.util.logging.Logger
 
 
 abstract class MvpActivity : AppCompatActivity(), LifeCycleDispatcherSetter<LifeCycleAndroidMvpView> {
@@ -137,7 +140,7 @@ abstract class MvpActivity : AppCompatActivity(), LifeCycleDispatcherSetter<Life
     }
 
     override fun onBackPressed() {
-        if (!handleBackPressed()) {
+        if (!handleBackPressed()) {//nếu hanleBlackPressed = false
             super.onBackPressed()
         }
 

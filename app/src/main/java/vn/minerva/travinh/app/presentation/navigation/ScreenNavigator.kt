@@ -8,4 +8,10 @@ interface ScreenNavigator {
     fun goToProfileActivity()
     fun callToDriver(phoneDriver: String)
     fun sendSMSToDriver(phoneDriver: String)
+    fun gotoGasolineStoreActivity()
+    fun gotoMedicalActivity()
+    fun gotoGasolineStoreDetailActivity(id: Int)
+    fun gotoImageLibrary()
+    fun gotoMedicalDetailActivity(id: Int)
+    fun gotoNewsActivity()
 }

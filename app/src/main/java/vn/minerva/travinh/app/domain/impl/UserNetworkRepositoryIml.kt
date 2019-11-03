@@ -4,14 +4,37 @@ import io.reactivex.Observable
 import kotlinex.string.getValueOrDefaultIsEmpty
 import okhttp3.Credentials
 import vn.minerva.travinh.app.config.ConfigUtil
-import vn.minerva.travinh.app.data.network.request.PassportRequest
-import vn.minerva.travinh.app.data.network.response.AppVersionResponse
-import vn.minerva.travinh.app.data.network.response.PassportResponse
+import vn.minerva.travinh.app.data.network.request.*
+import vn.minerva.travinh.app.data.network.response.*
 import vn.minerva.travinh.app.domain.UserNetworkRepository
 import vn.minerva.travinh.app.network.ApiClient
 import vn.minerva.travinh.app.network.TravinhService
 
 class UserNetworkRepositoryIml : UserNetworkRepository {
+    override fun getNews(requestBody: NewsRequest): Observable<NewsResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getNews(requestBody)
+    }
+
+    override fun getMedicalInfo(requestBody: MedicalDetailRequest): Observable<MedicalDetailResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getMedicalInfo(requestBody.id)
+    }
+
+    override fun getGasolineStore(requestBody: GasolineStoreDetailRequest): Observable<GasolineStoreDetailResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getGasolineStore(requestBody.id)
+    }
+
+    override fun getGasolineStoreDetail(requestBody: GasolineStoreRequest): Observable<GasolineStoreResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getGasolineStoreDetail(requestBody)    }
+
+    override fun getMedicalDetail(requestBody: MedicalRequest): Observable<MedicalResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getMedicalDetail(requestBody)
+    }
+
     override fun checkVersion(): Observable<AppVersionResponse> {
         val coopService: TravinhService = ApiClient.getClient()
         return coopService.getAppVersion()

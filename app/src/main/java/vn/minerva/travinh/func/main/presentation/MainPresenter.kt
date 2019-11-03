@@ -7,6 +7,17 @@ import vn.minerva.travinh.app.presentation.navigater.AndroidScreenNavigator
 import vn.minerva.travinh.func.main.domain.MainConfigUseCase
 
 class MainPresenter(private val screenNavigator: AndroidScreenNavigator) : MainContract.Presenter() {
+    override fun gotoNewsActivity() {
+        screenNavigator.gotoNewsActivity()
+    }
+
+    override fun gotoGasStoreActivity() {
+        screenNavigator.gotoGasolineStoreActivity()
+    }
+
+    override fun gotoMedicalActivity() {
+        screenNavigator.gotoMedicalActivity()
+    }
 
     private var mainConfigUseCase = MainConfigUseCase(AndroidUseCaseExecution())
     private var useCaseTask: UseCaseTask? = null

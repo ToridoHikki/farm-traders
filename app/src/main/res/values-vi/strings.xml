@@ -72,5 +72,14 @@
     <string name="statistical">Thống kê</string>
 
     <string name="text_dialog_logout">Bạn có muốn đăng xuất không?</string>
+    <string name="title_list">Danh Sách</string>
+    <string name="store_owner">Chủ Cửa Hàng</string>
+    <string name="company_owner">Chủ doanh nghiệp</string>
+    <string name="company_name">Tên doanh nghiệp</string>
+    <string name="company_address">Địa chỉ doanh nghiệp</string>
+    <string name="phone_number">Điện Thoại</string>
+    <string name="title_owner">Chủ</string>
+    <string name="title_degree">Bằng cấp</string>
+    <string name="title_specialist">Chuyên khoa</string>
 
 </resources>

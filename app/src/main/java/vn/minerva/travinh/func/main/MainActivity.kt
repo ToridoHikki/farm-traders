@@ -18,7 +18,8 @@ class MainActivity : MvpActivity() {
     override fun createAndroidMvpView(): AndroidMvpView {
         return mainView
     }
-
+//thêm tabBar vào đây có 2 fragment
+    //rồi thêm Branch vào đây hiện danh sách
     private var mapView: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
