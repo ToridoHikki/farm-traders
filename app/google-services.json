@@ -1,42 +1,43 @@
 {
   "project_info": {
-    "project_number": "1070571899825",
-    "firebase_url": "https://mnvsgcoop.firebaseio.com",
-    "project_id": "mnvsgcoop",
-    "storage_bucket": "mnvsgcoop.appspot.com"
+    "project_number": "545105272408",
+    "firebase_url": "https://farm-trader.firebaseio.com",
+    "project_id": "farm-trader",
+    "storage_bucket": "farm-trader.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1070571899825:android:8e04cab5e2cbd9ce",
+        "mobilesdk_app_id": "1:545105272408:android:bf5bd4ca6e11e22312b42d",
         "android_client_info": {
-          "package_name": "vn.minerva.travinh"
+          "package_name": "vn.silverbot99.farm_traders"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1070571899825-qcs3p9s764oqsalou61livci1d8e17v2.apps.googleusercontent.com",
+          "client_id": "545105272408-li2h2mkfl88ngnovoec1pgrtk5d72muf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.silverbot99.farm_traders",
+            "certificate_hash": "5f2082e6fc232947c3a8c481a6c8775d60bb4779"
+          }
+        },
+        {
+          "client_id": "545105272408-52ej4623n9nkf3ecs0d5e5tdjp8g070c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDHzi76i1JA4c5qCUvk4IraHBogYep50Dg"
+          "current_key": "AIzaSyAXM5XSezDUftjkp_H3h_Co-oElMctf4jg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1070571899825-qcs3p9s764oqsalou61livci1d8e17v2.apps.googleusercontent.com",
+              "client_id": "545105272408-52ej4623n9nkf3ecs0d5e5tdjp8g070c.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "1070571899825-ncnf3kgq402u7mf3fsi07gqlcqo6q1r3.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "minerva.coop"
-              }
             }
           ]
         }

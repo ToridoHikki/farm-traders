@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <ImageView
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="@dimen/logo_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dialog_avatar_height"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginBottom="15dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/square_button_icon_size"
+                android:textColor="@color/base_color_dark"
+                android:layout_marginBottom="20dp"
+                android:text="@string/sign_up_title"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_transparent_small"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:showDividers="middle">
+
+            <EditText
+                    android:id="@+id/etPhoneNumberSignUp"
+                    android:background="@drawable/border"
+                    android:layout_width="match_parent"
+                    android:text="@string/editText_phone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"/>
+
+            <EditText
+                    android:id="@+id/etPasswordSignUp"
+                    android:background="@drawable/border"
+                    android:layout_width="match_parent"
+                    android:text="@string/helper_password"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"/>
+            <EditText
+
+                    android:id="@+id/etRePasswordSignUp"
+                    android:background="@drawable/border"
+                    android:layout_width="match_parent"
+                    android:text="@string/helper_password"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"/>
+
+            <!--<com.google.android.material.button.MaterialButton-->
+            <!--android:id="@+id/button_passport_login"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="56dp"-->
+            <!--android:backgroundTint="@color/colorPrimary"-->
+            <!--android:fontFamily="@font/montserrat_medium"-->
+            <!--android:text="@string/button_login"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/white" />-->
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                    android:id="@+id/button_sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:background="@color/base_color"
+                    android:text="@string/sign_up_title"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
+                    app:finalCornerAngle="40dp"
+                    app:initialCornerAngle="0dp"
+                    app:spinning_bar_color="@color/white"
+                    app:spinning_bar_padding="8dp"
+                    app:spinning_bar_width="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

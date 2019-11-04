@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.stetho:stetho:1.5.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a18c4a5f5e9e90ed07d1f51e3a9709a/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f07825eb7322b3d50770f608a2fcaba/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a18c4a5f5e9e90ed07d1f51e3a9709a/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a18c4a5f5e9e90ed07d1f51e3a9709a/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f07825eb7322b3d50770f608a2fcaba/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f07825eb7322b3d50770f608a2fcaba/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

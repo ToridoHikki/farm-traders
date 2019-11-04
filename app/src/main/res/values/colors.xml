@@ -12,6 +12,9 @@
     <color name="color_normal">#000</color>
     <color name="color_selected">#fff</color>
     <color name="foreground_selected">#B30088FF</color>
+    <color name="base_color">#5cbb5c</color>
+    <color name="base_color_dark">#114f11</color>
+
 
     <color name="actionbar_opacity">#33000000</color>
 

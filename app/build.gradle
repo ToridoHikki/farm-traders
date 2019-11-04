@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -10,13 +11,13 @@ apply plugin: 'io.fabric'
 
 apply plugin: 'com.google.protobuf'
 
-def final applicationId_UAT = "vn.minerva.travinh.uat"
-def final applicationId_Product = "vn.minerva.travinh"
+def final applicationId_UAT = "vn.silverbot99.farm_traders.uat"
+def final applicationId_Product = "vn.silverbot99.farm_traders"
 def final FABRIC_API_KEY_UAT = "6e8150dd10737f03a50a312204415df220095522"
 def final FABRIC_API_KEY_PRODUCT = "6e8150dd10737f03a50a312204415df220095522"
 
-def final APP_NAME_UAT = "TRAVINH UAT"
-def final APP_NAME_PRODUCT = "Tra Vinh"
+def final APP_NAME_UAT = "FarmTraders UAT"
+def final APP_NAME_PRODUCT = "Farm Traders"
 
 def final schemeApp = "coop"
 def final BOOLEAN = "boolean"
@@ -44,7 +45,7 @@ def getVersionCodeTimestamp() {
 
 android {
     compileSdkVersion compileSdkVersionValue
-    flavorDimensions "travinh_flavor_name"
+    flavorDimensions "farmtraders_flavor_name"
     defaultConfig {
         targetSdkVersion targetSdkVersionValue
         versionCode getVersionCodeTimestamp()
@@ -73,7 +74,7 @@ android {
         variant.outputs.all {
             def date = new Date()
             def formattedDate = date.format('yyyy-MM-dd_HH_mm_ss')
-            outputFileName = "Travinh-${variant.flavorName.replace("_", "")}-${variant.versionName}-${formattedDate}.apk"
+            outputFileName = "FarmTraders-${variant.flavorName.replace("_", "")}-${variant.versionName}-${formattedDate}.apk"
         }
 
     }
@@ -93,7 +94,7 @@ android {
 //        }
     }
     productFlavors {
-        travinhUAT_ {
+        farmTradersUAT_ {
 //            signingConfig signingConfigs.uat
             applicationId = applicationId_UAT
             minSdkVersion minSdkVersionValue
@@ -106,7 +107,7 @@ android {
             buildConfigField "String", "SCHEME_APP", '"' + schemeApp + '"'
         }
 
-        travinhPRODUCTION_ {
+        farmTradersPRODUCTION_ {
 //            signingConfig signingConfigs.product
             applicationId = applicationId_Product
             minSdkVersion minSdkVersionValue
@@ -252,8 +253,7 @@ dependencies {
 //    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.39.0'
     implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:7.4.0')
     implementation ('com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0')
-    //scannerQRCode - generate qr code from string
-    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+
 
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
 
@@ -265,11 +265,14 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.4.0'
 
     //add firebase
-    implementation 'com.google.firebase:firebase-core:16.0.9'
-    implementation 'com.google.firebase:firebase-messaging:18.0.0'
-
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+//    implementation 'com.google.firebase:firebase-messaging:18.0.0'
+    implementation 'com.google.firebase:firebase-analytics:16.0.4'
+    implementation "com.google.firebase:firebase-auth:16.0.4"
+    implementation "com.google.firebase:firebase-database:16.0.3"
+    implementation "com.google.firebase:firebase-config:16.0.1"
     // google vision gradle
-    implementation 'com.google.android.gms:play-services-vision:17.0.2'
+    implementation 'com.google.android.gms:play-services-vision:16.2.0'
 
     implementation 'com.airbnb.android:lottie:2.5.0-rc1'
 

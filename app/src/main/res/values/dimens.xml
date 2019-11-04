@@ -10,6 +10,8 @@
     <dimen name="item_vhoder_height">130dp</dimen>
     <dimen name="nav_header_height_supper_xxx">300dp</dimen>
     <dimen name="width_menu">300dp</dimen>
+    <dimen name="logo_width">75dp</dimen>
+    <dimen name="logo_height">75dp</dimen>
 
 
     <dimen name="size_title_supper_lager">18sp</dimen>

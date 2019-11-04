@@ -4,8 +4,8 @@ import android.content.Context
 import android.support.annotation.PluralsRes
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.appcompat.v7.Appcompat
-import vn.minerva.core.base.domain.listener.OnActionNotify
-import vn.minerva.travinh.R
+import vn.silverbot99.core.base.domain.listener.OnActionNotify
+import vn.silverbot99.farm_traders.R
 
 fun Context.showAlert(msg: String, title: String, onActionPositive: OnActionNotify?, onActionNegative: OnActionNotify?, onActionNeutral: OnActionNotify?) {
     this.alert(Appcompat, msg, title)

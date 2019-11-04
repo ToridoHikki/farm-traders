@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.arimorty:floatingsearchview:2.1.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/405a368a1d72c90be9c8fe9df181a2ad/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c77b6fa7b1aafefda56a5a8a8b05ac9/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/405a368a1d72c90be9c8fe9df181a2ad/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/405a368a1d72c90be9c8fe9df181a2ad/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c77b6fa7b1aafefda56a5a8a8b05ac9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7c77b6fa7b1aafefda56a5a8a8b05ac9/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

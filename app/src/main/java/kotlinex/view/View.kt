@@ -4,7 +4,7 @@ import android.graphics.Paint
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.TextView
-import vn.minerva.core.base.presentation.view.ViewSize
+import vn.silverbot99.core.base.presentation.view.ViewSize
 
 
 inline fun <T : View> T.afterMeasured(crossinline f: T.(ViewSize) -> Unit) {

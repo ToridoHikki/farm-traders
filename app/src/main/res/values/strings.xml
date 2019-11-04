@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TraVinh</string>
+    <string name="app_name">FarmTraders</string>
     <string name="warning_check_server_again">Could not connect to server. Please try again!</string>
     <string name="error_system_msg">An error has occurred</string>
     <string name="error_internet_connect">No Internet Connection!</string>
@@ -33,7 +33,7 @@
     <string name="action_search">Tìm kiếm</string>
 
 
-    <string name="title_logo">TRUNG TÂM THÔNG TIN VÀ ỨNG DỤNG KHOA HỌC CÔNG NGHỆ</string>
+    <string name="title_logo">Ứng Dụng Trao đổi - Mua bán giữa Thương Lái và Nông Dân</string>
     <string name="title_so_khoa_hoc">SỞ KHOA HỌC VÀ CÔNG NGHỆ TRÀ VINH</string>
     <string name="hint_password">Mật khẩu</string>
     <string name="hint_username">Tài khoản</string>
@@ -77,6 +77,10 @@
     <string name="title_owner">Chủ</string>
     <string name="title_degree">Bằng cấp</string>
     <string name="title_specialist">Chuyên khoa</string>
+    <string name="editText_phone">SĐT</string>
+    <string name="have_not_account">Bạn chưa có tài khoản?</string>
+    <string name="sign_up_now"><u>Đăng kí ngay</u></string>
+    <string name="sign_up_title">Đăng ký</string>
 
 
 </resources>

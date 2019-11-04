@@ -1,6 +1,6 @@
 package kotlinex.number
 
-import vn.minerva.core.app.util.DecimalUtils
+import vn.silverbot99.core.app.util.DecimalUtils
 import java.util.*
 
 fun Int?.getValueOrDefaultWithValue(value: Int): Int {

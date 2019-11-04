@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: be.trikke:intentbuilder-api:1.1.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e16431841cda54c4b15308895e82255b/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e16431841cda54c4b15308895e82255b/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/092c37d78a1aceb57cb6adc3125a9689/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/092c37d78a1aceb57cb6adc3125a9689/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

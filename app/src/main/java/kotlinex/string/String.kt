@@ -1,6 +1,6 @@
 package kotlinex.string
 
-import vn.minerva.core.app.util.AccentRemover
+import vn.silverbot99.core.app.util.AccentRemover
 import java.text.SimpleDateFormat
 import java.util.*
 

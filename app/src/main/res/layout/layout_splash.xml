@@ -11,11 +11,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/bkg" />
+            app:srcCompat="@drawable/nen"/>
 
-    <include
+<!--    <include
             layout="@layout/layout_view_logo"
-            android:transitionName="logo" />
+            android:transitionName="logo" />-->
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -27,8 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/title_so_khoa_hoc"
-                android:textColor="@color/white"
+                android:text="@string/title_logo"
+                android:textColor="@color/base_color_dark"
                 android:textSize="12sp" />
 
         <TextView

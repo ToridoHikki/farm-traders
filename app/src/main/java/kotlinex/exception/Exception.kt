@@ -1,6 +1,6 @@
 package kotlinex.exception
 
-import vn.minerva.core.base.domain.exception.AppException
+import vn.silverbot99.core.base.domain.exception.AppException
 
 
 fun Exception.reThrow(errorMessage: String, errorCode: Int = 0) {
