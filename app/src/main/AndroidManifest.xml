@@ -41,11 +41,9 @@
                 android:name="vn.silverbot99.farm_traders.func.main.MainActivity"
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait" />
-        <activity android:name="vn.silverbot99.farm_traders.func.gasoline_store_detail.GasolineStoreDetailActivity"/>
-        <activity android:name="vn.silverbot99.farm_traders.func.gasoline_store.GasolineStoreActivity"/>
-        <activity android:name="vn.silverbot99.farm_traders.func.medical.MedicalActivity"/>
-        <activity android:name="vn.silverbot99.farm_traders.func.medical_detail.MedicalDetailActivity"/>
-        <activity android:name="vn.silverbot99.farm_traders.func.news.NewsActivity"/>
+        <activity android:name=".func.sign_up.SignUpActivity" />
+        <activity android:name=".func.verification_phone.VerificationActivity" />
+
         <meta-data
                 android:name="io.fabric.ApiKey"
                 android:value="${FABRIC_API_KEY}" />

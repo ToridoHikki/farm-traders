@@ -23,7 +23,7 @@ import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemMode
 import vn.silverbot99.farm_traders.func.sign_up.presentation.SignUpContract
 import vn.silverbot99.farm_traders.func.sign_up.presentation.model.UserFirebaseModel
 
-class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private val forceLogin: Int) : AndroidMvpView(mvpActivity, viewCreator),
+class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator),
         SignUpContract.View {
     override fun signUpSuccess(phone: String) {
         signUpPresenter.gotoAuthencationPhoneView(phone)

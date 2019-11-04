@@ -81,6 +81,8 @@
     <string name="have_not_account">Bạn chưa có tài khoản?</string>
     <string name="sign_up_now"><u>Đăng kí ngay</u></string>
     <string name="sign_up_title">Đăng ký</string>
+    <string name="verification_phone">Xác minh số điện thoại</string>
+    <string name="btnverification">Xác nhận</string>
 
 
 </resources>

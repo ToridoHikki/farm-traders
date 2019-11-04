@@ -13,6 +13,9 @@ import vn.silverbot99.farm_traders.func.splash.domain.CheckVersionAppUseCase
 import vn.silverbot99.farm_traders.func.splash.domain.ReLoginUseCase
 
 class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashContract.Presenter() {
+    override fun gotoSignUpActivity() {
+        screenNavigator.gotoSignUpScreen()
+    }
 
 
     private var checkVersionAppUseCase = CheckVersionAppUseCase(AndroidUseCaseExecution())

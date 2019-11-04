@@ -129,9 +129,12 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         val passport = ConfigUtil.passport
 
         if (passport == null) {
-            splashPresenter.gotoLoginActivity()
+            //splashPresenter.gotoLoginActivity()
+            splashPresenter.gotoSignUpActivity()
         } else {
-            splashPresenter.reLogin()
+            //splashPresenter.reLogin()
+            splashPresenter.gotoSignUpActivity()
+
         }
     }
 
@@ -139,7 +142,8 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         ConfigUtil.saveDateSelected(Calendar.getInstance())
         ConfigUtil.savePassport(data)
         ConfigUtil.saveIsFirstLoginApp(true)
-        splashPresenter.gotoMainActivity()
+        //splashPresenter.gotoMainActivity()
+        splashPresenter.gotoSignUpActivity()
     }
 
     //End ic_overview_check version

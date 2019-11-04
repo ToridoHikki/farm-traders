@@ -24,6 +24,9 @@ interface SplashContract {
 
         abstract fun gotoLoginActivity()
 
+        abstract fun gotoSignUpActivity()
+
+
         abstract fun registerAppPermission()
 
         abstract fun reLogin()
