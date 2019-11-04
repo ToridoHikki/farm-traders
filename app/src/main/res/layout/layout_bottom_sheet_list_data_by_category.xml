@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/bottom_sheet"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/nav_header_height_supper_xxx"
+              android:background="@drawable/bkg_bottom_sheet"
+              android:elevation="16dp"
+              android:orientation="vertical"
+              android:padding="@dimen/activity_margin"
+              app:behavior_hideable="true"
+              app:behavior_peekHeight="@dimen/size_behavior_peek_height"
+              app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+    <LinearLayout
+            android:id="@+id/text_view_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Danh Sách"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#444"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_list_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <FrameLayout
+            android:id="@+id/view_data_empty"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:visibility="visible">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Không có dữ liệu"
+                android:textAppearance="?attr/textAppearanceHeadline5" />
+
+    </FrameLayout>
+
+</LinearLayout>

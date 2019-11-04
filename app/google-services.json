@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "545105272408",
+    "firebase_url": "https://farm-trader.firebaseio.com",
+    "project_id": "farm-trader",
+    "storage_bucket": "farm-trader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545105272408:android:bf5bd4ca6e11e22312b42d",
+        "android_client_info": {
+          "package_name": "vn.silverbot99.farm_traders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545105272408-li2h2mkfl88ngnovoec1pgrtk5d72muf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.silverbot99.farm_traders",
+            "certificate_hash": "5f2082e6fc232947c3a8c481a6c8775d60bb4779"
+          }
+        },
+        {
+          "client_id": "545105272408-52ej4623n9nkf3ecs0d5e5tdjp8g070c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXM5XSezDUftjkp_H3h_Co-oElMctf4jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545105272408-52ej4623n9nkf3ecs0d5e5tdjp8g070c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

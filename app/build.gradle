@@ -1,0 +1,288 @@
+apply plugin: 'com.android.application'
+
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'io.fabric'
+
+apply plugin: 'com.google.protobuf'
+
+def final applicationId_UAT = "vn.silverbot99.farm_traders.uat"
+def final applicationId_Product = "vn.silverbot99.farm_traders"
+def final FABRIC_API_KEY_UAT = "6e8150dd10737f03a50a312204415df220095522"
+def final FABRIC_API_KEY_PRODUCT = "6e8150dd10737f03a50a312204415df220095522"
+
+def final APP_NAME_UAT = "FarmTraders UAT"
+def final APP_NAME_PRODUCT = "Farm Traders"
+
+def final schemeApp = "coop"
+def final BOOLEAN = "boolean"
+def final TRUE = "true"
+def final FALSE = "false"
+
+def dbflow_version = "4.2.4"
+
+def targetSdkVersionValue = rootProject.ext.targetSdkVersion as Integer
+def compileSdkVersionValue = rootProject.ext.compileSdkVersion as Integer
+def versionNameValue = rootProject.ext.versionName as String
+def minSdkVersionValue = rootProject.ext.minSdkVersion as Integer
+def versionRetrofitValue = rootProject.ext.versionRetrofit as String
+def versionAnkoValue = rootProject.ext.versionAnko as String
+def versionLeakcanaryValue = rootProject.ext.versionLeakcanary as String
+def versionSupportValue = rootProject.ext.versionSupport as String
+
+def getVersionCodeTimestamp() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHHmm')
+    def code = formattedDate.toBigInteger()
+    println sprintf("VersionCode: %d", code)
+    return code
+}
+
+android {
+    compileSdkVersion compileSdkVersionValue
+    flavorDimensions "farmtraders_flavor_name"
+    defaultConfig {
+        targetSdkVersion targetSdkVersionValue
+        versionCode getVersionCodeTimestamp()
+        versionName versionNameValue
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+    buildTypes {
+        debug {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue("string", "version_app", "Version ${versionNameValue}")
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue("string", "version_app", "Version ${versionNameValue}")
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def date = new Date()
+            def formattedDate = date.format('yyyy-MM-dd_HH_mm_ss')
+            outputFileName = "FarmTraders-${variant.flavorName.replace("_", "")}-${variant.versionName}-${formattedDate}.apk"
+        }
+
+    }
+
+    signingConfigs {
+//        uat {
+//            storeFile file('../../publish/coop.keystore')
+//            storePassword 'coop@123'
+//            keyAlias 'coop'
+//            keyPassword 'coop@123'
+//        }
+//        product {
+//            storeFile file('../../publish/coop.keystore')
+//            storePassword 'coop@123'
+//            keyAlias 'coop'
+//            keyPassword 'coop@123'
+//        }
+    }
+    productFlavors {
+        farmTradersUAT_ {
+//            signingConfig signingConfigs.uat
+            applicationId = applicationId_UAT
+            minSdkVersion minSdkVersionValue
+            manifestPlaceholders = [nameApp: APP_NAME_UAT, FABRIC_API_KEY: FABRIC_API_KEY_UAT]
+
+            buildConfigField BOOLEAN, "USE_DATA_UAT", TRUE
+            buildConfigField BOOLEAN, "USE_DATA_PRODUCT", FALSE
+            buildConfigField BOOLEAN, "SYNC", TRUE
+            buildConfigField BOOLEAN, "LOG_CRASHLYTICS", TRUE
+            buildConfigField "String", "SCHEME_APP", '"' + schemeApp + '"'
+        }
+
+        farmTradersPRODUCTION_ {
+//            signingConfig signingConfigs.product
+            applicationId = applicationId_Product
+            minSdkVersion minSdkVersionValue
+            manifestPlaceholders = [nameApp: APP_NAME_PRODUCT, FABRIC_API_KEY: FABRIC_API_KEY_PRODUCT]
+
+            buildConfigField BOOLEAN, "USE_DATA_UAT", TRUE
+            buildConfigField BOOLEAN, "USE_DATA_PRODUCT", FALSE
+            buildConfigField BOOLEAN, "SYNC", TRUE
+            buildConfigField BOOLEAN, "LOG_CRASHLYTICS", TRUE
+            buildConfigField "String", "SCHEME_APP", '"' + schemeApp + '"'
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi', 'armeabi-v7a'
+            universalApk true
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+}
+
+sourceSets {
+    main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+    main.java.srcDirs += file("${protobuf.generatedFilesBaseDir}/main/javalite")
+
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.0.0"
+    }
+    plugins {
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.plugins {
+                javalite { }
+            }
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+dependencies {
+
+    //Squareup
+    implementation "com.squareup.retrofit2:retrofit:${versionRetrofitValue}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versionRetrofitValue}"
+    implementation "com.squareup.retrofit2:converter-gson:${versionRetrofitValue}"
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    //Stetho
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    //RxKotlin
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+
+    //Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version") {
+        transitive = false
+    }
+    //RecyclerView
+    implementation 'com.github.vivchar:RendererRecyclerViewAdapter:2.5.1'
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    //Memory Leak Detection
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${versionLeakcanaryValue}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
+
+    //support
+    implementation 'com.rhexgomez.typer:typer-roboto:2.0.0'
+    //noinspection GradleCompatible
+    implementation "com.android.support:recyclerview-v7:${versionSupportValue}"
+    implementation "com.android.support:appcompat-v7:${versionSupportValue}"
+    implementation "com.android.support:cardview-v7:${versionSupportValue}"
+    implementation "com.android.support:support-v4:${versionSupportValue}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.android.support:support-compat:${versionSupportValue}"
+    implementation "com.android.support:design:${versionSupportValue}"
+    implementation 'android.arch.work:work-runtime:1.0.0-alpha08'
+    //Calendar
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+
+    implementation 'br.com.simplepass:loading-button-android:1.6.5'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //Anko
+    implementation "org.jetbrains.anko:anko-appcompat-v7:${versionAnkoValue}"
+
+    //Intent
+    implementation 'be.trikke:intentbuilder-api:1.1.4'
+    kapt 'be.trikke:intentbuilder-compiler:1.1.4'
+
+    // Crashlytics Fabric
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+        transitive = true
+    }
+    // use kapt for kotlin apt if you're a Kotlin user
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    // dbflow
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    // RXJava 2 support
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
+
+    // RXJava 2 Kotlin Extensions Support
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}"
+
+    //temp
+    implementation 'com.orhanobut:logger:2.1.1'
+    implementation 'commons-codec:commons-codec:1.10'
+
+    //mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:7.3.2'
+    //db
+    implementation 'io.paperdb:paperdb:2.1'
+
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+//    implementation 'com.github.lecho:hellocharts-android:v1.5.8'
+    //map_header
+//    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.39.0'
+    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:7.4.0')
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0')
+
+
+    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
+
+    testImplementation 'junit:junit:4.12'
+
+    // Use for show image fullscreen, horizontal swipe
+    implementation 'com.github.stfalcon:frescoimageviewer:0.5.0'
+    // Picture taking libs
+    implementation 'com.facebook.fresco:fresco:1.4.0'
+
+    //add firebase
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+//    implementation 'com.google.firebase:firebase-messaging:18.0.0'
+    implementation 'com.google.firebase:firebase-analytics:16.0.4'
+    implementation "com.google.firebase:firebase-auth:16.0.4"
+    implementation "com.google.firebase:firebase-database:16.0.3"
+    implementation "com.google.firebase:firebase-config:16.0.1"
+    // google vision gradle
+    implementation 'com.google.android.gms:play-services-vision:16.2.0'
+
+    implementation 'com.airbnb.android:lottie:2.5.0-rc1'
+
+    // rabbitMQ
+    implementation 'com.rabbitmq:amqp-client:5.6.0'
+    api "com.google.protobuf:protobuf-lite:3.0.1"
+    //animation
+    implementation "com.andkulikov:transitionseverywhere:1.8.1"
+
+    // chatkit UI
+    implementation 'com.github.stfalcon:chatkit:0.3.3'
+}
+apply plugin: 'com.google.gms.google-services'

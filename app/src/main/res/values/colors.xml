@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimaryDark">#003c8f</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="background_activity">#f0f3f4</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="grey">#767676</color>
+
+    <color name="color_normal">#000</color>
+    <color name="color_selected">#fff</color>
+    <color name="foreground_selected">#B30088FF</color>
+    <color name="base_color">#5cbb5c</color>
+    <color name="base_color_dark">#114f11</color>
+
+
+    <color name="actionbar_opacity">#33000000</color>
+
+    <color name="bkg_badge">@color/colorAccent</color>
+
+    <color name="primary_text">#000</color>
+    <color name="secondary_text">#ccc</color>
+
+    <color name="fill_default">#FFEDA0</color>
+    <color name="fill_04">#FFEDA0</color>
+    <color name="fill_08">#FED976</color>
+    <color name="fill_12">#FEB24C</color>
+    <color name="fill_16">#FD8D3C</color>
+    <color name="fill_20">#FC4E2A</color>
+    <color name="fill_24">#E31A1C</color>
+    <color name="fill_28">#BD0026</color>
+    <color name="fill_32">#800026</color>
+
+    <color name="color_negative">@color/colorAccent</color>
+    <color name="color_positive">@color/colorPrimary</color>
+
+    <color name="toolbar_background">@color/colorPrimary</color>
+
+    <color name="color_disabled">#505a595b</color>
+
+    <color name="title_text_color">#4d4d4d</color>
+    <color name="text_color_light">#eee</color>
+    <color name="window_background">@color/white</color>
+
+    <color name="transparent">#0000</color>
+    <color name="red">#D92E27</color>
+    <color name="red_qlcl">#FF0000</color>
+    <color name="red_BA0A19">#BA0A19</color>
+    <color name="red_b8121f">#b8121f</color>
+    <color name="color_block_price">#E7D9DA</color>
+
+    <color name="blue_005CAE">#005CAE</color>
+    <color name="blue_2570B3">#2570B3</color>
+    <color name="greenDark">#009051</color>
+    <color name="supplier">#4CAF50</color>
+    <color name="warehouse">#FFB300</color>
+    <color name="supermarket">#D92E27</color>
+    <color name="grey_F3F4F5">#F3F4F5</color>
+    <color name="grey_e5e4e4">#e5e4e4</color>
+    <color name="grey_a3a3a3">#a3a3a3</color>
+    <color name="grey_c8c6c6">#c8c6c6</color>
+    <color name="grey_555555">#555555</color>
+    <color name="grey_6c6d6d">#6c6d6d</color>
+    <color name="black_362f2d">#362f2d</color>
+    <color name="grey_f0f3f4">#f0f3f4</color>
+    <color name="transparent_black_05">#0d000000</color>
+    <color name="transparent_black_10">#1a000000</color>
+    <color name="transparent_black_15">#26000000</color>
+    <color name="transparent_black_20">#33000000</color>
+    <color name="transparent_black_30">#4d000000</color>
+    <color name="transparent_black_40">#66000000</color>
+    <color name="transparent_black_50">#80000000</color>
+    <color name="transparent_black_60">#99000000</color>
+    <color name="transparent_black_65">#a6000000</color>
+    <color name="transparent_black_70">#b3000000</color>
+    <color name="transparent_black_75">#bf000000</color>
+    <color name="transparent_black_80">#cc000000</color>
+    <color name="transparent_black_85">#d9000000</color>
+    <color name="transparent_white">#00ffffff</color>
+    <color name="transparent_white_05">#0dffffff</color>
+    <color name="transparent_white_10">#1affffff</color>
+    <color name="transparent_white_15">#26ffffff</color>
+    <color name="transparent_white_20">#33ffffff</color>
+    <color name="transparent_white_30">#4dffffff</color>
+    <color name="transparent_white_40">#66ffffff</color>
+    <color name="transparent_white_50">#8ffffff0</color>
+    <color name="transparent_white_60">#99ffffff</color>
+    <color name="transparent_white_65">#a6ffffff</color>
+    <color name="transparent_white_70">#b3ffffff</color>
+    <color name="transparent_white_75">#bfffffff</color>
+    <color name="transparent_white_80">#ccffffff</color>
+    <color name="transparent_white_85">#d9ffffff</color>
+    <color name="transparent_white_90">#E6ffffff</color>
+    <color name="transparent_white_95">#f2ffffff</color>
+
+    <color name="color_grey_E6E5E5">#E6E5E5</color>
+    <color name="color_blue_005BAF">#005BAF</color>
+    <color name="color_blue_448ccb">#448ccb</color>
+    <color name="color_supplier_tilte">#005cae</color>
+    <color name="reduction_quantity">#005cae</color>
+    <color name="background_edittext">#c2f2efef</color>
+    <color name="text_grey">#6c6d6d</color>
+    <color name="text_grey_70">#707070</color>
+    <color name="background_grey">#edeff0</color>
+    <color name="text_grey_625e5e">#625e5e</color>
+    <color name="text_black_2e">#2e2c2c</color>
+    <color name="background_grey_f2">#f2efef</color>
+    <color name="background_grey_29">#29000000</color>
+</resources>

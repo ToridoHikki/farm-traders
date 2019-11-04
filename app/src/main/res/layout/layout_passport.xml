@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+        <include
+                layout="@layout/layout_view_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="45dp"
+                android:visibility="visible"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_transparent_small"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:showDividers="middle">
+
+            <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:background="@drawable/border"
+                    android:layout_width="match_parent"
+                    android:text="@string/editText_phone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"/>
+
+            <EditText
+                    android:id="@+id/etPassword"
+                    android:background="@drawable/border"
+                    android:layout_width="match_parent"
+                    android:text="@string/helper_password"
+                    android:layout_height="wrap_content"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button_passport_forget_password"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/button_forget_password"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/colorAccent"/>
+
+            <!--<com.google.android.material.button.MaterialButton-->
+            <!--android:id="@+id/button_passport_login"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="56dp"-->
+            <!--android:backgroundTint="@color/colorPrimary"-->
+            <!--android:fontFamily="@font/montserrat_medium"-->
+            <!--android:text="@string/button_login"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/white" />-->
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                    android:id="@+id/button_passport_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:background="@color/base_color"
+                    android:text="@string/button_login"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
+                    app:finalCornerAngle="40dp"
+                    app:initialCornerAngle="0dp"
+                    app:spinning_bar_color="@color/white"
+                    app:spinning_bar_padding="8dp"
+                    app:spinning_bar_width="2dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/have_not_account"
+                    android:textColor="@color/black"
+                    android:layout_gravity="end"
+                    android:textStyle="italic" />
+
+            <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnCreateAccount"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textStyle="bold"
+                    android:text="@string/sign_up_now"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

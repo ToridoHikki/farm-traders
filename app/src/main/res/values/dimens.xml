@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_behavior_peek_height">56dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height_supper">190dp</dimen>
+    <dimen name="item_vhoder_height">130dp</dimen>
+    <dimen name="nav_header_height_supper_xxx">300dp</dimen>
+    <dimen name="width_menu">300dp</dimen>
+    <dimen name="logo_width">75dp</dimen>
+    <dimen name="logo_height">75dp</dimen>
+
+
+    <dimen name="size_title_supper_lager">18sp</dimen>
+    <dimen name="size_title_lager">16sp</dimen>
+    <dimen name="size_title_normal_supper">15sp</dimen>
+    <dimen name="size_title_normal">14sp</dimen>
+    <dimen name="size_title_small">12sp</dimen>
+    <dimen name="size_title_small_supper">11sp</dimen>
+    <dimen name="size_title_tiny">10sp</dimen>
+</resources>
