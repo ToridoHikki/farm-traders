@@ -10,13 +10,20 @@ interface VerificationContract {
 
         fun hideLoading()
 
+        fun showToast(message: String)
+
+        fun getCode(code: String)
+
+        fun verificateSuccess()
+
         fun showError(errorMsg: String)
 
 
     }
 
     abstract class Presenter : MvpPresenter<View>() {
-        abstract fun gotoMainView()
-        abstract fun verification(phone: String)
+        abstract fun gotoMainActivity()
+        abstract fun sendVerificationCode(phone: String)
+        abstract fun verifyCode(code: String)
     }
 }

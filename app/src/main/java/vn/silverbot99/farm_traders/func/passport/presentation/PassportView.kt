@@ -49,6 +49,7 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
             true
         }
         view.button_passport_login.setOnClickListener { login() }*/
+        view.btnCreateAccount.setOnClickListener { passportPresenter.gotoLogUpView() }
 
     }
 

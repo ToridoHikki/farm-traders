@@ -13,6 +13,8 @@ interface SignUpContract {
     interface View : MvpView {
         fun signUpSuccess(phone: String)
 
+        fun showToast(message: String)
+
         fun showLoading()
 
         fun hideLoading()

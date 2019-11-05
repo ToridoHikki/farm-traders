@@ -7,10 +7,8 @@ import vn.silverbot99.core.base.domain.interactor.UseCaseTask
 import vn.silverbot99.farm_traders.app.data.network.request.GasolineStoreRequest
 import vn.silverbot99.farm_traders.app.data.network.request.MedicalRequest
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
-import vn.silverbot99.farm_traders.func.gasoline_store.domain.GasolineStoreRootUseCase
 import vn.silverbot99.farm_traders.func.location_gasoline_medical.domain.LocationGasolineMapper
 import vn.silverbot99.farm_traders.func.location_gasoline_medical.domain.LocationMedicalMapper
-import vn.silverbot99.farm_traders.func.medical.domain.MedicalRootUseCase
 
 class LocationGasolineMedicalPresenter(val screenNavigator: AndroidScreenNavigator) :LocationGasolineMedicalContract.Presenter(){
     override fun getGasStationDetail(id: Int) {

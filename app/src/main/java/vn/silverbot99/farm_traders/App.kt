@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatDelegate
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
 import com.facebook.drawee.backends.pipeline.Fresco
-import com.google.firebase.messaging.FirebaseMessaging
 import com.mapbox.mapboxsdk.Mapbox
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -35,7 +34,6 @@ class App : Application() {
         initFabricCrashlytics()
         Mapbox.getInstance(applicationContext, "pk.eyJ1Ijoibm9uMjM1IiwiYSI6ImNpbzI5YzRhbzFheGF1a20za2JzODNndDMifQ.ono5LA8H3OlJUo5jjDCi2Q")
         Fresco.initialize(this)
-        FirebaseMessaging.getInstance().isAutoInitEnabled = true
 
 //        getTokenFirebase()
     }

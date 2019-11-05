@@ -7,17 +7,7 @@ import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavig
 import vn.silverbot99.farm_traders.func.main.domain.MainConfigUseCase
 
 class MainPresenter(private val screenNavigator: AndroidScreenNavigator) : MainContract.Presenter() {
-    override fun gotoNewsActivity() {
-        screenNavigator.gotoNewsActivity()
-    }
 
-    override fun gotoGasStoreActivity() {
-        screenNavigator.gotoGasolineStoreActivity()
-    }
-
-    override fun gotoMedicalActivity() {
-        screenNavigator.gotoMedicalActivity()
-    }
 
     private var mainConfigUseCase = MainConfigUseCase(AndroidUseCaseExecution())
     private var useCaseTask: UseCaseTask? = null

@@ -12,7 +12,7 @@ import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemMode
 
 class PassportPresenter(private val screenNavigator: ScreenNavigator) : PassportContract.Presenter() {
     override fun gotoLogUpView() {
-
+        screenNavigator.gotoSignUpScreen()
     }
 
 

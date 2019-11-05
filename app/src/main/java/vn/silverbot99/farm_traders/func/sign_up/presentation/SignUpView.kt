@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.text.TextUtils
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinex.context.showAlert
 import kotlinex.string.getValueOrDefaultIsEmpty
 import kotlinx.android.synthetic.main.layout_passport.view.*
@@ -29,6 +30,7 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         signUpPresenter.gotoAuthencationPhoneView(phone)
     }
 
+
     private val signUpPresenter: SignUpPresenter =
             SignUpPresenter(screenNavigator = AndroidScreenNavigator(mvpActivity))
     private val mHandler = Handler()
@@ -43,9 +45,6 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         signUp()
     }
 
-    override fun initData() {
-
-    }
 
     private fun signUp() {
         val user = view.etPhoneNumberSignUp.text
@@ -88,6 +87,9 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
 
     override fun hideLoading() {
         view.button_sign_up?.revertAnimation()
+    }
+    override fun showToast(message: String) {
+        Toast.makeText(mvpActivity, message, Toast.LENGTH_LONG).show()
     }
 
 /*    override fun handleAfterLogin(data: PassportResponse) {

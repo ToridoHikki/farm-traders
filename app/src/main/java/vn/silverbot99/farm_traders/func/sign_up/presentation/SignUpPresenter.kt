@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task
 
 class SignUpPresenter(private val screenNavigator: ScreenNavigator) : SignUpContract.Presenter() {
     override fun gotoAuthencationPhoneView(phone: String) {
-        screenNavigator.gotoMainActivity()// suwar lai
+        screenNavigator.gotoVerificationPhone(phone)// suwar lai
     }
 
     var auth: FirebaseAuth = FirebaseAuth.getInstance()

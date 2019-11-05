@@ -21,9 +21,6 @@ interface MainContract {
         abstract fun loadConfigData()
         abstract fun gotoLoginActivity()
         abstract fun showProfileView()
-        abstract fun gotoGasStoreActivity()
-        abstract fun gotoMedicalActivity()
-        abstract fun gotoNewsActivity()
 
     }
 
