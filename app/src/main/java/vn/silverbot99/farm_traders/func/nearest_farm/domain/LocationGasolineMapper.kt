@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.domain
+package vn.silverbot99.farm_traders.func.nearest_farm.domain
 
 import android.util.Log
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
@@ -6,7 +6,7 @@ import kotlinex.number.getValueOrDefaultIsZero
 import kotlinex.string.getValueOrDefaultIsEmpty
 import vn.silverbot99.core.base.domain.mapper.Mapper
 import vn.silverbot99.farm_traders.app.data.network.response.GasolineStoreResponse
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.model.LocationGasolineItemModel
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationGasolineItemModel
 
 class LocationGasolineMapper : Mapper<GasolineStoreResponse, MutableList<ViewModel>> {
     override fun map(input: GasolineStoreResponse): MutableList<ViewModel> {

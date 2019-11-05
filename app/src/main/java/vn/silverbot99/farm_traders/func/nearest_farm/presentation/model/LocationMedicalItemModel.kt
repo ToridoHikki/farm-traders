@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.model
+package vn.silverbot99.farm_traders.func.nearest_farm.presentation.model
 
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 

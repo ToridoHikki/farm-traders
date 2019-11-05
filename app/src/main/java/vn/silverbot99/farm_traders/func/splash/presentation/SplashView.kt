@@ -42,7 +42,7 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun initCreateView() {
-        view.text_view_version.text = resourceProvider.getVersionApp()
+
     }
 
     //Start register permission
@@ -73,78 +73,28 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
     //End register permission
 
-    //Start ic_overview_check version
-    private fun showDownLoadNewVersion(isForce: Boolean) {
-        val builder = AlertDialog.Builder(mvpActivity)
-                .setCancelable(false)
-                .setTitle(R.string.title_update_app)
-                .setMessage(R.string.msg_update_app)
-                .setPositiveButton(R.string.ACTION_UPDATE) { dialog, _ ->
-                    val appPackageName = AppConfigs.instance.getBaseApplication()
-                            .packageName // getPackageName() from Context or Activity object
-                    try {
-                        mvpActivity.startActivity(
-                                Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("market://details?id=$appPackageName")
-                                )
-                        )
-                    } catch (anfe: android.content.ActivityNotFoundException) {
-                        mvpActivity.startActivity(
-                                Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://play.google.com/store_red/apps/details?id=$appPackageName")
-                                )
-                        )
-                    }
 
-                    dialog.dismiss()
-                    mvpActivity.finish()
-                }
-                .setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
-                    dialog.dismiss()
-                    mvpActivity.finish()
-                }
-
-        if (!isForce) {
-            builder.setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
-                dialog.dismiss()
-            }
-            nextActivity()
-        }
-        builder.show()
-    }
-
-    override fun handleAfterLoadAppVersion(data: AppVersionResponse) {
-        val versionCurrent = Utils.getVersionCode(mvpActivity)
-        val newVersion = data.version.toInt()
-        if (versionCurrent < newVersion) {
-            showDownLoadNewVersion(data.forceFlag)
-        } else {
-            nextActivity()
-        }
-    }
 
     private fun nextActivity() {
         val passport = ConfigUtil.passport
 
         if (passport == null) {
             //splashPresenter.gotoLoginActivity()
-            splashPresenter.gotoSignUpActivity()
+            splashPresenter.gotoLoginActivity()
         } else {
             //splashPresenter.reLogin()
-            splashPresenter.gotoSignUpActivity()
+            splashPresenter.gotoMainActivity()
 
         }
     }
 
-    override fun handleAfterReLogin(data: PassportResponse) {
-        ConfigUtil.saveDateSelected(Calendar.getInstance())
-        ConfigUtil.savePassport(data)
-        ConfigUtil.saveIsFirstLoginApp(true)
-        //splashPresenter.gotoMainActivity()
-        splashPresenter.gotoSignUpActivity()
-    }
+//    override fun handleAfterReLogin(data: PassportResponse) {
+//        ConfigUtil.saveDateSelected(Calendar.getInstance())
+//        ConfigUtil.savePassport(data)
+//        ConfigUtil.saveIsFirstLoginApp(true)
+//        //splashPresenter.gotoMainActivity()
+//        splashPresenter.gotoSignUpActivity()
+//    }
 
     //End ic_overview_check version
     //Start show error
@@ -153,7 +103,8 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
             override fun onActionNotify() {
                 runWithCheckMultiTouch("onActionNotify", object : OnActionNotify {
                     override fun onActionNotify() {
-                        splashPresenter.loadAppVersion()
+                        //splashPresenter.loadAppVersion()
+                        splashPresenter.gotoLoginActivity()
                     }
                 })
             }

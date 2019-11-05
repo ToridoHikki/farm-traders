@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.passport.presentation
+package vn.silverbot99.farm_traders.func.sign_up.presentation
 
 import android.content.Context
 import android.os.Handler
@@ -18,10 +18,12 @@ import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.R
 import vn.silverbot99.farm_traders.app.common.AppConstants
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
+import vn.silverbot99.farm_traders.func.passport.presentation.SignUpPresenter
 
 
 import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemModel
 import vn.silverbot99.farm_traders.func.sign_up.presentation.SignUpContract
+import vn.silverbot99.farm_traders.func.sign_up.presentation.SignUpResourceProvider
 import vn.silverbot99.farm_traders.func.sign_up.presentation.model.UserFirebaseModel
 
 class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator),

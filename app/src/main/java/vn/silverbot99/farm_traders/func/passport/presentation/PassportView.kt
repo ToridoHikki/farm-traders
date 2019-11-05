@@ -25,7 +25,7 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
     private val passportPresenter: PassportPresenter=
         PassportPresenter(screenNavigator = AndroidScreenNavigator(mvpActivity))
     private val mHandler = Handler()
-    private val resourceProvider = SignUpResourceProvider()
+    private val resourceProvider = PassportResourceProvider()
 
     override fun startMvpView() {
         passportPresenter.attachView(this)

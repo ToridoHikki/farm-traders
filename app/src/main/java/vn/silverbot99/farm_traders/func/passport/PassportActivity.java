@@ -6,8 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import vn.silverbot99.core.base.presentation.mvp.android.AndroidMvpView;
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity;
 import vn.silverbot99.farm_traders.func.passport.presentation.PassportView;
-import vn.silverbot99.farm_traders.func.passport.presentation.SignUpView;
-
 @BuildIntent
 public class PassportActivity extends MvpActivity {
     @Extra

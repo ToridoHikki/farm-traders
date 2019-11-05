@@ -21,28 +21,12 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
     private var checkVersionAppUseCase = CheckVersionAppUseCase(AndroidUseCaseExecution())
     private var reloginAppUseCase = ReLoginUseCase(AndroidUseCaseExecution())
     private var task: UseCaseTask? = null
-    override fun loadAppVersion() {
-        task?.cancel()
-        task = checkVersionAppUseCase.executeAsync(object : ResultListener<AppVersionResponse> {
-            override fun done() {
-            }
-
-            override fun fail(errorCode: Int, msgError: String) {
-                view?.showErrorDialog(msgError)
-            }
-
-            override fun success(data: AppVersionResponse) {
-                view?.handleAfterLoadAppVersion(data)
-            }
-        }, "")
-
-    }
 
     override fun checkLocation(manager: LocationManager) {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             view?.showAlertMessageNoGps()
         } else {
-            loadAppVersion()
+            gotoLoginActivity()
         }
     }
 
@@ -65,24 +49,24 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
         screenNavigator.gotoPassportActivity()
     }
 
-    override fun reLogin() {
-        task?.cancel()
-        task = reloginAppUseCase.executeAsync(object : ResultListener<PassportResponse> {
-            override fun done() {
-            }
-
-            override fun fail(errorCode: Int, msgError: String) {
-                view?.showErrorDialog(msgError)
-            }
-
-            override fun success(data: PassportResponse) {
-                if (data.success) {
-                    view?.handleAfterReLogin(data)
-                } else {
-                    view?.showErrorDialog(data.detail.getValueOrDefaultIsEmpty())
-                }
-            }
-        }, "")
-    }
+//    override fun reLogin() {
+//        task?.cancel()
+//        task = reloginAppUseCase.executeAsync(object : ResultListener<PassportResponse> {
+//            override fun done() {
+//            }
+//
+//            override fun fail(errorCode: Int, msgError: String) {
+//                view?.showErrorDialog(msgError)
+//            }
+//
+//            override fun success(data: PassportResponse) {
+//                if (data.success) {
+//                    view?.handleAfterReLogin(data)
+//                } else {
+//                    view?.showErrorDialog(data.detail.getValueOrDefaultIsEmpty())
+//                }
+//            }
+//        }, "")
+//    }
 
 }

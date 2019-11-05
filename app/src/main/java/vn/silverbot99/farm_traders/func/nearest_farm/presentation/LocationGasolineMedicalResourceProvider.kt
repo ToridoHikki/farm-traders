@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation
+package vn.silverbot99.farm_traders.func.nearest_farm.presentation
 
 import vn.silverbot99.core.base.domain.provider.AndroidResourceProvider
 import vn.silverbot99.farm_traders.R

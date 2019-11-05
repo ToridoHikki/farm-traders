@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.passport.presentation
+package vn.silverbot99.farm_traders.func.sign_up.presentation
 
 import vn.silverbot99.core.base.domain.provider.AndroidResourceProvider
 import vn.silverbot99.farm_traders.R

@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation
+package vn.silverbot99.farm_traders.func.nearest_farm.presentation
 
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import com.mapbox.mapboxsdk.maps.MapView
@@ -33,10 +33,8 @@ interface LocationGasolineMedicalContract {
         fun getMapView(): MapView
     }
     abstract class Presenter: MvpPresenter<View>() {
-        abstract fun getGasStationList(page: Int)
-        abstract fun getMedicalList(page: Int)
-        abstract fun getMedicalDetail(id: Int)
-        abstract fun getGasStationDetail(id: Int)
+//        abstract fun getGasStationList(page: Int)
+//        abstract fun getMedicalList(page: Int)
 
     }
 }

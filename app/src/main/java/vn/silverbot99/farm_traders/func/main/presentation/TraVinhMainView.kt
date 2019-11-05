@@ -3,7 +3,7 @@ package vn.silverbot99.farm_traders.func.main.presentation
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.func.empty.EmptyView
 import vn.silverbot99.farm_traders.func.main.data.ActionMenu
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.LocationGasolineMedicalView
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationGasolineMedicalView
 
 
 class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : MainView(mvpActivity, viewCreator) {

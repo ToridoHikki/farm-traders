@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation
+package vn.silverbot99.farm_traders.func.nearest_farm.presentation
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -44,10 +44,11 @@ import vn.silverbot99.core.base.presentation.mvp.android.list.ListViewMvp
 import vn.silverbot99.core.base.presentation.mvp.android.list.OnItemRvClickedListener
 import vn.silverbot99.farm_traders.R
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.model.LocationGasolineItemModel
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.model.LocationMedicalItemModel
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.renderer.LocationGasolineRender
-import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.renderer.LocationMedicalRender
+import vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation.LocationGasolineMedicalPresenter
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationGasolineItemModel
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationMedicalItemModel
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.renderer.LocationGasolineRender
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.renderer.LocationMedicalRender
 
 class LocationGasolineMedicalView (mvpActivity: MvpActivity, viewCreator: LocationGasolineMedicalView.ViewCreator) : AndroidMvpView(mvpActivity,viewCreator),
 LocationGasolineMedicalContract.View {
@@ -279,7 +280,7 @@ LocationGasolineMedicalContract.View {
                     for (position in 0 until listMedical.size) {
                         val item = listData[position] as LocationMedicalItemModel
                         if (item.medicalName.equals(marker.title)) {
-                            mPresenter.getMedicalDetail(item.medicalId)
+                           // mPresenter.getMedicalDetail(item.medicalId)
                             break
                         }
                     }
@@ -287,7 +288,7 @@ LocationGasolineMedicalContract.View {
                     for (position in 0 until listGasStore.size) {
                         val item = listData[position] as LocationGasolineItemModel
                         if (item.storeName.equals(marker.title)) {
-                            mPresenter.getGasStationDetail(item.storeId)
+                           // mPresenter.getGasStationDetail(item.storeId)
                             break
                         }
                     }
@@ -306,9 +307,9 @@ LocationGasolineMedicalContract.View {
         mapboxMap?.clear()
         view.mapView.getMapAsync(getOnMapReadyCallback())
         if(isGasStoreTab) {
-            mPresenter.getGasStationList(page = -1)
+           // mPresenter.getGasStationList(page = -1)
         }
-        else{mPresenter.getMedicalList(page = 1)}
+      //  else{mPresenter.getMedicalList(page = 1)}
     }
 
 
