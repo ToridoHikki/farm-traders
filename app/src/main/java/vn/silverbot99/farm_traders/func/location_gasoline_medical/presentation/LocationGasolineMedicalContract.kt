@@ -18,10 +18,10 @@ interface LocationGasolineMedicalContract {
 
         fun loadData()
 
-        fun showDetailInfo(data: List<ViewModel>)
-        //fun showGasolineStoreDatail(data: List<ViewModel>)
-
-        fun getOnMapReadyCallback(): OnMapReadyCallback
+//        fun showDetailInfo(data: List<ViewModel>)
+//        //fun showGasolineStoreDatail(data: List<ViewModel>)
+//
+//        fun getOnMapReadyCallback(): OnMapReadyCallback
 /*
 
         fun renderMedicalLocationDetail(data: MedicalViewModel)
@@ -30,13 +30,13 @@ interface LocationGasolineMedicalContract {
 */
 
 
-        fun getMapView(): MapView
+//        fun getMapView(): MapView
     }
     abstract class Presenter: MvpPresenter<View>() {
-        abstract fun getGasStationList(page: Int)
-        abstract fun getMedicalList(page: Int)
-        abstract fun getMedicalDetail(id: Int)
-        abstract fun getGasStationDetail(id: Int)
+//        abstract fun getGasStationList(page: Int)
+//        abstract fun getMedicalList(page: Int)
+//        abstract fun getMedicalDetail(id: Int)
+//        abstract fun getGasStationDetail(id: Int)
 
     }
 }

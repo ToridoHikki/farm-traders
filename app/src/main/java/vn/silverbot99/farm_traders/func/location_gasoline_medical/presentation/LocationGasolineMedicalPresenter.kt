@@ -11,7 +11,7 @@ import vn.silverbot99.farm_traders.func.location_gasoline_medical.domain.Locatio
 import vn.silverbot99.farm_traders.func.location_gasoline_medical.domain.LocationMedicalMapper
 
 class LocationGasolineMedicalPresenter(val screenNavigator: AndroidScreenNavigator) :LocationGasolineMedicalContract.Presenter(){
-    override fun getGasStationDetail(id: Int) {
+    /*override fun getGasStationDetail(id: Int) {
         screenNavigator.gotoGasolineStoreDetailActivity(id)
     }
 
@@ -55,7 +55,7 @@ class LocationGasolineMedicalPresenter(val screenNavigator: AndroidScreenNavigat
 
     }
 
-    override fun getMedicalList(/*latitude: Long, longitude: Long,*/ page: Int) {
+    override fun getMedicalList(*//*latitude: Long, longitude: Long,*//* page: Int) {
         if (page == 1) {
             view?.showLoading()
         }
@@ -86,5 +86,5 @@ class LocationGasolineMedicalPresenter(val screenNavigator: AndroidScreenNavigat
             }
         },
             MedicalRootUseCase.Input(requestBody))
-    }
+    }*/
 }

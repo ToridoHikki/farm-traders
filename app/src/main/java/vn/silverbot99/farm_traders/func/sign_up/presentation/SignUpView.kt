@@ -42,24 +42,29 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun initCreateView() {
-        signUp()
-    }
-
-
-    private fun signUp() {
         val user = view.etPhoneNumberSignUp.text
         val pass = view.etPasswordSignUp.text
         KeyboardUtils.hideSoftInput(mvpActivity)
 
         if (validated(user, pass)) {
-            view.etPhoneNumber.isEnabled = false
-            view.etPassword.isEnabled = false
+            view.etPhoneNumberSignUp.isEnabled = false
+            view.etPasswordSignUp.isEnabled = false
             val userFirebaseModel = UserFirebaseModel(
-                    email = "${user.toString().getValueOrDefaultIsEmpty()}@gmail.com",
-                    password = pass.toString().getValueOrDefaultIsEmpty()
+                email = "${user.toString().getValueOrDefaultIsEmpty()}@gmail.com",
+                password = pass.toString().getValueOrDefaultIsEmpty()
             )
-            signUpPresenter.createAccount(userFirebaseModel)
+            /**/
+            view.btnCreateAccount.setOnClickListener { signUpPresenter.createAccount(userFirebaseModel) }
+
         }
+        else{
+            view.etPasswordSignUp
+        }
+    }
+
+
+    private fun signUp() {
+
     }
 
     private fun validated(user: Editable, pass: Editable): Boolean {

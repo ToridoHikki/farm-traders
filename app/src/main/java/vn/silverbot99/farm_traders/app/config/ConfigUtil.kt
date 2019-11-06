@@ -23,6 +23,11 @@ class ConfigUtil {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
                 return configSaver.get(ConfigSaver.CONFIG_SETTING_PASSPORT)
             }
+        val passportUid: String?
+            get(){
+                val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
+                return configSaver.get(ConfigSaver.CONFIG_SETTING_USER_UID)
+            }
         val passportRequest: PassportRequest?
             get() {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
@@ -48,6 +53,12 @@ class ConfigUtil {
         fun savePassport(passport: PassportResponse?) {
             val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
             configSaver.save(ConfigSaver.CONFIG_SETTING_PASSPORT, passport)
+        }
+
+        @JvmStatic
+        fun savePassportUID(passportUid: String?) {
+            val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
+            configSaver.save(ConfigSaver.CONFIG_SETTING_USER_UID, passportUid)
         }
 
         @JvmStatic

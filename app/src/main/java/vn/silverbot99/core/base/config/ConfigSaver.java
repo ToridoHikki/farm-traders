@@ -15,6 +15,9 @@ public interface ConfigSaver {
     String CONFIG_SETTING_CONTAINER_TYPE = "config_setting_container_type";
     String CONFIG_SETTING_PUSH_TOKEN= "config_setting_saved_push_token";
 
+    String CONFIG_SETTING_USER_UID = "config_setting_passpord_user_uid";
+
+
 
     void save(String key, Object data);
 

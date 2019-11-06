@@ -49,6 +49,7 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
             true
         }
         view.button_passport_login.setOnClickListener { login() }*/
+        login()
         view.btnCreateAccount.setOnClickListener { passportPresenter.gotoLogUpView() }
 
     }
@@ -126,11 +127,13 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
     }
 
     override fun showError(errorMsg: String) {
+        showLoading()
         mHandler.postDelayed({
-            view.button_passport_login?.let {
+            /*view.button_passport_login?.let {
                 it.revertAnimation()
-            }
-        }, 1000)
+            }*/
+            hideLoading()
+        }, 2000)
 
         Snackbar.make(view, errorMsg.getValueOrDefaultIsEmpty(), Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.ACTION_CLOSE) {

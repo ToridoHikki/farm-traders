@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -26,6 +27,9 @@ import vn.silverbot99.farm_traders.app.data.network.response.AppVersionResponse
 import vn.silverbot99.farm_traders.app.data.network.response.PassportResponse
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import java.util.*
+import android.support.v4.os.HandlerCompat.postDelayed
+
+
 
 class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator),
         SplashContract.View {
@@ -33,16 +37,15 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     private val splashPresenter: SplashPresenter = SplashPresenter(
             screenNavigator = AndroidScreenNavigator(mvpActivity)
     )
-    private val resourceProvider=SplashResourceProvider(mvpActivity)
+    private val resourceProvider = SplashResourceProvider(mvpActivity)
     //Attach view
     override fun startMvpView() {
         splashPresenter.attachView(this)
-        splashPresenter.registerAppPermission()
         super.startMvpView()
     }
 
     override fun initCreateView() {
-        view.text_view_version.text = resourceProvider.getVersionApp()
+        statusCheck()
     }
 
     //Start register permission
@@ -62,103 +65,108 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun handleAfterRequestPermission() {
-        view.image_view_logo.animate()
+/*        view.image_view_logo.animate()
                 .alpha(1.0f)
-                .setDuration(1000)
+                .setDuration(5000)
                 .withEndAction {
                     val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
                     splashPresenter.checkLocation(manager)
                 }
-                .start()
+                .start()*/
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            splashPresenter.checkLocation(manager)
+        }, 2000)
     }
     //End register permission
 
     //Start ic_overview_check version
-    private fun showDownLoadNewVersion(isForce: Boolean) {
-        val builder = AlertDialog.Builder(mvpActivity)
-                .setCancelable(false)
-                .setTitle(R.string.title_update_app)
-                .setMessage(R.string.msg_update_app)
-                .setPositiveButton(R.string.ACTION_UPDATE) { dialog, _ ->
-                    val appPackageName = AppConfigs.instance.getBaseApplication()
-                            .packageName // getPackageName() from Context or Activity object
-                    try {
-                        mvpActivity.startActivity(
-                                Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("market://details?id=$appPackageName")
-                                )
-                        )
-                    } catch (anfe: android.content.ActivityNotFoundException) {
-                        mvpActivity.startActivity(
-                                Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://play.google.com/store_red/apps/details?id=$appPackageName")
-                                )
-                        )
-                    }
+//    private fun showDownLoadNewVersion(isForce: Boolean) {
+//        val builder = AlertDialog.Builder(mvpActivity)
+//                .setCancelable(false)
+//                .setTitle(R.string.title_update_app)
+//                .setMessage(R.string.msg_update_app)
+//                .setPositiveButton(R.string.ACTION_UPDATE) { dialog, _ ->
+//                    val appPackageName = AppConfigs.instance.getBaseApplication()
+//                            .packageName // getPackageName() from Context or Activity object
+//                    try {
+//                        mvpActivity.startActivity(
+//                                Intent(
+//                                        Intent.ACTION_VIEW,
+//                                        Uri.parse("market://details?id=$appPackageName")
+//                                )
+//                        )
+//                    } catch (anfe: android.content.ActivityNotFoundException) {
+//                        mvpActivity.startActivity(
+//                                Intent(
+//                                        Intent.ACTION_VIEW,
+//                                        Uri.parse("https://play.google.com/store_red/apps/details?id=$appPackageName")
+//                                )
+//                        )
+//                    }
+//
+//                    dialog.dismiss()
+//                    mvpActivity.finish()
+//                }
+//                .setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
+//                    dialog.dismiss()
+//                    mvpActivity.finish()
+//                }
+//
+//        if (!isForce) {
+//            builder.setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
+//                dialog.dismiss()
+//            }
+//            nextActivity()
+//        }
+//        builder.show()
+//    }
+//
+//    override fun handleAfterLoadAppVersion(data: AppVersionResponse) {
+//        val versionCurrent = Utils.getVersionCode(mvpActivity)
+//        val newVersion = data.version.toInt()
+//        if (versionCurrent < newVersion) {
+//            showDownLoadNewVersion(data.forceFlag)
+//        } else {
+//            nextActivity()
+//        }
+//    }
 
-                    dialog.dismiss()
-                    mvpActivity.finish()
-                }
-                .setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
-                    dialog.dismiss()
-                    mvpActivity.finish()
-                }
+    override fun nextActivity() {
+        val passportUid: String? = ConfigUtil.passportUid
 
-        if (!isForce) {
-            builder.setNegativeButton(R.string.ACTION_CLOSE) { dialog, _ ->
-                dialog.dismiss()
-            }
-            nextActivity()
-        }
-        builder.show()
-    }
-
-    override fun handleAfterLoadAppVersion(data: AppVersionResponse) {
-        val versionCurrent = Utils.getVersionCode(mvpActivity)
-        val newVersion = data.version.toInt()
-        if (versionCurrent < newVersion) {
-            showDownLoadNewVersion(data.forceFlag)
-        } else {
-            nextActivity()
-        }
-    }
-
-    private fun nextActivity() {
-        val passport = ConfigUtil.passport
-
-        if (passport == null) {
+        if (passportUid == null) {
             //splashPresenter.gotoLoginActivity()
-            splashPresenter.gotoSignUpActivity()
+            splashPresenter.gotoLoginActivity()
         } else {
             //splashPresenter.reLogin()
-            splashPresenter.gotoSignUpActivity()
+            splashPresenter.gotoMainActivity()
 
         }
     }
 
-    override fun handleAfterReLogin(data: PassportResponse) {
-        ConfigUtil.saveDateSelected(Calendar.getInstance())
-        ConfigUtil.savePassport(data)
-        ConfigUtil.saveIsFirstLoginApp(true)
-        //splashPresenter.gotoMainActivity()
-        splashPresenter.gotoSignUpActivity()
-    }
+//    override fun handleAfterReLogin(data: PassportResponse) {
+//        ConfigUtil.saveDateSelected(Calendar.getInstance())
+//        ConfigUtil.savePassport(data)
+//        ConfigUtil.saveIsFirstLoginApp(true)
+//        //splashPresenter.gotoMainActivity()
+//        splashPresenter.gotoSignUpActivity()
+//    }
 
     //End ic_overview_check version
     //Start show error
-    override fun showErrorDialog(msg: String) {
-        mvpActivity.showErrorAlert(msg, onActionNotify = object : OnActionNotify {
-            override fun onActionNotify() {
-                runWithCheckMultiTouch("onActionNotify", object : OnActionNotify {
-                    override fun onActionNotify() {
-                        splashPresenter.loadAppVersion()
-                    }
-                })
-            }
-        })
-    }
+//    override fun showErrorDialog(msg: String) {
+//        mvpActivity.showErrorAlert(msg, onActionNotify = object : OnActionNotify {
+//            override fun onActionNotify() {
+//                runWithCheckMultiTouch("onActionNotify", object : OnActionNotify {
+//                    override fun onActionNotify() {
+//                        splashPresenter.loadAppVersion()
+//                    }
+//                })
+//            }
+//        })
+//    }
     //End show error
 
     //Start Request permission

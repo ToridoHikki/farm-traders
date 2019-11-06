@@ -1,12 +1,17 @@
 package vn.silverbot99.farm_traders.func.passport.presentation
 
 
+import android.content.Intent
 import android.icu.util.TimeUnit
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import vn.silverbot99.farm_traders.app.config.ConfigUtil
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
 import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemModel
 
@@ -19,48 +24,49 @@ class PassportPresenter(private val screenNavigator: ScreenNavigator) : Passport
     override fun gotoMainActivity() {
         screenNavigator.gotoMainActivity()
     }
+    private var auth = FirebaseAuth.getInstance()
 
     override fun login(userItemModel: UserItemModel) {
         view?.showLoading()
 
-        /*var reference = FirebaseDatabase.getInstance().getReference("login")
-        reference.child("user/" + userItemModel.phone).addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
+        var email: String = "${userItemModel.phone}@gmail.com"
+        auth.signInWithEmailAndPassword(email, userItemModel.password)
+            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+            if(task.isSuccessful){
+                ConfigUtil.savePassportUID(auth.currentUser?.uid)
+                gotoMainActivity()
 
+            }else{
+                view?.showError("Error: ${task.exception?.message}")
             }
+        })
 
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if(dataSnapshot.getValue() != null){
-                    //user exists
-                    if(dataSnapshot.getValue().toString().matches(userItemModel.password)){
-                        view?.loginSuccessful()
-                    } //login successful
 
-                }else
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(userItemModel.phone,60, TimeUnit.SECONDS,this,mCallbacks);
-            }
 
-        })*/
+
+
+
+
+        /*(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    // If sign in fails, display a message to the user. If sign in succeeds
+                    // the auth state listener will be notified and logic to handle the
+                    // signed in user can be handled in the listener.
+                    progressBar.setVisibility(View.GONE);
+                    if (!task.isSuccessful()) {
+                        // there was an error
+                        if (password.length() < 6) {
+                            inputPassword.setError(getString(R.string.minimum_password));
+                        } else {
+                            Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            });*/
     }
 }
-/*override fun login(userItemModel: UserItemModel) {
-        view?.showLoading()
-        loginUseCaseTask?.cancel()
-        loginUseCaseTask = loginUseCase.executeAsync(object : ResultListener<PassportResponse> {
-            override fun done() {
-            }
-
-            override fun fail(errorCode: Int, msgError: String) {
-                view?.showError(msgError)
-            }
-
-            override fun success(data: PassportResponse) {
-                view?.hideLoading()
-                if (data.success) {
-                    view?.handleAfterLogin(data)
-                } else {
-                    view?.showError(data.detail.getValueOrDefaultIsEmpty())
-                }
-            }
-        }, passportRequest)
-    }*/

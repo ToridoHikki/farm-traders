@@ -11,14 +11,15 @@ interface SplashContract {
     interface View : MvpView {
         fun showRequestPermission(permission: String): Boolean
         fun showAlertMessageNoGps()
-        fun handleAfterLoadAppVersion(data: AppVersionResponse)
+       // fun handleAfterLoadAppVersion(data: AppVersionResponse)
         fun handleAfterRequestPermission()
-        fun handleAfterReLogin(data: PassportResponse)
-        fun showErrorDialog(msg: String)
+        fun nextActivity()
+        //fun handleAfterReLogin(data: PassportResponse)
+//        fun showErrorDialog(msg: String)
     }
 
     abstract class Presenter : MvpPresenter<View>() {
-        abstract fun loadAppVersion()
+//        abstract fun loadAppVersion()
 
         abstract fun gotoMainActivity()
 
@@ -26,10 +27,9 @@ interface SplashContract {
 
         abstract fun gotoSignUpActivity()
 
-
         abstract fun registerAppPermission()
 
-        abstract fun reLogin()
+//        abstract fun reLogin()
 
         abstract fun checkLocation(manager: LocationManager)
     }

@@ -79,15 +79,16 @@ LocationGasolineMedicalContract.View {
     private lateinit var recyclerVehicleBottomSheet: BottomSheetBehavior<LinearLayout>
 
     override fun initCreateView() {
-        initTabBar()
-        initBottomSheet()
-        view.faFab.setOnClickListener{onClickfaFab()}
+//        initTabBar()
+//        initBottomSheet()
+//        view.faFab.setOnClickListener{onClickfaFab()}
 /*        mapboxMap?.setOnMarkerClickListener { marker ->
             mark
         }*/
     }
 
 
+/*
 
     private fun onClickfaFab() {
         if (mapboxMap?.getStyle() != null) {
@@ -192,10 +193,12 @@ LocationGasolineMedicalContract.View {
                     .zoom(15.0) // Khoang cach zoom gan hay xa, muon gan thi tang gia tri len
 //                    .tilt(12.0)
                     .build()
-                selectedMarker?.hideInfoWindow()/*
+                selectedMarker?.hideInfoWindow()*/
+/*
                 selectedMarker = listGasStore.find {
                     it.title == data.storeName.getValueOrDefaultIsEmpty()
-                }?.marker*/
+                }?.marker*//*
+
                 mapboxMap?.let {
                     selectedMarker?.showInfoWindow(it, getMapView())
                     it.animateCamera(CameraUpdateFactory.newCameraPosition(vehiclePosition), 2000)
@@ -213,10 +216,12 @@ LocationGasolineMedicalContract.View {
                     .zoom(15.0) // Khoang cach zoom gan hay xa, muon gan thi tang gia tri len
 //                    .tilt(12.0)
                     .build()
-                selectedMarker?.hideInfoWindow()/*
+                selectedMarker?.hideInfoWindow()*/
+/*
                 selectedMarker = listMedical.find {
                     it.title == data.medicalName.getValueOrDefaultIsEmpty()
-                }?.marker*/
+                }?.marker*//*
+
                 mapboxMap?.let {
                     selectedMarker?.showInfoWindow(it, getMapView())
                     it.animateCamera(CameraUpdateFactory.newCameraPosition(vehiclePosition), 2000)
@@ -297,18 +302,19 @@ LocationGasolineMedicalContract.View {
         isNotDraw = false
         }
     }
+*/
 
-    override fun getMapView(): MapView {
-        return view.mapView
-    }
+//    override fun getMapView(): MapView {
+//        return view.mapView
+//    }
 
     override fun loadData() {
         mapboxMap?.clear()
-        view.mapView.getMapAsync(getOnMapReadyCallback())
+//        view.mapView.getMapAsync(getOnMapReadyCallback())
         if(isGasStoreTab) {
-            mPresenter.getGasStationList(page = -1)
+//            mPresenter.getGasStationList(page = -1)
         }
-        else{mPresenter.getMedicalList(page = 1)}
+//        else{mPresenter.getMedicalList(page = 1)}
     }
 
 
@@ -340,49 +346,49 @@ LocationGasolineMedicalContract.View {
 
 
 
-    override fun showDetailInfo(data: List<ViewModel>) {
-        listData.clear()
-        if (data.isNotEmpty()) {
-            listData.addAll(data)
-        }
-        listViewMvp?.setItems(listData)
-        listViewMvp?.notifyDataChanged()
-        view.bottom_sheet.view_data_empty.visibility = View.GONE
-        drawBuldingOnMap()
-    }
-    @SuppressLint("MissingPermission")
-    private fun enableLocationComponent(@NonNull loadedMapStyle: Style?) {
-        // Check if permissions are enabled and if not request
-        if (PermissionsManager.areLocationPermissionsGranted(mvpActivity)) {
-
-            // Get an instance of the component
-            val locationComponent = mapboxMap?.locationComponent
-
-
-            val locationComponentOptions = LocationComponentOptions.builder(mvpActivity)
-                .foregroundDrawable(R.drawable.e_current_location)
-                .build()
-
-
-            // Activate with options
-            val locationComponentActivationOptions = LocationComponentActivationOptions
-                .builder(mvpActivity, loadedMapStyle!!)
-                .locationComponentOptions(locationComponentOptions)
-                .useDefaultLocationEngine(true)
-                .build()
-
-            locationComponent?.activateLocationComponent(locationComponentActivationOptions)
-
-            // Enable to make component visible
-            locationComponent?.isLocationComponentEnabled = true
-
-            // Set the component's camera mode
-            locationComponent?.cameraMode = CameraMode.TRACKING
-
-            // Set the component's render mode
-            locationComponent?.renderMode = RenderMode.COMPASS
-        }
-    }
+//    override fun showDetailInfo(data: List<ViewModel>) {
+//        listData.clear()
+//        if (data.isNotEmpty()) {
+//            listData.addAll(data)
+//        }
+//        listViewMvp?.setItems(listData)
+//        listViewMvp?.notifyDataChanged()
+//        view.bottom_sheet.view_data_empty.visibility = View.GONE
+//        drawBuldingOnMap()
+//    }
+//    @SuppressLint("MissingPermission")
+//    private fun enableLocationComponent(@NonNull loadedMapStyle: Style?) {
+//        // Check if permissions are enabled and if not request
+//        if (PermissionsManager.areLocationPermissionsGranted(mvpActivity)) {
+//
+//            // Get an instance of the component
+//            val locationComponent = mapboxMap?.locationComponent
+//
+//
+//            val locationComponentOptions = LocationComponentOptions.builder(mvpActivity)
+//                .foregroundDrawable(R.drawable.e_current_location)
+//                .build()
+//
+//
+//            // Activate with options
+//            val locationComponentActivationOptions = LocationComponentActivationOptions
+//                .builder(mvpActivity, loadedMapStyle!!)
+//                .locationComponentOptions(locationComponentOptions)
+//                .useDefaultLocationEngine(true)
+//                .build()
+//
+//            locationComponent?.activateLocationComponent(locationComponentActivationOptions)
+//
+//            // Enable to make component visible
+//            locationComponent?.isLocationComponentEnabled = true
+//
+//            // Set the component's camera mode
+//            locationComponent?.cameraMode = CameraMode.TRACKING
+//
+//            // Set the component's render mode
+//            locationComponent?.renderMode = RenderMode.COMPASS
+//        }
+//    }
     class ViewCreator(context: Context, viewGroup: ViewGroup?) :
         AndroidMvpView.LayoutViewCreator(R.layout.layout_medical_gasstation_map, context, viewGroup)
 }

@@ -21,7 +21,7 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
     private var checkVersionAppUseCase = CheckVersionAppUseCase(AndroidUseCaseExecution())
     private var reloginAppUseCase = ReLoginUseCase(AndroidUseCaseExecution())
     private var task: UseCaseTask? = null
-    override fun loadAppVersion() {
+/*    override fun loadAppVersion() {
         task?.cancel()
         task = checkVersionAppUseCase.executeAsync(object : ResultListener<AppVersionResponse> {
             override fun done() {
@@ -36,13 +36,15 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
             }
         }, "")
 
-    }
+    }*/
 
     override fun checkLocation(manager: LocationManager) {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             view?.showAlertMessageNoGps()
         } else {
-            loadAppVersion()
+//            loadAppVersion()
+            view?.nextActivity()
+
         }
     }
 
@@ -65,7 +67,7 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
         screenNavigator.gotoPassportActivity()
     }
 
-    override fun reLogin() {
+    /*override fun reLogin() {
         task?.cancel()
         task = reloginAppUseCase.executeAsync(object : ResultListener<PassportResponse> {
             override fun done() {
@@ -83,6 +85,6 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
                 }
             }
         }, "")
-    }
+    }*/
 
 }
