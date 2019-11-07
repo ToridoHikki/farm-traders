@@ -24,11 +24,11 @@ interface MainContract {
 
     }
 
-    interface MenuView : MvpView {
+    /*interface MenuView : MvpView {
         fun renderListMenu(menuViewModels: MutableList<ViewModel>)
     }
 
     abstract class MenuPresenter : MvpPresenter<MenuView>() {
         abstract fun loadListMenu()
-    }
+    }*/
 }

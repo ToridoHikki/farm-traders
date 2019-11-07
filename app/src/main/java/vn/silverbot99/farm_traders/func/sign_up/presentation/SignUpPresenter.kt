@@ -1,4 +1,4 @@
-package vn.silverbot99.farm_traders.func.passport.presentation
+package vn.silverbot99.farm_traders.func.sign_up.presentation
 
 
 import android.icu.util.TimeUnit
@@ -31,8 +31,9 @@ class SignUpPresenter(private val screenNavigator: ScreenNavigator) : SignUpCont
                 if (task.isSuccessful) {
                     val firebaseUser = this.auth.currentUser!!
                     //tạo database cho user rồi up lên drive, lưu vào configUtil
-
-                    view?.signUpSuccess(userFirebaseModel.email.substring(10))
+                    val phone = userFirebaseModel.email.substring(startIndex = 1,endIndex = 10)
+                    val phoneToVerification = "+84$phone"
+                    view?.signUpSuccess(phoneToVerification)
                 } else {
                     //Registration error
                     view?.showError("Fail")

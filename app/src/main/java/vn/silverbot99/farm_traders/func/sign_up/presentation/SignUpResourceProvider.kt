@@ -11,4 +11,8 @@ class SignUpResourceProvider : AndroidResourceProvider() {
     fun getForceLoginUserNotSupport(): String {
         return resourceManager.getString(R.string.text_force_login_user_not_support)
     }
+
+    fun getMessageRetypePassword(): String{
+        return resourceManager.getString(R.string.msg_repassword_not_match)
+    }
 }

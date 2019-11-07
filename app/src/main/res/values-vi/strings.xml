@@ -87,5 +87,6 @@
     <string name="sign_up_title">Đăng ký</string>
     <string name="verification_phone">Xác minh số điện thoại</string>
     <string name="btnverification">Xác nhận</string>
+    <string name="msg_repassword_not_match">Mật khẩu không trùng nhau, Vui lòng nhập lại!</string>
 
 </resources>

@@ -5,11 +5,14 @@ import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import kotlinex.context.showAlert
 import kotlinex.string.getValueOrDefaultIsEmpty
 import kotlinx.android.synthetic.main.layout_passport.view.*
 import vn.silverbot99.core.app.util.KeyboardUtils
+import vn.silverbot99.core.app.util.Utils
 import vn.silverbot99.core.base.domain.listener.OnActionNotify
 import vn.silverbot99.core.base.presentation.mvp.android.AndroidMvpView
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
@@ -33,9 +36,9 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
     }
 
     override fun initCreateView() {
-/*        Utils.setupInput(view.etPhoneNumber.text)
-        Utils.setupInput(view.input_passport_password)
-        view.input_passport_password.editText!!.setOnEditorActionListener { _, actionId, keyEvent ->
+        Utils.setupInput(view.etPhoneNumberLayout)
+        Utils.setupInput(view.etPasswordLayout)
+        view.etPasswordLayout.editText!!.setOnEditorActionListener { _, actionId, keyEvent ->
             keyEvent?.let {
                 if (actionId == EditorInfo.IME_ACTION_GO
                         || actionId == EditorInfo.IME_ACTION_DONE
@@ -47,7 +50,7 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
                 }
             }
             true
-        }*/
+        }
         view.button_passport_login.setOnClickListener { login() }
         view.btnCreateAccount.setOnClickListener { passportPresenter.gotoLogUpView() }
 
@@ -71,28 +74,28 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
     }
 
     private fun login() {
-        val user = view.etPhoneNumber.text
-        val pass = view.etPassword.text
-        if (pass != null && user!= null) {
-            if (pass.isNotEmpty() && user.isNotEmpty()){
-                KeyboardUtils.hideSoftInput(mvpActivity)
-                if (validated(user, pass)) {
-                    view.etPhoneNumber.isEnabled = false
-                    view.etPassword.isEnabled = false
-                    val userItemModel = UserItemModel(
-                        phone = user.toString().getValueOrDefaultIsEmpty(),
-                        password = pass.toString().getValueOrDefaultIsEmpty()
-                    )
-                    //máy cái này xử lý xong sẽ gọi pressneter.
-                    passportPresenter.login(userItemModel)
-                }
-            }
+        val user = view.etPhoneNumberLayout.editText!!.text
+        val pass = view.etPasswordLayout.editText!!.text
+//        if (pass != null && user!= null) {
+//            if (pass.isNotEmpty() && user.isNotEmpty()){
+//                KeyboardUtils.hideSoftInput(mvpActivity)
+        if (validated(user, pass)) {
+            view.etPhoneNumber.isEnabled = false
+            view.etPassword.isEnabled = false
+            val userItemModel = UserItemModel(
+                phone = user.toString().getValueOrDefaultIsEmpty(),
+                password = pass.toString().getValueOrDefaultIsEmpty()
+            )
+            //máy cái này xử lý xong sẽ gọi pressneter.
+            passportPresenter.login(userItemModel)
+//                }
+//            }
         }
-        else{
-            view.etPhoneNumber.text = "" as Editable
-            view.etPassword.text = "" as Editable
-            showError(resourceProvider.getErrorTextNotEmpty())
-        }
+//        else{
+//            view.etPhoneNumber.text = "" as Editable
+//            view.etPassword.text = "" as Editable
+//            showError(resourceProvider.getErrorTextNotEmpty())
+//        }
 
 
     }

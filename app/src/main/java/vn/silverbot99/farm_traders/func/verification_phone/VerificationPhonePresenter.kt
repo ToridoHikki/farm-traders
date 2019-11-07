@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 import android.widget.Toast
 import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
+import android.util.Log
 import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -21,11 +22,15 @@ import vn.silverbot99.farm_traders.app.config.ConfigUtil
 
 class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): VerificationPhoneContract.Presenter() {
     var verificationId: String =""
-    var mAuth:FirebaseAuth = FirebaseAuth.getInstance();
+    var token: PhoneAuthProvider.ForceResendingToken? = null
+   var mAuth:FirebaseAuth = FirebaseAuth.getInstance();
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onCodeSent(p0: String?, p1: PhoneAuthProvider.ForceResendingToken?) {
-            super.onCodeSent(p0, p1)
-            verificationId = p0.getValueOrDefaultIsEmpty();
+//            super.onCodeSent(p0, p1)
+            Log.d("Verification","verificationId: ${p0}")
+            verificationId = p0.getValueOrDefaultIsEmpty()
+            token = p1
+
         }
         override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential?) {
             val code = phoneAuthCredential?.getSmsCode()
@@ -38,6 +43,12 @@ class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): Verifica
         override fun onVerificationFailed(p0: FirebaseException?) {
             view?.showError(p0?.message.getValueOrDefaultIsEmpty())
             view?.hideLoading()
+        }
+
+        override fun onCodeAutoRetrievalTimeOut(s: String) {
+            super.onCodeAutoRetrievalTimeOut(s)
+            verificationId = s
+            view?.showLoading()
         }
 
 

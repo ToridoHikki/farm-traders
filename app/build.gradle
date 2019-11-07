@@ -266,7 +266,6 @@ dependencies {
 
     //add firebase
     implementation 'com.google.firebase:firebase-core:16.0.4'
-//    implementation 'com.google.firebase:firebase-messaging:18.0.0'
     implementation 'com.google.firebase:firebase-analytics:16.0.4'
     implementation "com.google.firebase:firebase-auth:16.0.4"
     implementation "com.google.firebase:firebase-database:16.0.3"
@@ -281,8 +280,8 @@ dependencies {
     api "com.google.protobuf:protobuf-lite:3.0.1"
     //animation
     implementation "com.andkulikov:transitionseverywhere:1.8.1"
+    //viewpaper
+    implementation 'com.thisobeystudio.customviewpager:customviewpager:2.0.3'
 
-    // chatkit UI
-    implementation 'com.github.stfalcon:chatkit:0.3.3'
 }
 apply plugin: 'com.google.gms.google-services'

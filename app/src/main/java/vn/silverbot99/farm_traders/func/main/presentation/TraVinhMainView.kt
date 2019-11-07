@@ -1,9 +1,13 @@
 package vn.silverbot99.farm_traders.func.main.presentation
 
+import android.support.design.widget.TabItem
+import android.widget.Adapter
+import com.thisobeystudio.customviewpager.viewpager.CustomViewPager
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.func.empty.EmptyView
 import vn.silverbot99.farm_traders.func.main.data.ActionMenu
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationGasolineMedicalView
+
 
 
 class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : MainView(mvpActivity, viewCreator) {
@@ -11,19 +15,10 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
     private var emptyView: EmptyView? = null
 
     override fun showHomeView() {
-        //showLocationGasolineMedicalView()
+
     }
 
-    private fun showGasStoreList() {
-//        mainPresenter.gotoGasStoreActivity()
-    }
-    private fun showMedicalList() {
-//        mainPresenter.gotoMedicalActivity()
-    }
-    private fun showNewsList(){
-//        mainPresenter.gotoNewsActivity()
-    }
-    override fun handlerClickMenu(action: ActionMenu): Boolean {
+    /*override fun handlerClickMenu(action: ActionMenu): Boolean {
          when (action) {
              ActionMenu.ACTION_MENU_MANAGER_CLINICS ->{
 //                 showMedicalList()
@@ -35,16 +30,16 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
                  return true
              }
              ActionMenu.ACTION_MENU_MANAGER_GAS_STATION ->{
-                 showGasStoreList()
+//                 showGasStoreList()
                  return true
              }
              ActionMenu.ACTION_MENU_NEWS  ->{
-                 showNewsList()
+//                 showNewsList()
                  return true
              }
             else ->return false
         }
-    }
+    }*/
 
     private fun showLocationGasolineMedicalView() {
         addMainContentWithView(locationGasolineMedicalView)
@@ -71,6 +66,18 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
         initEmptyView()
 
     }
+    companion object {
+        const val HOME_FRAGMENT_ID = "home-id"
+        const val EXPLORE_FRAGMENT_ID = "explore-id"
+        const val EXPERIENCES_FRAGMENT_ID = "experiences-id"
+        const val DIY_TOUR_FRAGMENT_ID = "diy-tour-id"
+        const val UTILLITIES_FRAGMENT_ID = "utilities-id"
+        private lateinit var mTabItems: MutableList<TabItem>
+    }
+    private lateinit var adapter: Adapter
+    private lateinit var viewPager: CustomViewPager
+
+
 
 
 
