@@ -61,6 +61,12 @@ class ConfigUtil {
         }
 
         @JvmStatic
+        fun savePassportUID(passportUid: String?) {
+            val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
+            configSaver.save(ConfigSaver.CONFIG_SETTING_USER_UID, passportUid)
+        }
+
+        @JvmStatic
         fun saveIsFirstLoginApp(isFirstLoginApp: Boolean) {
             val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
             configSaver.save(ConfigSaver.CONFIG_SETTING_SAVED_IS_FIRST_LOGIN_APP, isFirstLoginApp)

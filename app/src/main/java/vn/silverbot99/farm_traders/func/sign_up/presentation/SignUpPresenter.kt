@@ -30,6 +30,8 @@ class SignUpPresenter(private val screenNavigator: ScreenNavigator) : SignUpCont
             .addOnCompleteListener { task: Task<AuthResult> ->
                 if (task.isSuccessful) {
                     val firebaseUser = this.auth.currentUser!!
+                    //tạo database cho user rồi up lên drive, lưu vào configUtil
+
                     view?.signUpSuccess(userFirebaseModel.email.substring(10))
                 } else {
                     //Registration error
