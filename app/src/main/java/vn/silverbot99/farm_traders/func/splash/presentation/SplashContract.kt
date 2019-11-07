@@ -13,7 +13,8 @@ interface SplashContract {
         fun showAlertMessageNoGps()
         fun handleAfterRequestPermission()
 //        fun handleAfterReLogin(data: PassportResponse)
-        fun showErrorDialog(msg: String)
+//        fun showErrorDialog(msg: String)
+        fun nextActivity()
     }
 
     abstract class Presenter : MvpPresenter<View>() {

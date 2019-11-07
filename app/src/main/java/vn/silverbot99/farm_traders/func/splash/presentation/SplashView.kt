@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -42,7 +43,7 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun initCreateView() {
-
+        statusCheck()
     }
 
     //Start register permission
@@ -62,21 +63,26 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun handleAfterRequestPermission() {
-        view.image_view_logo.animate()
-                .alpha(1.0f)
-                .setDuration(1000)
-                .withEndAction {
-                    val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-                    splashPresenter.checkLocation(manager)
-                }
-                .start()
+//        view.image_view_logo.animate()
+//                .alpha(1.0f)
+//                .setDuration(1000)
+//                .withEndAction {
+//                    val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+//                    splashPresenter.checkLocation(manager)
+//                }
+//                .start()
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            splashPresenter.checkLocation(manager)
+        }, 500)
     }
     //End register permission
 
 
 
-    private fun nextActivity() {
-        val passport = ConfigUtil.passport
+    override fun nextActivity() {
+        val passport = ConfigUtil.passportUid
 
         if (passport == null) {
             //splashPresenter.gotoLoginActivity()
@@ -98,18 +104,18 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
 
     //End ic_overview_check version
     //Start show error
-    override fun showErrorDialog(msg: String) {
-        mvpActivity.showErrorAlert(msg, onActionNotify = object : OnActionNotify {
-            override fun onActionNotify() {
-                runWithCheckMultiTouch("onActionNotify", object : OnActionNotify {
-                    override fun onActionNotify() {
-                        //splashPresenter.loadAppVersion()
-                        splashPresenter.gotoLoginActivity()
-                    }
-                })
-            }
-        })
-    }
+//    override fun showErrorDialog(msg: String) {
+//        mvpActivity.showErrorAlert(msg, onActionNotify = object : OnActionNotify {
+//            override fun onActionNotify() {
+//                runWithCheckMultiTouch("onActionNotify", object : OnActionNotify {
+//                    override fun onActionNotify() {
+//                        //splashPresenter.loadAppVersion()
+//                        splashPresenter.gotoLoginActivity()
+//                    }
+//                })
+//            }
+//        })
+//    }
     //End show error
 
     //Start Request permission

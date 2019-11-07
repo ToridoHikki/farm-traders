@@ -9,6 +9,7 @@ public interface ConfigSaver {
     String CONFIG_SETTING_PROFILE = "config_setting_saved_profile";
     String CONFIG_SETTING_PASSPORT = "config_setting_saved_passport";
     String CONFIG_SETTING_KEY_LOGIN = "config_setting_saved_key_login";
+    String CONFIG_SETTING_USER_UID = "config_setting_passpord_user_uid";
 
     String CONFIG_SETTING_DATE_TIME = "config_setting_saved_date_time";
     String CONFIG_SETTING_ORDER_TYPE = "config_setting_saved_order_type";

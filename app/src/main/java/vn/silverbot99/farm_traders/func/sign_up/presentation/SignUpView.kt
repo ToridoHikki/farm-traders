@@ -44,7 +44,7 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun initCreateView() {
-        signUp()
+        view.btnCreateAccount.setOnClickListener { signUp() }
     }
 
 
@@ -54,13 +54,16 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         KeyboardUtils.hideSoftInput(mvpActivity)
 
         if (validated(user, pass)) {
-            view.etPhoneNumber.isEnabled = false
-            view.etPassword.isEnabled = false
+            view.etPhoneNumberSignUp.isEnabled = false
+            view.etPasswordSignUp.isEnabled = false
             val userFirebaseModel = UserFirebaseModel(
                     email = "${user.toString().getValueOrDefaultIsEmpty()}@gmail.com",
                     password = pass.toString().getValueOrDefaultIsEmpty()
             )
             signUpPresenter.createAccount(userFirebaseModel)
+        }
+        else{
+            showError(resourceProvider.getForceLoginUserNotSupport())
         }
     }
 

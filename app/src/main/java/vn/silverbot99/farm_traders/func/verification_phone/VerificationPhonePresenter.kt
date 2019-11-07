@@ -16,6 +16,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import vn.silverbot99.farm_traders.app.config.ConfigUtil
 
 
 class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): VerificationPhoneContract.Presenter() {
@@ -63,6 +64,7 @@ class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): Verifica
                 override fun onComplete(task: Task<AuthResult>) {
                     if(task.isSuccessful){
                         view?.verificateSuccess()
+                        ConfigUtil.savePassportUID(mAuth.currentUser?.uid)
                     }
                     else{
                         view?.showError(task.exception.toString())

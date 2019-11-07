@@ -18,15 +18,15 @@ class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashCont
     }
 
 
-    private var checkVersionAppUseCase = CheckVersionAppUseCase(AndroidUseCaseExecution())
-    private var reloginAppUseCase = ReLoginUseCase(AndroidUseCaseExecution())
+//    private var checkVersionAppUseCase = CheckVersionAppUseCase(AndroidUseCaseExecution())
+//    private var reloginAppUseCase = ReLoginUseCase(AndroidUseCaseExecution())
     private var task: UseCaseTask? = null
 
     override fun checkLocation(manager: LocationManager) {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             view?.showAlertMessageNoGps()
         } else {
-            gotoLoginActivity()
+            view?.nextActivity()
         }
     }
 

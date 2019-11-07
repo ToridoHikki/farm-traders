@@ -1,12 +1,11 @@
 package vn.silverbot99.farm_traders.func.passport.presentation
 
 
-import android.icu.util.TimeUnit
-import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import android.content.Intent
+import vn.silverbot99.farm_traders.app.config.ConfigUtil
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
 import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemModel
 
@@ -20,8 +19,20 @@ class PassportPresenter(private val screenNavigator: ScreenNavigator) : Passport
         screenNavigator.gotoMainActivity()
     }
 
+    private var auth = FirebaseAuth.getInstance()
     override fun login(userItemModel: UserItemModel) {
         view?.showLoading()
+        var email: String = "${userItemModel.phone}@gmail.com"
+        auth.signInWithEmailAndPassword(email, userItemModel.password)
+            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                if(task.isSuccessful){
+                    ConfigUtil.savePassportUID(auth.currentUser?.uid)
+                    gotoMainActivity()
+
+                }else{
+                    view?.showError("Error: ${task.exception?.message}")
+                }
+            })
 
         /*var reference = FirebaseDatabase.getInstance().getReference("login")
         reference.child("user/" + userItemModel.phone).addListenerForSingleValueEvent(object : ValueEventListener{

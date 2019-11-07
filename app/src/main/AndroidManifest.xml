@@ -14,10 +14,10 @@
     <application
             android:name="vn.silverbot99.farm_traders.App"
             android:allowBackup="false"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher_farm_round"
             android:label="${nameApp}"
             android:largeHeap="true"
-            android:roundIcon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_farm_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
