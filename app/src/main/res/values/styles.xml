@@ -24,7 +24,10 @@
     <style name="ErrorText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
-
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#8ede88</item>
+        <item name="boxStrokeWidth">2.5dp</item>
+    </style>
     <style name="HintText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
     </style>

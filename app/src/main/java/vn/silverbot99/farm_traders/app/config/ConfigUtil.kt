@@ -33,11 +33,7 @@ class ConfigUtil {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
                 return configSaver.get(ConfigSaver.CONFIG_SETTING_KEY_LOGIN)
             }
-        @JvmStatic
-        fun savePassportUID(passportUid: String?) {
-            val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
-            configSaver.save(ConfigSaver.CONFIG_SETTING_USER_UID, passportUid)
-        }
+
         val dateSelected: Calendar?
             get() {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)

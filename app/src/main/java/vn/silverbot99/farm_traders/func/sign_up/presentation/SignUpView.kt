@@ -5,6 +5,7 @@ import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.text.TextUtils
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import kotlinex.context.showAlert
@@ -44,27 +45,39 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
     }
 
     override fun initCreateView() {
-        view.btnCreateAccount.setOnClickListener { signUp() }
+       // view.btnCreateAccount.setOnClickListener { signUp() }
+        signUp()
+
+
     }
 
 
     private fun signUp() {
         val user = view.etPhoneNumberSignUp.text
         val pass = view.etPasswordSignUp.text
-        KeyboardUtils.hideSoftInput(mvpActivity)
+        if (pass.isNotEmpty() && user.isNotEmpty()){
+            KeyboardUtils.hideSoftInput(mvpActivity)
 
-        if (validated(user, pass)) {
-            view.etPhoneNumberSignUp.isEnabled = false
-            view.etPasswordSignUp.isEnabled = false
-            val userFirebaseModel = UserFirebaseModel(
+            if (validated(user, pass)) {
+                view.etPhoneNumberSignUp.isEnabled = false
+                view.etPasswordSignUp.isEnabled = false
+                val userFirebaseModel = UserFirebaseModel(
                     email = "${user.toString().getValueOrDefaultIsEmpty()}@gmail.com",
                     password = pass.toString().getValueOrDefaultIsEmpty()
-            )
-            signUpPresenter.createAccount(userFirebaseModel)
+                )
+                //signUpPresenter.createAccount(userFirebaseModel)
+                view.btnCreateAccount.setOnClickListener {
+                    Log.d("signUp","btnCreateAccount onClick")
+                    signUpPresenter.createAccount(userFirebaseModel)
+                }
+            }
+            else{
+                view.etPhoneNumberSignUp.text = "" as Editable
+                view.etPasswordSignUp.text = "" as Editable
+                showError(resourceProvider.getForceLoginUserNotSupport())
+            }
         }
-        else{
-            showError(resourceProvider.getForceLoginUserNotSupport())
-        }
+
     }
 
     private fun validated(user: Editable, pass: Editable): Boolean {

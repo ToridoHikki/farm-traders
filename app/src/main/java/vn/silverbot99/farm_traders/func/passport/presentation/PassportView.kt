@@ -73,18 +73,28 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
     private fun login() {
         val user = view.etPhoneNumber.text
         val pass = view.etPassword.text
-        KeyboardUtils.hideSoftInput(mvpActivity)
-
-        if (validated(user, pass)) {
-            view.etPhoneNumber.isEnabled = false
-            view.etPassword.isEnabled = false
-            val userItemModel = UserItemModel(
-                    phone = user.toString().getValueOrDefaultIsEmpty(),
-                    password = pass.toString().getValueOrDefaultIsEmpty()
-            )
-            //máy cái này xử lý xong sẽ gọi pressneter.
-            passportPresenter.login(userItemModel)
+        if (pass != null && user!= null) {
+            if (pass.isNotEmpty() && user.isNotEmpty()){
+                KeyboardUtils.hideSoftInput(mvpActivity)
+                if (validated(user, pass)) {
+                    view.etPhoneNumber.isEnabled = false
+                    view.etPassword.isEnabled = false
+                    val userItemModel = UserItemModel(
+                        phone = user.toString().getValueOrDefaultIsEmpty(),
+                        password = pass.toString().getValueOrDefaultIsEmpty()
+                    )
+                    //máy cái này xử lý xong sẽ gọi pressneter.
+                    passportPresenter.login(userItemModel)
+                }
+            }
         }
+        else{
+            view.etPhoneNumber.text = "" as Editable
+            view.etPassword.text = "" as Editable
+            showError(resourceProvider.getErrorTextNotEmpty())
+        }
+
+
     }
 
     private fun validated(user: Editable, pass: Editable): Boolean {

@@ -75,7 +75,7 @@ class SplashView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         handler.postDelayed(Runnable {
             val manager = mvpActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             splashPresenter.checkLocation(manager)
-        }, 500)
+        }, 2000)
     }
     //End register permission
 
