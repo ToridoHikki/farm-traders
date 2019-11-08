@@ -25,6 +25,12 @@ import vn.silverbot99.farm_traders.func.main.data.ActionMenu
 import vn.silverbot99.farm_traders.func.main.domain.MainConfigUseCase
 //import vn.silverbot99.farm_traders.func.main.presentation.menu.ListMenuView
 import vn.silverbot99.farm_traders.func.main.presentation.model.MenuViewModel
+import android.R.id
+import android.support.design.widget.BottomNavigationView
+import android.R.id
+import android.support.v4.app.Fragment
+import android.view.MenuItem
+
 
 abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator), MainContract.MainView {
 
@@ -43,9 +49,40 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         //initHeaderView()
         initLayoutView()
         initEmptyView()
+        initBottomNavigation()
 //        initFragment()
         //initMedicalView()
     }
+
+    private fun initBottomNavigation() {
+        val navigation:BottomNavigationView = view.navigation
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+    private val mOnNavigationItemSelectedListener =
+        object : BottomNavigationView.OnNavigationItemSelectedListener {
+            override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+                val fragment: Fragment
+                when (p0.getItemId()) {
+                    R.id.navigation_shop -> {
+                        toolbar.setTitle("Shop")
+                        return true
+                    }
+                    R.id.navigation_gifts -> {
+                        toolbar.setTitle("My Gifts")
+                        return true
+                    }
+                    R.id.navigation_cart -> {
+                        toolbar.setTitle("Cart")
+                        return true
+                    }
+                    R.id.navigation_profile -> {
+                        toolbar.setTitle("Profile")
+                        return true
+                    }
+                }
+                return false
+            }
+        }
 
 /*
     private fun initFragment() {

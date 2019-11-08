@@ -115,4 +115,7 @@
     <color name="text_black_2e">#2e2c2c</color>
     <color name="background_grey_f2">#f2efef</color>
     <color name="background_grey_29">#29000000</color>
+
+    <color name="bgBottomNavigation">#fe485a</color>
+
 </resources>
