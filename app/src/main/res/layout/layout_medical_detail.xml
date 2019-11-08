@@ -48,7 +48,8 @@
                             android:layout_marginStart="8dp"
                             android:text="DNTN Ngân Thịnh"
                             android:textColor="@color/white"
-                            android:textSize="21sp" />
+                            android:textSize="21sp"
+                            android:layout_marginLeft="8dp"/>
 
                     <TextView
                             android:id="@+id/tvMedicalType"
@@ -56,8 +57,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Doanh Nghiệp"
-                            android:textColor="@color/white_four"
-                            android:textSize="13sp" />
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:layout_marginLeft="8dp"/>
                 </LinearLayout>
             </LinearLayout>
             <android.support.v7.widget.Toolbar

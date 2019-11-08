@@ -55,18 +55,20 @@
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ivIconRight"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginRight="@dimen/spacing_small"/>
 
             <ImageView
                     android:id="@+id/ivIconRight"
-                    android:layout_width="@dimen/spacing_medium"
-                    android:layout_height="@dimen/spacing_medium"
+                    android:layout_width="@dimen/spacing_lager"
+                    android:layout_height="@dimen/spacing_lager"
                     android:layout_marginEnd="@dimen/spacing_small"
-                    android:src="@drawable/background_wahouse_shape_img"
-                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_account_circle"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginRight="@dimen/spacing_small"/>
 
         </android.support.constraint.ConstraintLayout>
 

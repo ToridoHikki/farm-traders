@@ -23,7 +23,7 @@ import vn.silverbot99.farm_traders.app.config.ConfigUtil
 class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): VerificationPhoneContract.Presenter() {
     var verificationId: String =""
     var token: PhoneAuthProvider.ForceResendingToken? = null
-   var mAuth:FirebaseAuth = FirebaseAuth.getInstance();
+    var mAuth:FirebaseAuth = FirebaseAuth.getInstance()
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onCodeSent(p0: String?, p1: PhoneAuthProvider.ForceResendingToken?) {
 //            super.onCodeSent(p0, p1)
@@ -32,12 +32,14 @@ class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): Verifica
             token = p1
 
         }
+
         override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential?) {
             val code = phoneAuthCredential?.getSmsCode()
             if (code != null) {
                 view?.getCode(code)
                 verifyCode(code)
             }
+
         }
 
         override fun onVerificationFailed(p0: FirebaseException?) {
@@ -48,7 +50,8 @@ class VerificationPhonePresenter(var screenNavigator: ScreenNavigator): Verifica
         override fun onCodeAutoRetrievalTimeOut(s: String) {
             super.onCodeAutoRetrievalTimeOut(s)
             verificationId = s
-            view?.showLoading()
+//            view?.showLoading()
+            view?.showToast("Time Out")
         }
 
 

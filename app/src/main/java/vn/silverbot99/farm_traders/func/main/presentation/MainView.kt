@@ -23,7 +23,7 @@ import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavig
 import vn.silverbot99.farm_traders.func.empty.EmptyView
 import vn.silverbot99.farm_traders.func.main.data.ActionMenu
 import vn.silverbot99.farm_traders.func.main.domain.MainConfigUseCase
-import vn.silverbot99.farm_traders.func.main.presentation.menu.ListMenuView
+//import vn.silverbot99.farm_traders.func.main.presentation.menu.ListMenuView
 import vn.silverbot99.farm_traders.func.main.presentation.model.MenuViewModel
 
 abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator), MainContract.MainView {

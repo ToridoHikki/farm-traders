@@ -14,7 +14,9 @@
             android:layout_width="@dimen/spacing_lager"
             android:layout_height="@dimen/spacing_lager"
             android:layout_marginStart="@dimen/spacing_medium"
-            android:layout_marginEnd="@dimen/spacing_small" />
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_marginRight="@dimen/spacing_small"/>
 
     <TextView
             android:layout_marginLeft="@dimen/spacing_small"

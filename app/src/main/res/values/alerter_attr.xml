@@ -51,4 +51,71 @@
         <attr name="sb_background" format="reference|color"/>
         <attr name="sb_enable_effect" format="reference|boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="DialogsList"><attr format="color|reference" name="dialogTitleTextColor"/><attr format="dimension|reference" name="dialogTitleTextSize"/><attr name="dialogTitleTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogUnreadTitleTextColor"/><attr name="dialogUnreadTitleTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogMessageTextColor"/><attr format="dimension|reference" name="dialogMessageTextSize"/><attr name="dialogMessageTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogUnreadMessageTextColor"/><attr name="dialogUnreadMessageTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogDateColor"/><attr format="dimension|reference" name="dialogDateSize"/><attr name="dialogDateStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogUnreadDateColor"/><attr name="dialogUnreadDateStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="boolean" name="dialogUnreadBubbleEnabled"/><attr format="color|reference" name="dialogUnreadBubbleTextColor"/><attr format="dimension|reference" name="dialogUnreadBubbleTextSize"/><attr name="dialogUnreadBubbleTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="dialogUnreadBubbleBackgroundColor"/><attr format="dimension|reference" name="dialogAvatarWidth"/><attr format="dimension|reference" name="dialogAvatarHeight"/><attr format="boolean" name="dialogMessageAvatarEnabled"/><attr format="dimension|reference" name="dialogMessageAvatarWidth"/><attr format="dimension|reference" name="dialogMessageAvatarHeight"/><attr format="boolean" name="dialogDividerEnabled"/><attr format="color|reference" name="dialogDividerColor"/><attr format="dimension|reference" name="dialogDividerLeftPadding"/><attr format="dimension|reference" name="dialogDividerRightPadding"/><attr format="color|reference" name="dialogItemBackground"/><attr format="color|reference" name="dialogUnreadItemBackground"/></declare-styleable>
+    <declare-styleable name="MessageInput"><attr format="reference" name="inputButtonBackground"/><attr format="color|reference" name="inputButtonDefaultBgColor"/><attr format="color|reference" name="inputButtonDefaultBgPressedColor"/><attr format="color|reference" name="inputButtonDefaultBgDisabledColor"/><attr format="reference" name="inputButtonIcon"/><attr format="color|reference" name="inputButtonDefaultIconColor"/><attr format="color|reference" name="inputButtonDefaultIconPressedColor"/><attr format="color|reference" name="inputButtonDefaultIconDisabledColor"/><attr format="dimension|reference" name="inputButtonMargin"/><attr format="dimension|reference" name="inputButtonWidth"/><attr format="dimension|reference" name="inputButtonHeight"/><attr format="boolean" name="showAttachmentButton"/><attr format="reference" name="attachmentButtonBackground"/><attr format="color|reference" name="attachmentButtonDefaultBgColor"/><attr format="color|reference" name="attachmentButtonDefaultBgPressedColor"/><attr format="color|reference" name="attachmentButtonDefaultBgDisabledColor"/><attr format="reference" name="attachmentButtonIcon"/><attr format="color|reference" name="attachmentButtonDefaultIconColor"/><attr format="color|reference" name="attachmentButtonDefaultIconPressedColor"/><attr format="color|reference" name="attachmentButtonDefaultIconDisabledColor"/><attr format="dimension|reference" name="attachmentButtonMargin"/><attr format="dimension|reference" name="attachmentButtonWidth"/><attr format="dimension|reference" name="attachmentButtonHeight"/><attr format="integer" name="inputMaxLines"/><attr format="string" name="inputHint"/><attr format="string" name="inputText"/><attr format="dimension|reference" name="inputTextSize"/><attr format="color|reference" name="inputTextColor"/><attr format="color|reference" name="inputHintColor"/><attr format="reference" name="inputBackground"/><attr format="reference" name="inputCursorDrawable"/><attr format="integer" name="delayTypingStatus"/></declare-styleable>
+    <declare-styleable name="MessagesList"><attr name="textAutoLink">
+        <flag name="all" value="15"/>
+        <flag name="email" value="2"/>
+        <flag name="map" value="8"/>
+        <flag name="none" value="0"/>
+        <flag name="phone" value="4"/>
+        <flag name="web" value="1"/>
+    </attr><attr format="color|reference" name="incomingTextLinkColor"/><attr format="color|reference" name="outcomingTextLinkColor"/><attr format="dimension|reference" name="incomingAvatarWidth"/><attr format="dimension|reference" name="incomingAvatarHeight"/><attr format="reference" name="incomingBubbleDrawable"/><attr format="color|reference" name="incomingDefaultBubbleColor"/><attr format="color|reference" name="incomingDefaultBubblePressedColor"/><attr format="color|reference" name="incomingDefaultBubbleSelectedColor"/><attr format="reference" name="incomingImageOverlayDrawable"/><attr format="color|reference" name="incomingDefaultImageOverlayPressedColor"/><attr format="color|reference" name="incomingDefaultImageOverlaySelectedColor"/><attr format="dimension|reference" name="incomingBubblePaddingLeft"/><attr format="dimension|reference" name="incomingBubblePaddingRight"/><attr format="dimension|reference" name="incomingBubblePaddingTop"/><attr format="dimension|reference" name="incomingBubblePaddingBottom"/><attr format="color|reference" name="incomingTextColor"/><attr format="dimension|reference" name="incomingTextSize"/><attr name="incomingTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="incomingTimeTextColor"/><attr format="dimension|reference" name="incomingTimeTextSize"/><attr name="incomingTimeTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="incomingImageTimeTextColor"/><attr format="dimension|reference" name="incomingImageTimeTextSize"/><attr name="incomingImageTimeTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="reference" name="outcomingBubbleDrawable"/><attr format="color|reference" name="outcomingDefaultBubbleColor"/><attr format="color|reference" name="outcomingDefaultBubblePressedColor"/><attr format="color|reference" name="outcomingDefaultBubbleSelectedColor"/><attr format="reference" name="outcomingImageOverlayDrawable"/><attr format="color|reference" name="outcomingDefaultImageOverlayPressedColor"/><attr format="color|reference" name="outcomingDefaultImageOverlaySelectedColor"/><attr format="dimension|reference" name="outcomingBubblePaddingLeft"/><attr format="dimension|reference" name="outcomingBubblePaddingRight"/><attr format="dimension|reference" name="outcomingBubblePaddingTop"/><attr format="dimension|reference" name="outcomingBubblePaddingBottom"/><attr format="color|reference" name="outcomingTextColor"/><attr format="dimension|reference" name="outcomingTextSize"/><attr name="outcomingTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="outcomingTimeTextColor"/><attr format="dimension|reference" name="outcomingTimeTextSize"/><attr name="outcomingTimeTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="color|reference" name="outcomingImageTimeTextColor"/><attr format="dimension|reference" name="outcomingImageTimeTextSize"/><attr name="outcomingImageTimeTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr><attr format="dimension|reference" name="dateHeaderPadding"/><attr format="string|reference" name="dateHeaderFormat"/><attr format="color|reference" name="dateHeaderTextColor"/><attr format="dimension|reference" name="dateHeaderTextSize"/><attr name="dateHeaderTextStyle">
+        <flag name="normal" value="0"/>
+        <flag name="bold" value="1"/>
+        <flag name="italic" value="2"/>
+    </attr></declare-styleable>
 </resources>

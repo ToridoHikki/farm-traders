@@ -2,7 +2,9 @@ package vn.silverbot99.farm_traders.func.main.presentation
 
 import android.support.design.widget.TabItem
 import android.widget.Adapter
+import com.google.firebase.auth.FirebaseAuth
 import com.thisobeystudio.customviewpager.viewpager.CustomViewPager
+import kotlinx.android.synthetic.main.layout_toolbar.view.*
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.func.empty.EmptyView
 import vn.silverbot99.farm_traders.func.main.data.ActionMenu
@@ -13,6 +15,8 @@ import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationGasoli
 class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : MainView(mvpActivity, viewCreator) {
     private var locationGasolineMedicalView: LocationGasolineMedicalView? = null
     private var emptyView: EmptyView? = null
+    var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
 
     override fun showHomeView() {
 
@@ -64,6 +68,10 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
     override fun initLayoutView() {
 //        initLocationGasolineMedicalView()
         initEmptyView()
+        view.ivIconRight.setOnClickListener {
+            mAuth.signOut()
+            androidScreenNavigator.gotoPassportActivity()
+        }
 
     }
     companion object {
