@@ -1,15 +1,8 @@
-package vn.silverbot99.farm_traders.func.location_gasoline_medical.presentation
+package vn.silverbot99.farm_traders.func.nearest_farm.presentation
 
-import android.util.Log
-import vn.silverbot99.core.app.domain.excecutor.AndroidUseCaseExecution
-import vn.silverbot99.core.base.domain.interactor.ResultListener
-import vn.silverbot99.core.base.domain.interactor.UseCaseTask
-import vn.silverbot99.farm_traders.app.data.network.request.GasolineStoreRequest
-import vn.silverbot99.farm_traders.app.data.network.request.MedicalRequest
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
-import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationGasolineMedicalContract
 
-class LocationGasolineMedicalPresenter(val screenNavigator: AndroidScreenNavigator) : LocationGasolineMedicalContract.Presenter(){
+class LocationFarmNearestPresenter(val screenNavigator: AndroidScreenNavigator) : LocationFarmNearestContract.Presenter(){
 //
 //    private var useCaseTask: UseCaseTask? = null
 //    private var medicalDetailRootUseCase = MedicalRootUseCase(AndroidUseCaseExecution())

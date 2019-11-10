@@ -155,6 +155,7 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
                     view.etPhoneNumber.isEnabled = true
                     view.etPassword.isEnabled = true
                 }.show()
+        //todo nhan ok crash app
     }
 
     //Stop view

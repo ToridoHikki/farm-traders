@@ -19,13 +19,18 @@ import vn.silverbot99.farm_traders.app.config.ConfigUtil
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
 
 class VerificationPresenter(private val screenNavigator: ScreenNavigator): VerificationContract.Presenter() {
+    override fun resSendVerificationCode(phone: String) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(phone, 60, TimeUnit.SECONDS, TaskExecutors.MAIN_THREAD,callbacks, token)
+    }
 
     var verificationId: String =""
-    var mAuth:FirebaseAuth = FirebaseAuth.getInstance();
+    var mAuth:FirebaseAuth = FirebaseAuth.getInstance()
+    var token: PhoneAuthProvider.ForceResendingToken? = null
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onCodeSent(p0: String?, p1: PhoneAuthProvider.ForceResendingToken?) {
             super.onCodeSent(p0, p1)
             verificationId = p0.getValueOrDefaultIsEmpty();
+            token = p1
         }
         override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential?) {
             val code = phoneAuthCredential?.getSmsCode()
@@ -49,7 +54,9 @@ class VerificationPresenter(private val screenNavigator: ScreenNavigator): Verif
             60,
             TimeUnit.SECONDS,
             TaskExecutors.MAIN_THREAD,
-            callbacks
+            callbacks,
+            token
+
         );
         view?.hideLoading()
     }

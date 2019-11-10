@@ -37,6 +37,8 @@ class VerificationView (mvpActivity: MvpActivity, viewCreator: VerificationView.
     override fun initCreateView() {
         var codeByUserType = view.editTextCode.text
         view.buttonSignIn.setOnClickListener { mPresenter.verifyCode(codeByUserType.toString()) }
+        view.buttonReSend.setOnClickListener { mPresenter.resSendVerificationCode(codeByUserType.toString())}
+
 
     }
 

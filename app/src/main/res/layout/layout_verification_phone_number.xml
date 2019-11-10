@@ -90,6 +90,12 @@
                     android:text="@string/btnverification"
                     android:textColor="@color/colorPrimaryDark" />
 
+            <Button
+                    android:id="@+id/buttonReSend"
+                    android:layout_width="@dimen/dialog_divider_margin_left"
+                    android:layout_height="@dimen/square_button_size"
+                    android:text="Gửi lại" />
+
             <ProgressBar
                     android:id="@+id/progressbar"
                     android:layout_width="wrap_content"

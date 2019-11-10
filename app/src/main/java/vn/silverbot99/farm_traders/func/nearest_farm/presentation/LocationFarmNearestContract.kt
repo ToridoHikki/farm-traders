@@ -6,7 +6,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import vn.silverbot99.core.base.presentation.mvp.base.MvpPresenter
 import vn.silverbot99.core.base.presentation.mvp.base.MvpView
 
-interface LocationGasolineMedicalContract {
+interface LocationFarmNearestContract {
     interface View: MvpView {
         fun showLoading()
 

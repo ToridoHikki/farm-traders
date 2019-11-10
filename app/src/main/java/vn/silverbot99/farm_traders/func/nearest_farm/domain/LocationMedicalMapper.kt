@@ -6,27 +6,27 @@ import kotlinex.number.getValueOrDefaultIsZero
 import kotlinex.string.getValueOrDefaultIsEmpty
 import vn.silverbot99.core.base.domain.mapper.Mapper
 import vn.silverbot99.farm_traders.app.data.network.response.MedicalResponse
-import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationMedicalItemModel
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 
-class LocationMedicalMapper : Mapper<MedicalResponse, MutableList<ViewModel>> {
+class LocationMedicalMapper/* : Mapper<MedicalResponse, MutableList<ViewModel>>*/ {/*
     override fun map(input: MedicalResponse): MutableList<ViewModel> {
         val list: MutableList<ViewModel> = mutableListOf<ViewModel>()
-        input.medicalList.map{
+        input.farList.map{
             list.add(
-                LocationMedicalItemModel(
-                    medicalId = it.medicalId.getValueOrDefaultIsZero(),
-                    medicalType = it.medicalType.getValueOrDefaultIsEmpty(),
-                    medicalName = it.medicalName.getValueOrDefaultIsEmpty(),
-                    medicalOwner = it.medicalOwner.getValueOrDefaultIsEmpty(),
-                    medicalMobile = it.medicalMoblie.getValueOrDefaultIsEmpty(),
-                    medicalAddress = it.medicalAddress.getValueOrDefaultIsEmpty(),
-                    medicalLap = it.medicalLap.getValueOrDefaultIsZero(),
-                    medicalLon = it.medicalLon.getValueOrDefaultIsZero(),
-                    medicalDistrictId = it.medicalDistrictId.getValueOrDefaultIsZero(),
-                    medicalDistrictName = it.medicalDistrictName.getValueOrDefaultIsEmpty(),
-                    medicalWardId = it.medicalWardId.getValueOrDefaultIsZero(),
-                    medicalWardName = it.medicalWardName.getValueOrDefaultIsEmpty(),
-                    medical_thumbnail = it.medical_thumbnail.getValueOrDefaultIsEmpty(),
+                LocationFarmItemModel(
+                    farmId = it.farmId.getValueOrDefaultIsZero(),
+                    farmType = it.farmType.getValueOrDefaultIsEmpty(),
+                    farmName = it.farmName.getValueOrDefaultIsEmpty(),
+                    farmOwner = it.farmOwner.getValueOrDefaultIsEmpty(),
+                    farmMobile = it.farmMoblie.getValueOrDefaultIsEmpty(),
+                    farmAddress = it.farmAddress.getValueOrDefaultIsEmpty(),
+                    farmLap = it.farmLap.getValueOrDefaultIsZero(),
+                    farmLon = it.farmLon.getValueOrDefaultIsZero(),
+                    farmDistrictId = it.farmDistrictId.getValueOrDefaultIsZero(),
+                    farmDistrictName = it.farmDistrictName.getValueOrDefaultIsEmpty(),
+                    farmWardId = it.farmWardId.getValueOrDefaultIsZero(),
+                    farmWardName = it.farmWardName.getValueOrDefaultIsEmpty(),
+                    farm_thumbnail = it.farm_thumbnail.getValueOrDefaultIsEmpty(),
                     nextAccreditationDate = it.NextAccreditationDate.getValueOrDefaultIsEmpty()
 
                 )
@@ -36,5 +36,5 @@ class LocationMedicalMapper : Mapper<MedicalResponse, MutableList<ViewModel>> {
 
         return list
     }
-
+*/
 }

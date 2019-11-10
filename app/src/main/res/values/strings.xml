@@ -60,7 +60,6 @@
     <string name="manager">QUẢN LÝ</string>
     <string name="account">Tài khoản</string>
     <string name="tab_contact">Liên hệ</string>
-    <string name="tab_accreditation">Kiểm định</string>
     <string name="tab_map">Bản đồ</string>
     <string name="tab_device">Thiết bị</string>
     <string name="tab_inspect">Thanh tra</string>
@@ -69,14 +68,9 @@
 
     <string name="text_dialog_logout">Bạn có muốn đăng xuất không?</string>
     <string name="title_list">Danh Sách</string>
-    <string name="store_owner">Chủ cửa hàng</string>
-    <string name="company_owner">Chủ doanh nghiệp</string>
-    <string name="company_name">Tên doanh nghiệp</string>
-    <string name="company_address">Địa chỉ doanh nghiệp</string>
+
     <string name="phone_number">Điện Thoại</string>
-    <string name="title_owner">Chủ</string>
-    <string name="title_degree">Bằng cấp</string>
-    <string name="title_specialist">Chuyên khoa</string>
+
     <string name="editText_phone">SĐT</string>
     <string name="have_not_account">Bạn chưa có tài khoản?</string>
     <string name="sign_up_now"><u>Đăng kí ngay</u></string>
@@ -85,6 +79,16 @@
     <string name="btnverification">Xác nhận</string>
     <string name="msg_repassword_not_match">Mật khẩu không trùng nhau, Vui lòng nhập lại!</string>
     <string name="font_fontFamily_medium" translatable="false">sans-serif</string>
+    <string name="tab_price_products_today">Giá trong ngày</string>
+    <string name="tab_products">Nông sản</string>
+    <string name="store_owner">Chủ Cửa Hàng</string>
+    <string name="tab_accreditation">Kiểm định</string>
+    <string name="title_degree">Bằng cấp</string>
+    <string name="title_owner">Chủ</string>
+    <string name="title_specialist">Chuyên khoa</string>
+    <string name="company_address">Địa chỉ doanh nghiệp</string>
+    <string name="company_name">Tên doanh nghiệp</string>
+    <string name="company_owner">Chủ doanh nghiệp</string>
 
 
 </resources>

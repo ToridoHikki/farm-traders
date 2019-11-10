@@ -19,11 +19,13 @@ interface VerificationContract {
         fun showError(errorMsg: String)
 
 
+
     }
 
     abstract class Presenter : MvpPresenter<View>() {
         abstract fun gotoMainActivity()
         abstract fun sendVerificationCode(phone: String)
+        abstract fun resSendVerificationCode(phone: String)
         abstract fun verifyCode(code: String)
     }
 }

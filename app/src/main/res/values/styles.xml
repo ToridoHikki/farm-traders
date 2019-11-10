@@ -174,4 +174,9 @@
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
+    <style name="StyleTabLayout" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/square_button_padding</item>
+    </style>
 </resources>

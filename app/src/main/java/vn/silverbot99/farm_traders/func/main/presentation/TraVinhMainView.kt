@@ -3,17 +3,15 @@ package vn.silverbot99.farm_traders.func.main.presentation
 import android.support.design.widget.TabItem
 import android.widget.Adapter
 import com.google.firebase.auth.FirebaseAuth
-import com.thisobeystudio.customviewpager.viewpager.CustomViewPager
 import kotlinx.android.synthetic.main.layout_toolbar.view.*
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.func.empty.EmptyView
-import vn.silverbot99.farm_traders.func.main.data.ActionMenu
-import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationGasolineMedicalView
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationFarmNearestView
 
 
 
 class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : MainView(mvpActivity, viewCreator) {
-    private var locationGasolineMedicalView: LocationGasolineMedicalView? = null
+    private var locationFarmNearestView: LocationFarmNearestView? = null
     private var emptyView: EmptyView? = null
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -46,11 +44,11 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
     }*/
 
     private fun showLocationGasolineMedicalView() {
-        addMainContentWithView(locationGasolineMedicalView)
-        locationGasolineMedicalView!!.loadData()
+        addMainContentWithView(locationFarmNearestView)
+        locationFarmNearestView!!.loadData()
     }
     private fun showEmptyView(){
-        addMainContentWithView(emptyView)
+//        addMainContentWithView(emptyView)
     }
     private fun initEmptyView() {
         emptyView = EmptyView(mvpActivity, EmptyView.ViewCreator(mvpActivity, null))
@@ -59,8 +57,8 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
         }
     }
     private fun initLocationGasolineMedicalView() {
-        locationGasolineMedicalView = LocationGasolineMedicalView(mvpActivity, LocationGasolineMedicalView.ViewCreator(mvpActivity, null))
-        locationGasolineMedicalView?.let {
+        locationFarmNearestView = LocationFarmNearestView(mvpActivity, LocationFarmNearestView.ViewCreator(mvpActivity, null))
+        locationFarmNearestView?.let {
             addLifeCycle(it)
         }
     }
@@ -74,16 +72,7 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
         }
 
     }
-    companion object {
-        const val HOME_FRAGMENT_ID = "home-id"
-        const val EXPLORE_FRAGMENT_ID = "explore-id"
-        const val EXPERIENCES_FRAGMENT_ID = "experiences-id"
-        const val DIY_TOUR_FRAGMENT_ID = "diy-tour-id"
-        const val UTILLITIES_FRAGMENT_ID = "utilities-id"
-        private lateinit var mTabItems: MutableList<TabItem>
-    }
-    private lateinit var adapter: Adapter
-    private lateinit var viewPager: CustomViewPager
+
 
 
 
