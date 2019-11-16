@@ -13,4 +13,6 @@ interface UserNetworkRepository {
     fun getGasolineStore(requestBody: GasolineStoreDetailRequest): Observable<GasolineStoreDetailResponse>
     fun getMedicalInfo(requestBody: MedicalDetailRequest): Observable<MedicalDetailResponse>
     fun getNews(requestBody: NewsRequest): Observable<NewsResponse>
+
+    fun getCatalogies(): Observable<CategoriesResponse>
 }

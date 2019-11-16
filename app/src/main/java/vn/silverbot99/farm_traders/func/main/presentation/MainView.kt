@@ -5,7 +5,6 @@ import android.content.Context
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.ViewGroup
-import kotlinex.context.showAlert
 import kotlinex.mvpactivity.showErrorAlert
 import kotlinx.android.synthetic.main.layout_app_bar_menu_main.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.view.*
@@ -25,17 +24,12 @@ import vn.silverbot99.core.base.presentation.mvp.android.MvpFragment
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.util.Log
 import android.util.SparseArray
 import kotlinex.view.visible
 import vn.silverbot99.core.app.view.CustomViewPager
 import vn.silverbot99.farm_traders.func.empty.EmptyFragment
 import vn.silverbot99.farm_traders.func.nearest_farm.LocationFarmFragment
-import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationFarmNearestView
-import android.R.attr.name
-import android.graphics.drawable.Drawable
-import android.support.v4.content.res.ResourcesCompat
-import vn.silverbot99.farm_traders.func.cataloge.CatalogeFragment
+import vn.silverbot99.farm_traders.func.category.CategoryFragment
 
 
 abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator), MainContract.MainView {
@@ -113,7 +107,7 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
             when (position) {
                 0 -> fragment = EmptyFragment()
                 1 -> fragment = LocationFarmFragment()
-                2 -> fragment = CatalogeFragment()
+                2 -> fragment = CategoryFragment()
             }
             return fragment
         }

@@ -12,6 +12,10 @@ interface TravinhService {
         const val VERSION = "v1"
     }
 
+    @GET("getCategories")
+    fun getCatalogies(): Observable<CategoriesResponse>
+
+
     @GET("$VERSION/user/login")
     fun login(@Header("Authorization") auth: String): Observable<PassportResponse>
 

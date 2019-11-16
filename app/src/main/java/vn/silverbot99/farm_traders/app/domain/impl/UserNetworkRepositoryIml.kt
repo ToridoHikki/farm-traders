@@ -11,6 +11,11 @@ import vn.silverbot99.farm_traders.app.network.ApiClient
 import vn.silverbot99.farm_traders.app.network.TravinhService
 
 class UserNetworkRepositoryIml : UserNetworkRepository {
+    override fun getCatalogies(): Observable<CategoriesResponse> {
+        val coopService: TravinhService = ApiClient.getClient()
+        return coopService.getCatalogies()
+    }
+
     override fun getNews(requestBody: NewsRequest): Observable<NewsResponse> {
         val coopService: TravinhService = ApiClient.getClient()
         return coopService.getNews(requestBody)

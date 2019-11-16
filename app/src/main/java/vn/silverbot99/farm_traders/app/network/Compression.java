@@ -39,6 +39,10 @@ public class Compression {
             count = inflater.inflate(buffer);
             outputStream.write(buffer, 0, count);
         } while (count != 0);
+
+        /*while ((count = inflater.inflate(buffer)) != 0) {
+            outputStream.write(buffer, 0, count);
+        }*/
         outputStream.close();
         byte[] output = outputStream.toByteArray();
 

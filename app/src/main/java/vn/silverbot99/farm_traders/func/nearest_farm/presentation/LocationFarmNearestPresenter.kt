@@ -5,7 +5,7 @@ import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavig
 class LocationFarmNearestPresenter(val screenNavigator: AndroidScreenNavigator) : LocationFarmNearestContract.Presenter(){
 //
 //    private var useCaseTask: UseCaseTask? = null
-//    private var medicalDetailRootUseCase = MedicalRootUseCase(AndroidUseCaseExecution())
+//    private var medicalDetailRootUseCase = CategoryRootUseCase(AndroidUseCaseExecution())
 //    private var gasolineStoreRootUseCase = GasolineStoreRootUseCase(AndroidUseCaseExecution())
 //    override fun getGasStationList(page: Int) {
 //        if (page == -1) {
@@ -52,8 +52,8 @@ class LocationFarmNearestPresenter(val screenNavigator: AndroidScreenNavigator) 
 //        )
 //
 //        useCaseTask?.cancel()
-//        useCaseTask = medicalDetailRootUseCase.executeAsync(object : ResultListener<MedicalRootUseCase.Output> {
-//            override fun success(data: MedicalRootUseCase.Output) {
+//        useCaseTask = medicalDetailRootUseCase.executeAsync(object : ResultListener<CategoryRootUseCase.Output> {
+//            override fun success(data: CategoryRootUseCase.Output) {
 //                if (data.medicalResponse.success) {
 //                    Log.i("LocationData","Location Get MedicalResponse Success")
 //                    view?.showDetailInfo(LocationMedicalMapper().map(data.medicalResponse))
@@ -70,6 +70,6 @@ class LocationFarmNearestPresenter(val screenNavigator: AndroidScreenNavigator) 
 //                view?.hideLoading()
 //            }
 //        },
-//            MedicalRootUseCase.Input(requestBody))
+//            CategoryRootUseCase.Input(requestBody))
 //    }
 }
