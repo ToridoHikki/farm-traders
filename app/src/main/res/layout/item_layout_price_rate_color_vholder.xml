@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvPlace"
+            app:layout_constraintBottom_toTopOf="@+id/vLine"
+            android:text="Cam da xanh"/>
+    <TextView
+            android:id="@+id/tvPlace"
+            android:text="An Giang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvProductName"
+            app:layout_constraintRight_toLeftOf="@+id/tvPrice"
+            app:layout_constraintBottom_toTopOf="@+id/vLine"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
+
+    <TextView
+            android:id="@+id/tvPrice"
+            android:text="12.000 vnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvPlace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/vLine"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
+    <View
+            android:id="@+id/vLine"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductName"/>
+
+</android.support.constraint.ConstraintLayout>

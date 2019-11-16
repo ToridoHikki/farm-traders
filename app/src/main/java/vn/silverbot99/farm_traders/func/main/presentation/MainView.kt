@@ -35,6 +35,7 @@ import vn.silverbot99.farm_traders.func.nearest_farm.presentation.LocationFarmNe
 import android.R.attr.name
 import android.graphics.drawable.Drawable
 import android.support.v4.content.res.ResourcesCompat
+import vn.silverbot99.farm_traders.func.cataloge.CatalogeFragment
 
 
 abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator), MainContract.MainView {
@@ -74,29 +75,35 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         //initMedicalView()
     }
     private fun initView() {
-        adapter = Adapter(mvpActivity.supportFragmentManager)
-        val tabLayout: TabLayout = view.tlTabs
-        mTabItems =  createTable()
         viewPager = view.viewPager
+        val tabLayout: TabLayout = view.tlTabs
+        setUpTabLayout(tabLayout)
+        adapter = Adapter(mvpActivity.supportFragmentManager)
+        mTabItems =  createTable()
         viewPager.enabledTouch = false
         viewPager.offscreenPageLimit = 6
         viewPager.adapter = adapter
-        //tabLayout.setupWithViewPager(viewPager)
-        tabLayout.post(object: Runnable{
+        tabLayout.setupWithViewPager(viewPager)
+        /*tabLayout.post(object: Runnable{
             override fun run() {
                 tabLayout.setupWithViewPager(viewPager)
             }
-        })
-        var tab= tabLayout.getTabAt(0)
-        var resource:Int = 0
+        })*/
+
         for (i in 0 until tabLayout.tabCount) {
-            tab = tabLayout.getTabAt(i)
+            val tab:TabLayout.Tab? = tabLayout.getTabAt(i)
+            var resource:Int = 0
             resource = mTabItems[i].mDrawableId
             if (resource > 0) tab?.setIcon(resource)
             tab?.text = mTabItems[i].mName
         }
-
         viewPager.addOnPageChangeListener(onPageChangeListener)
+    }
+
+    private fun setUpTabLayout(tabLayout: TabLayout) {
+        tabLayout.addTab(tabLayout.newTab())
+        tabLayout.addTab(tabLayout.newTab())
+        tabLayout.addTab(tabLayout.newTab())
     }
 
     internal class Adapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
@@ -106,7 +113,7 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
             when (position) {
                 0 -> fragment = EmptyFragment()
                 1 -> fragment = LocationFarmFragment()
-                2 -> fragment = EmptyFragment()
+                2 -> fragment = CatalogeFragment()
             }
             return fragment
         }
