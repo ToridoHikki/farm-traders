@@ -25,7 +25,7 @@ class CategoryView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Android
     private val renderInput = GridRenderConfigFactory.Input(
         context = mvpActivity,
         orientation = GridRenderConfigFactory.Orientation.VERTICAL,
-        spanCount = 1,
+        spanCount = 2,
         spanSizeLookup = getSpanSizeLookup()
     )
     private val renderConfig = GridRenderConfigFactory(renderInput).create()
@@ -33,9 +33,9 @@ class CategoryView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Android
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (listViewMvp?.items?.size == 2) {
-                    return 1
+                    return 2
                 }
-                return 2
+                return 1
             }
         }
     }
@@ -44,7 +44,7 @@ class CategoryView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Android
         if(data.isNotEmpty()){
             listData.addAll(data)
         }
-        listViewMvp?.setItems(listData)
+        listViewMvp?.setItems(this.listData)
         listViewMvp?.notifyDataChanged()
     }
 
@@ -83,7 +83,7 @@ class CategoryView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Android
 
     override fun initData() {
         super.initData()
-        mPresenter.getCataloge()
+        mPresenter.getCategoryList()
     }
 
     class ViewCreator(context: Context, viewGroup: ViewGroup?) :

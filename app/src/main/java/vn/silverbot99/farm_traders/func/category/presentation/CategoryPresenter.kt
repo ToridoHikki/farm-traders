@@ -1,43 +1,83 @@
 package vn.silverbot99.farm_traders.func.category.presentation
 
+import android.content.ContentValues.TAG
 import vn.minerva.travinh.func.medical.domain.CategoryMapper
-import vn.minerva.travinh.func.medical.domain.CategoryRootUseCase
-import vn.silverbot99.core.app.domain.excecutor.AndroidUseCaseExecution
-import vn.silverbot99.core.base.domain.interactor.ResultListener
-import vn.silverbot99.core.base.domain.interactor.UseCaseTask
+import android.util.Log
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import vn.silverbot99.farm_traders.app.data.network.response.CategoriesResponse
+import vn.silverbot99.farm_traders.app.network.ApiInterfac.ApiInterface
+import vn.silverbot99.farm_traders.app.network.CustomApiClient
+
 
 class CategoryPresenter:CategoryContract.Presenter() {
-    private var useCaseTask: UseCaseTask? = null
-    private var categoryRootUseCaseTask = CategoryRootUseCase(AndroidUseCaseExecution())
 
-    override fun gotoProductList() {
 
-    }
-    override fun getCataloge() {
-        useCaseTask?.cancel()
-        useCaseTask = categoryRootUseCaseTask.executeAsync(object : ResultListener<CategoryRootUseCase.Output> {
-            override fun success(data: CategoryRootUseCase.Output) {
-                /*if (data.categoryResponse.success) {
-                    view?.showMedicalDetail(MedicalMapper().map(data.medicalResponse),data.medicalResponse.total)
-                } else {
-                    view?.showError("Error")
-                }*/
-                if (!data.categoryResponse.categoriesList.isNullOrEmpty()){
-                    view?.showDetailInfo(CategoryMapper().map(data.categoryResponse))
+    override fun getCategoryList() {
+        view?.showLoading()
+        val apiService = CustomApiClient.getClient().create(ApiInterface::class.java)
+
+        val call = apiService.catalogies
+        call.enqueue(object : Callback<CategoriesResponse> {
+            override fun onResponse(call: Call<CategoriesResponse>, response: Response<CategoriesResponse>) {
+                if (response.isSuccessful){
+                    val categories: CategoriesResponse? = response.body()
+                    categories?.let {
+                        Log.d("response","okhttp: ${it.categoriesList}")
+                        view?.showDetailInfo(CategoryMapper().map(it))
+                        view?.hideLoading()
+                    }
                 }
                 else{
-                    view?.showError("Error in load Data")
+                    view?.showError(response.message())
                 }
             }
 
-            override fun fail(errorCode: Int, msgError: String) {
-                view?.showError("$errorCode - $msgError")
-            }
-
-            override fun done() {
+            override fun onFailure(call: Call<CategoriesResponse>, t: Throwable) {
+                // Log error here since request failed
+                Log.e(TAG, t.toString())
+                view?.showError(t.toString());
                 view?.hideLoading()
             }
-        },"")
-
+        })
     }
+
+
+    override fun gotoProductList() {
+        /*val fragment: MvpFragment
+        val emptyFragment = EmptyFragment()
+        fragment.fragmentManager.beginTransaction().detach(emptyFragment
+        )*/
+    }
+
 }
+/*
+override fun getCataloge() {
+    useCaseTask?.cancel()
+    useCaseTask = categoryRootUseCaseTask.executeAsync(object : ResultListener<CategoryRootUseCase.Output> {
+        override fun success(data: CategoryRootUseCase.Output) {
+            */
+/*if (data.categoryResponse.success) {
+                view?.showMedicalDetail(MedicalMapper().map(data.medicalResponse),data.medicalResponse.total)
+            } else {
+                view?.showError("Error")
+            }*//*
+
+            if (!data.categoryResponse.categoriesList.isNullOrEmpty()){
+                view?.showDetailInfo(CategoryMapper().map(data.categoryResponse))
+            }
+            else{
+                view?.showError("Error in load Data")
+            }
+        }
+
+        override fun fail(errorCode: Int, msgError: String) {
+            view?.showError("$errorCode - $msgError")
+        }
+
+        override fun done() {
+            view?.hideLoading()
+        }
+    },"")
+}*/

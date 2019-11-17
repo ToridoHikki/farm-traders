@@ -1,16 +1,9 @@
 package vn.silverbot99.farm_traders.func.splash.presentation
 
 import android.location.LocationManager
-import kotlinex.string.getValueOrDefaultIsEmpty
-import vn.silverbot99.core.app.domain.excecutor.AndroidUseCaseExecution
-import vn.silverbot99.core.base.domain.interactor.ResultListener
 import vn.silverbot99.core.base.domain.interactor.UseCaseTask
 import vn.silverbot99.farm_traders.app.common.AppConstants
-import vn.silverbot99.farm_traders.app.data.network.response.AppVersionResponse
-import vn.silverbot99.farm_traders.app.data.network.response.PassportResponse
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
-import vn.silverbot99.farm_traders.func.splash.domain.CheckVersionAppUseCase
-import vn.silverbot99.farm_traders.func.splash.domain.ReLoginUseCase
 
 class SplashPresenter(private val screenNavigator: ScreenNavigator) : SplashContract.Presenter() {
     override fun gotoSignUpActivity() {

@@ -13,7 +13,7 @@ class CategoryMapper : Mapper<CategoriesResponse, MutableList<ViewModel>> {
         input.categoriesList.map{
             list.add(CategoryItemModel(
                 name = it.name.getValueOrDefaultIsEmpty(),
-                photo = it.name.getValueOrDefaultIsEmpty(),
+                photo = it.photo.getValueOrDefaultIsEmpty(),
                 categoryId = it.categoryId.getValueOrDefaultIsEmpty()
             ))
         }
