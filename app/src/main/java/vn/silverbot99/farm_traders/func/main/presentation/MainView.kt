@@ -215,15 +215,13 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         mainPresenter.detachView()
     }
 
-    private fun showProfileView() {
-        mainPresenter.showProfileView()
-    }
+
 
     fun addMainContentWithView(mvpView: AndroidMvpView?) {
-/*        mvpView?.let {
+        mvpView?.let {
             view.vgContent.removeAllViews()
             view.vgContent.addView(it.createView())
-        }*/
+        }
     }
 
 

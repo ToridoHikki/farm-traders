@@ -1,6 +1,7 @@
 package vn.silverbot99.farm_traders.func.category.presentation
 
 import android.content.ContentValues.TAG
+import android.support.v4.app.Fragment
 import vn.minerva.travinh.func.medical.domain.CategoryMapper
 import android.util.Log
 import retrofit2.Call
@@ -9,9 +10,11 @@ import retrofit2.Response
 import vn.silverbot99.farm_traders.app.data.network.response.CategoriesResponse
 import vn.silverbot99.farm_traders.app.network.ApiInterfac.ApiInterface
 import vn.silverbot99.farm_traders.app.network.CustomApiClient
+import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
+import vn.silverbot99.farm_traders.func.empty.EmptyFragment
 
 
-class CategoryPresenter:CategoryContract.Presenter() {
+class CategoryPresenter(val screenNavigator: AndroidScreenNavigator):CategoryContract.Presenter() {
 
 
     override fun getCategoryList() {
@@ -44,11 +47,8 @@ class CategoryPresenter:CategoryContract.Presenter() {
     }
 
 
-    override fun gotoProductList() {
-        /*val fragment: MvpFragment
-        val emptyFragment = EmptyFragment()
-        fragment.fragmentManager.beginTransaction().detach(emptyFragment
-        )*/
+    override fun gotoProductList(categoryId: String) {
+        screenNavigator.gotoProductList(categoryId)
     }
 
 }

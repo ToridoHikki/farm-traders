@@ -6,6 +6,11 @@ import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
 
 class AndroidScreenNavigator constructor(val mvpActivity: MvpActivity) : ScreenNavigator {
+    override fun gotoProductList(categoryId: String) {
+        Flow.gotoProductListActivity(categoryId)
+            .launch(mvpActivity)
+    }
+
     override fun gotoVerificationPhone(phone: String) {
         Flow.gotoVerificationActivity(phone)
             .launch(mvpActivity)
@@ -35,9 +40,6 @@ class AndroidScreenNavigator constructor(val mvpActivity: MvpActivity) : ScreenN
             .launch(mvpActivity)
     }
 
-    override fun goToProfileActivity() {
-
-    }
 
     override fun callToDriver(phoneDriver: String) {
     }

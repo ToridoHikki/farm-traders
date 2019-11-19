@@ -62,6 +62,7 @@ class TraVinhMainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : Main
             addLifeCycle(it)
         }
     }
+    
 
     override fun initLayoutView() {
 //        initLocationGasolineMedicalView()

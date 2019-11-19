@@ -38,8 +38,4 @@ class MainPresenter(private val screenNavigator: AndroidScreenNavigator) : MainC
     }
 
 
-    override fun showProfileView() {
-        screenNavigator.goToProfileActivity()
-    }
-
 }

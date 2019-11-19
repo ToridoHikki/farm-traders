@@ -20,7 +20,6 @@ interface MainContract {
     abstract class Presenter : MvpPresenter<MainView>() {
         abstract fun loadConfigData()
         abstract fun gotoLoginActivity()
-        abstract fun showProfileView()
 
     }
 
