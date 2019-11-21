@@ -19,6 +19,7 @@ interface ProductListContract {
         fun showDetailInfo(data: List<ViewModel>)
     }
     abstract class Presenter: MvpPresenter<View>() {
+        abstract fun getProductList(categoryId: String)
 
         }
     }

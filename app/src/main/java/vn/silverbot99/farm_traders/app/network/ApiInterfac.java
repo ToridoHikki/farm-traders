@@ -2,7 +2,9 @@ package vn.silverbot99.farm_traders.app.network;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import vn.silverbot99.farm_traders.app.data.network.response.CategoriesResponse;
+import vn.silverbot99.farm_traders.app.data.network.response.ProductListResponse;
 
 public class ApiInterfac {
     public interface ApiInterface {
@@ -19,5 +21,8 @@ public class ApiInterfac {
 
         @GET("getCategories")
         Call<CategoriesResponse> getCatalogies();
+        @GET("getProducts")
+        Call<ProductListResponse> getProducts(@Query("farmId") String farmId, @Query("categoryId") String categoryId);
+//        Call<ProductListResponse> getProducts();
     }
 }

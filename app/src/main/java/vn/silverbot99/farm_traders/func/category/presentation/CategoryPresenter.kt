@@ -15,8 +15,6 @@ import vn.silverbot99.farm_traders.func.empty.EmptyFragment
 
 
 class CategoryPresenter(val screenNavigator: AndroidScreenNavigator):CategoryContract.Presenter() {
-
-
     override fun getCategoryList() {
         view?.showLoading()
         val apiService = CustomApiClient.getClient().create(ApiInterface::class.java)
@@ -50,34 +48,4 @@ class CategoryPresenter(val screenNavigator: AndroidScreenNavigator):CategoryCon
     override fun gotoProductList(categoryId: String) {
         screenNavigator.gotoProductList(categoryId)
     }
-
 }
-/*
-override fun getCataloge() {
-    useCaseTask?.cancel()
-    useCaseTask = categoryRootUseCaseTask.executeAsync(object : ResultListener<CategoryRootUseCase.Output> {
-        override fun success(data: CategoryRootUseCase.Output) {
-            */
-/*if (data.categoryResponse.success) {
-                view?.showMedicalDetail(MedicalMapper().map(data.medicalResponse),data.medicalResponse.total)
-            } else {
-                view?.showError("Error")
-            }*//*
-
-            if (!data.categoryResponse.categoriesList.isNullOrEmpty()){
-                view?.showDetailInfo(CategoryMapper().map(data.categoryResponse))
-            }
-            else{
-                view?.showError("Error in load Data")
-            }
-        }
-
-        override fun fail(errorCode: Int, msgError: String) {
-            view?.showError("$errorCode - $msgError")
-        }
-
-        override fun done() {
-            view?.hideLoading()
-        }
-    },"")
-}*/
