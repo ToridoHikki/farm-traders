@@ -122,17 +122,7 @@ class PassportView(mvpActivity: MvpActivity, viewCreator: ViewCreator, private v
         view.button_passport_login?.revertAnimation()
     }
 
-/*    override fun handleAfterLogin(data: PassportResponse) {
-        val userToken = data.key.getValueOrDefaultIsEmpty()
-        if (userToken.isEmpty()) {
-            showError(mvpActivity.getString(R.string.title_error_login))
-        } else {
-            ConfigUtil.saveDateSelected(Calendar.getInstance())
-            ConfigUtil.savePassport(data)
-            ConfigUtil.saveIsFirstLoginApp(true)
-            loginSuccessful()
-        }
-    }*/
+
 
     override fun loginSuccessful() {
         passportPresenter.gotoMainActivity()

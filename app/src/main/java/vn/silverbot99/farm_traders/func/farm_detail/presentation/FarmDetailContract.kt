@@ -1,10 +1,10 @@
-package vn.silverbot99.farm_traders.func.product_list.presentation
+package vn.silverbot99.farm_traders.func.farm_detail.presentation
 
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import vn.silverbot99.core.base.presentation.mvp.base.MvpPresenter
 import vn.silverbot99.core.base.presentation.mvp.base.MvpView
 
-interface ProductListContract {
+interface FarmDetailContract {
     interface View: MvpView {
         fun showLoading()
 
@@ -14,12 +14,13 @@ interface ProductListContract {
 
         fun showError(message: String)
 
-        fun loadData()
-
         fun showDetailInfo(data: List<ViewModel>)
     }
     abstract class Presenter: MvpPresenter<View>() {
-        abstract fun getProductList(categoryId: String)
 
-        }
+        abstract fun getFarmDetail()
+
+        abstract fun getFarmerbyFarmId(farmId: String)
+
     }
+}

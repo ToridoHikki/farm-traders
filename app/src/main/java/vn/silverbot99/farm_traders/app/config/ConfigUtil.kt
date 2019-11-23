@@ -28,11 +28,13 @@ class ConfigUtil {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
                 return configSaver.get(ConfigSaver.CONFIG_SETTING_USER_UID)
             }
+/*
         val passportRequest: PassportRequest?
             get() {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
                 return configSaver.get(ConfigSaver.CONFIG_SETTING_KEY_LOGIN)
             }
+*/
 
         val dateSelected: Calendar?
             get() {
@@ -49,12 +51,12 @@ class ConfigUtil {
                 val isFirstLoginApp = configSaver.get<Boolean>(ConfigSaver.CONFIG_SETTING_SAVED_IS_FIRST_LOGIN_APP)
                 return isFirstLoginApp.getValueOrDefault()
             }
-
+/*
         @JvmStatic
         fun savePassport(passport: PassportResponse?) {
             val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
             configSaver.save(ConfigSaver.CONFIG_SETTING_PASSPORT, passport)
-        }
+        }*/
 
         @JvmStatic
         fun savePassportUID(passportUid: String?) {

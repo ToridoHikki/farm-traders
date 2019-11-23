@@ -2,9 +2,6 @@ package vn.silverbot99.farm_traders.func.sign_up.presentation
 
 import vn.silverbot99.core.base.presentation.mvp.base.MvpPresenter
 import vn.silverbot99.core.base.presentation.mvp.base.MvpView
-import vn.silverbot99.farm_traders.app.data.network.request.PassportRequest
-import vn.silverbot99.farm_traders.app.data.network.response.PassportResponse
-import vn.silverbot99.farm_traders.func.passport.presentation.model.UserItemModel
 import vn.silverbot99.farm_traders.func.sign_up.presentation.model.UserFirebaseModel
 
 

@@ -130,17 +130,6 @@ class SignUpView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMv
         Toast.makeText(mvpActivity, message, Toast.LENGTH_LONG).show()
     }
 
-/*    override fun handleAfterLogin(data: PassportResponse) {
-        val userToken = data.key.getValueOrDefaultIsEmpty()
-        if (userToken.isEmpty()) {
-            showError(mvpActivity.getString(R.string.title_error_login))
-        } else {
-            ConfigUtil.saveDateSelected(Calendar.getInstance())
-            ConfigUtil.savePassport(data)
-            ConfigUtil.saveIsFirstLoginApp(true)
-            loginSuccessful()
-        }
-    }*/
 
 
     override fun showError(errorMsg: String) {

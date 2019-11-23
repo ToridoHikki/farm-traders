@@ -3,8 +3,24 @@ package vn.silverbot99.farm_traders.app.data.network.response
 import com.google.gson.annotations.SerializedName
 import vn.silverbot99.farm_traders.app.data.network.response.base.BaseResponse
 
-class GasolineStoreResponse (
-    @SerializedName("page")
+class LocationFarmNearestResponse (
+    @SerializedName("farms")
+    var farms :List<Farm>
+):BaseResponse(){
+    data class Farm (
+        @SerializedName("name")
+        var name: String = "",
+        @SerializedName("farm_id")
+        var farmId: String = "",
+        @SerializedName("lat")
+        var lat: Double,
+        @SerializedName("long")
+        var long: Double,
+        @SerializedName("photo")
+        var photo: String = ""
+        )
+}
+   /* @SerializedName("page")
     var page: Int,
     @SerializedName("store_list")
     var storeList :List<StoreList>
@@ -54,4 +70,4 @@ class GasolineStoreResponse (
         @SerializedName("next_accreditation_date")
         var nextAccreditationDate: String
     )
-}
+}*/

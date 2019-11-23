@@ -23,8 +23,6 @@ import vn.silverbot99.core.base.presentation.mvp.android.lifecycle.PermissionsRe
 import vn.silverbot99.core.base.presentation.mvp.android.lifecycle.ViewResult
 import vn.silverbot99.farm_traders.R
 import vn.silverbot99.farm_traders.app.config.ConfigUtil
-import vn.silverbot99.farm_traders.app.data.network.response.AppVersionResponse
-import vn.silverbot99.farm_traders.app.data.network.response.PassportResponse
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import java.util.*
 

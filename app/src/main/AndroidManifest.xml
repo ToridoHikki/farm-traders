@@ -44,6 +44,7 @@
         <activity android:name=".func.sign_up.SignUpActivity" />
         <activity android:name=".func.verification_phone.VerificationActivity" />
         <activity android:name=".func.product_list.ProductListActivity" />
+        <activity android:name=".func.farm_detail.FarmDetailActivity" />
 
         <meta-data
                 android:name="io.fabric.ApiKey"

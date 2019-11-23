@@ -62,6 +62,7 @@
             app:fabSize="normal"
             android:layout_marginBottom="76dp"
             android:layout_marginRight="@dimen/spacing_medium"
+            android:visibility="gone"
             android:layout_gravity="end|bottom"/>
 
     <include layout="@layout/layout_bottom_sheet_list_data_by_category"/>

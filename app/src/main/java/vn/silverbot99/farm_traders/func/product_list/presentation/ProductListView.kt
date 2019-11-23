@@ -1,7 +1,11 @@
 package vn.silverbot99.farm_traders.func.product_list.presentation
 
 import android.content.Context
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
+import android.view.View.TEXT_ALIGNMENT_CENTER
 import android.view.ViewGroup
 import android.widget.Toast
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
@@ -20,6 +24,7 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
 
     private var listViewMvp: ListViewMvp? = null
     private var listData: MutableList<ViewModel> = mutableListOf()
+    private val resourceProvider = ProductListResourceProvider()
     private val mPresenter = ProductListPresenter()
     private val loadingView = Loadinger.create(mvpActivity, mvpActivity.window)
     private val renderInput = GridRenderConfigFactory.Input(
@@ -32,10 +37,10 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
     private fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                if (listViewMvp?.items?.size == 2) {
+                /*if (listViewMvp?.items?.size == 2) {
                     return 1
-                }
-                return 2
+                }*/
+                return 1
             }
         }
     }
@@ -48,7 +53,12 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
         listViewMvp?.notifyDataChanged()
     }
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun initCreateView() {
+        val toolbar = view.toolbarProduct
+        mvpActivity.setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { mvpActivity.onBackPressed()}
+
         listViewMvp = ListViewMvp(mvpActivity, view.rvProductList,renderConfig)
         listViewMvp?.createView()
         listViewMvp?.addViewRenderer(ProductListRenderer(mvpActivity))
@@ -85,6 +95,11 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
         super.initData()
         mPresenter.getProductList(categoryKey)
     }
+    override fun loadData() {
+        showLoading()
+        mPresenter.getProductList(categoryKey)
+    }
+
 
 
 

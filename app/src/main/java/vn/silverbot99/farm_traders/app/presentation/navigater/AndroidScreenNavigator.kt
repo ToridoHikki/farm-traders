@@ -2,10 +2,17 @@ package vn.silverbot99.farm_traders.app.presentation.navigater
 
 import android.content.Intent
 import be.trikke.intentbuilder.Flow
+import com.rabbitmq.client.AMQP
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 
 class AndroidScreenNavigator constructor(val mvpActivity: MvpActivity) : ScreenNavigator {
+    override fun gotoFarmDetailScreen(farmItemModel: LocationFarmItemModel/*farmId: String*/) {
+        Flow.gotoFarmDetailActivity(farmItemModel)
+            .launch(mvpActivity)
+    }
+
     override fun gotoProductList(categoryId: String) {
         Flow.gotoProductListActivity(categoryId)
             .launch(mvpActivity)

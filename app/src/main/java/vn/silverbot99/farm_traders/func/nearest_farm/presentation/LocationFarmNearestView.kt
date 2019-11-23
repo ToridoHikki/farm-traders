@@ -61,8 +61,7 @@ LocationFarmNearestContract.View {
     private val renderConfig = LinearRenderConfigFactory(renderInput).create()
     private val resourceProvider= LocationFarmNearestResourceProvider()
 
-    private val listGasStore = mutableListOf<MarkerOptions>()
-    private val listMedical = mutableListOf<MarkerOptions>()
+    private val listfarm = mutableListOf<MarkerOptions>()
 
 
     private var isNotDraw = true
@@ -72,7 +71,7 @@ LocationFarmNearestContract.View {
 
     override fun initCreateView() {
 //        initBottomSheet()
-        view.faFab.setOnClickListener{onClickfaFab()}
+        //view.faFab.setOnClickListener{onClickfaFab()}
 /*        mapboxMap?.setOnMarkerClickListener { marker ->
             mark
         }*/
@@ -109,12 +108,12 @@ LocationFarmNearestContract.View {
         runWithCheckMultiTouch("onActionSearch_click_item", object : OnActionNotify {
             override fun onActionNotify() {
                 val vehiclePosition = CameraPosition.Builder()
-                    .target(LatLng(data.farmLap, data.farmLon))
+                    .target(LatLng(data.lat, data.long))
                     .zoom(15.0) // Khoang cach zoom gan hay xa, muon gan thi tang gia tri len
 //                    .tilt(12.0)
                     .build()
                 selectedMarker?.hideInfoWindow()/*
-                selectedMarker = listMedical.find {
+                selectedMarker = listfarm.find {
                     it.title == data.medicalName.getValueOrDefaultIsEmpty()
                 }?.marker*/
                 mapboxMap?.let {
@@ -144,28 +143,29 @@ LocationFarmNearestContract.View {
         if (mapboxMap == null) {
             isNotDraw = true
         }
-        val icon = IconFactory.getInstance(mvpActivity).fromResource(R.drawable.ic_hospital)
-        var  drawable : Drawable?= ResourcesCompat.getDrawable(mvpActivity.resources, R.drawable.ic_gas_station, null);
-        var mBitmap : Bitmap = BitmapUtils.drawableToBitmap(drawable)
+        val icon = IconFactory.getInstance(mvpActivity).fromResource(R.drawable.ic_farm_24)
+        /*var  drawable : Drawable?= ResourcesCompat.getDrawable(mvpActivity.resources, R.drawable.ic_gas_station, null);
+        var mBitmap : Bitmap = BitmapUtils.drawableToBitmap(drawable)*/
         if (listData.isNotEmpty()) {
             listData.map { item ->
                 if (item is LocationFarmItemModel) {
-                    val medicalLocation = LatLng(item.farmLap, item.farmLon)
-                    listMedical.add(MarkerOptions()
-                        .position(medicalLocation)
+                    val farmLocation = LatLng(item.lat, item.long)
+                    listfarm.add(MarkerOptions()
+                        .position(farmLocation)
                         .icon(icon)
-                        .title(item.farmName.getValueOrDefaultIsEmpty())
+                        .title(item.name.getValueOrDefaultIsEmpty())
                     )
                 }
-                mapboxMap?.addMarkers(listMedical)
+                mapboxMap?.addMarkers(listfarm)
             }
             mapboxMap?.setOnInfoWindowClickListener { marker ->
 
-                for (position in 0 until listMedical.size) {
+                for (position in 0 until listfarm.size) {
                     val item = listData[position] as LocationFarmItemModel
-                    if (item.farmName.equals(marker.title)) {
+                    if (item.name.equals(marker.title)) {
                        // mPresenter.getMedicalDetail(item.medicalId)
                         //todo chuyen den trang trang thong tin nong trai
+                        mPresenter.gotoFarmDetail(item)
                         break
                     }
                 }
@@ -182,14 +182,13 @@ LocationFarmNearestContract.View {
     override fun loadData() {
         mapboxMap?.clear()
         view.mapView.getMapAsync(getOnMapReadyCallback())
-
-//        mPresenter.getMedicalList(page = 1)
-        // todo lay du lieu
+        mPresenter.getFarmList()
     }
 
     override fun initData() {
         super.initData()
         view.mapView.getMapAsync(getOnMapReadyCallback())
+        mPresenter.getFarmList()
     }
 
     override fun showLoading() {

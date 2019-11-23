@@ -20,12 +20,15 @@ class ProductListPresenter: ProductListContract.Presenter() {
                 if (response.isSuccessful){
                     val categories: ProductListResponse? = response.body()
                     categories?.let {
-                        Log.d("product","categoryId: $categoryId, okhttp: ${it.productList}")
-                       // view?.showDetailInfo(ProductListMapper().map(it))
+                        Log.d("response","categoryId: $categoryId, okhttp: ${it.productList}")
+                        if(it.productList.isEmpty()){
+                            view?.loadData()
+                        }
+                        else{
+                            view?.hideLoading()
+                            view?.showDetailInfo(ProductListMapper().map(it))
+                        }
                     }
-                }
-                else{
-                    view?.showError(response.message())
                 }
             }
 

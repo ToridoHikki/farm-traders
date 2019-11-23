@@ -1,75 +1,49 @@
 package vn.silverbot99.farm_traders.func.nearest_farm.presentation
 
+import android.content.ContentValues
+import android.util.Log
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import vn.silverbot99.farm_traders.app.data.network.response.LocationFarmNearestResponse
+import vn.silverbot99.farm_traders.app.network.ApiInterfac
+import vn.silverbot99.farm_traders.app.network.CustomApiClient
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
+import vn.silverbot99.farm_traders.func.nearest_farm.domain.LocationFarmNearestMapper
+import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 
 class LocationFarmNearestPresenter(val screenNavigator: AndroidScreenNavigator) : LocationFarmNearestContract.Presenter(){
-//
-//    private var useCaseTask: UseCaseTask? = null
-//    private var medicalDetailRootUseCase = CategoryRootUseCase(AndroidUseCaseExecution())
-//    private var gasolineStoreRootUseCase = GasolineStoreRootUseCase(AndroidUseCaseExecution())
-//    override fun getGasStationList(page: Int) {
-//        if (page == -1) {
-//            view?.showLoading()
-//        }
-//
-//        val requestBody = GasolineStoreRequest(
-//            page = page
-//        )
-//
-//        useCaseTask?.cancel()
-//        useCaseTask = gasolineStoreRootUseCase.executeAsync(object : ResultListener<GasolineStoreRootUseCase.Output> {
-//            override fun success(data: GasolineStoreRootUseCase.Output) {
-//                if (data.gasolineStoreResponse.success) {
-//                    Log.i("LocationData","Location Get GasolineStoreResponse Success")
-//
-//                    view?.showDetailInfo(LocationGasolineMapper().map(data.gasolineStoreResponse))
-//                } else {
-//                    view?.showError("Error")
-//                }
-//            }
-//
-//            override fun fail(errorCode: Int, msgError: String) {
-//                view?.showError("$errorCode - $msgError")
-//            }
-//
-//            override fun done() {
-//                view?.hideLoading()
-//            }
-//        },
-//            GasolineStoreRootUseCase.Input(requestBody))
-//
-//    }
-//
-//    override fun getMedicalList(/*latitude: Long, longitude: Long,*/ page: Int) {
-//        if (page == 1) {
-//            view?.showLoading()
-//        }
-//
-//        val requestBody = MedicalRequest(
-//            page = page,
-//            latitude = 9.947213700426019,
-//            longitude = 106.33966710146512
-//        )
-//
-//        useCaseTask?.cancel()
-//        useCaseTask = medicalDetailRootUseCase.executeAsync(object : ResultListener<CategoryRootUseCase.Output> {
-//            override fun success(data: CategoryRootUseCase.Output) {
-//                if (data.medicalResponse.success) {
-//                    Log.i("LocationData","Location Get MedicalResponse Success")
-//                    view?.showDetailInfo(LocationMedicalMapper().map(data.medicalResponse))
-//                } else {
-//                    view?.showError("Error")
-//                }
-//            }
-//
-//            override fun fail(errorCode: Int, msgError: String) {
-//                view?.showError("$errorCode - $msgError")
-//            }
-//
-//            override fun done() {
-//                view?.hideLoading()
-//            }
-//        },
-//            CategoryRootUseCase.Input(requestBody))
-//    }
+    override fun gotoFarmDetail(farm : LocationFarmItemModel/*farmName: String, farmId: String, farmPhoto: String */) {
+        //screenNavigator.gotoFarmDetailScreen(farmName, farmI)
+        screenNavigator.gotoFarmDetailScreen(farm)
+    }
+
+    override fun getFarmList() {
+        view?.showLoading()
+        val apiService = CustomApiClient.getClient().create(ApiInterfac.ApiInterface::class.java)
+
+        val call = apiService.farms
+        call.enqueue(object : Callback<LocationFarmNearestResponse> {
+            override fun onResponse(call: Call<LocationFarmNearestResponse>, response: Response<LocationFarmNearestResponse>) {
+                if (response.isSuccessful){
+                    val categories: LocationFarmNearestResponse? = response.body()
+                    categories?.let {
+                        Log.d("response","okhttp: ${it.farms}")
+                        view?.showDetailInfo(LocationFarmNearestMapper().map(it))
+                        view?.hideLoading()
+                    }
+                }
+                else{
+                    view?.showError(response.message())
+                }
+            }
+
+            override fun onFailure(call: Call<LocationFarmNearestResponse>, t: Throwable) {
+                Log.e("response", t.toString())
+                view?.showError(t.toString());
+                view?.hideLoading()
+            }
+        })
+    }
+
 }

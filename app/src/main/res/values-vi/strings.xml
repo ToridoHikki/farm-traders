@@ -90,5 +90,6 @@
     <string name="msg_repassword_not_match">Mật khẩu không trùng nhau, Vui lòng nhập lại!</string>
     <string name="tab_price_products_today">Giá trong ngày</string>
     <string name="tab_products">Nông sản</string>
+    <string name="product_list">Danh sách nông sản</string>
 
 </resources>
