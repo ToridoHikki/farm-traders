@@ -30,7 +30,7 @@
                         app:layout_collapseMode="parallax"
                         android:src="@drawable/logo_farm"
                         android:layout_width="fill_parent"
-                        android:scaleType="fitCenter"
+                        android:scaleType="fitXY"
                         android:adjustViewBounds="true"
                         android:layout_height="@dimen/nav_header_height_supper"/>
 
@@ -52,7 +52,7 @@
                             android:layout_marginLeft="8dp"/>
 
                     <TextView
-                            android:id="@+id/tvStoreType"
+                            android:id="@+id/tvFarmerName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -85,20 +85,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
         </FrameLayout>-->
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <TextView
+                    android:id="@+id/tvAddressTitle"
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/tvAddress"
+                    app:layout_constraintBottom_toTopOf="@id/tvPhoneTitle"
                     android:text="Địa chỉ: "/>
             <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toRightOf="@id/tvAddressTitle"
+                    android:text="Address"/>
+            <TextView
+                    android:id="@+id/tvPhoneTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddressTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvPhone"
+                    app:layout_constraintBottom_toTopOf="@id/tvListProductTitle"
                     android:text="Số điện thoại: "/>
             <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddress"
+                    app:layout_constraintLeft_toRightOf="@id/tvPhoneTitle"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintBottom_toTopOf="@id/tvListProductTitle"
+                    android:text="0982*****"/>
+            <TextView
+                    android:id="@+id/tvListProductTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/spacing_medium"
@@ -106,12 +135,19 @@
                     android:layout_marginTop="@dimen/spacing_small"
                     android:layout_marginBottom="@dimen/spacing_small"
                     android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/rvProductListofFarmDetail"
                     android:text="Danh Sách nông sản thuộc nông trại"/>
             <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvFarmDetail"
+                    android:id="@+id/rvProductListofFarmDetail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvListProductTitle"/>
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

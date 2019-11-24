@@ -20,12 +20,27 @@ import vn.silverbot99.core.base.presentation.mvp.android.list.GridRenderConfigFa
 import vn.silverbot99.core.base.presentation.mvp.android.list.ListViewMvp
 import vn.silverbot99.core.base.presentation.mvp.android.list.OnItemRvClickedListener
 import vn.silverbot99.farm_traders.R
+import vn.silverbot99.farm_traders.app.data.network.response.FarmerResponse
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
+import vn.silverbot99.farm_traders.func.product_list.presentation.renderer.ProductListRenderer
+import java.util.logging.Handler
+import vn.silverbot99.farm_traders.func.main.MainActivity
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
+import android.support.v4.os.HandlerCompat.postDelayed
+
+
 
 class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val farm: LocationFarmItemModel/*val farmName: String,val farmId: String,val farmPhoto: String */) : AndroidMvpView(mvpActivity,viewCreator),
     FarmDetailContract.View {
+
+
+    override fun showFarmerDetail(data: FarmerResponse) {
+        view.tvFarmerName.text = data.farmer.farmerName
+        view.tvPhone.text = data.farmer.phoneNumber
+    }
 
     private var listViewMvp: ListViewMvp? = null
     private var listData: MutableList<ViewModel> = mutableListOf()
@@ -58,10 +73,9 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
     }
 
     override fun initCreateView() {
-        listViewMvp = ListViewMvp(mvpActivity, view.rvFarmDetail,renderConfig)
+        listViewMvp = ListViewMvp(mvpActivity, view.rvProductListofFarmDetail,renderConfig)
         listViewMvp?.createView()
-        listViewMvp?.addViewRenderer(CategoryRender(mvpActivity))
-
+        listViewMvp?.addViewRenderer(ProductListRenderer(mvpActivity))
         Glide.with(mvpActivity).load(farm.photo).into(view.ivFarmDetail)
         view.tvFarmName.text = farm.name
 
@@ -90,6 +104,9 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
         }
     }
 
+    override fun loadProductList() {
+        mPresenter.getProductListOfFarm(farmId = farm.farmId)
+    }
     override fun showLoading() {
         loadingView.show()
     }
@@ -118,7 +135,7 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
 
     override fun initData() {
         super.initData()
-        mPresenter.getFarmDetail()
+        mPresenter.getFarmerbyFarmId(farm.farmId)
     }
 
 
