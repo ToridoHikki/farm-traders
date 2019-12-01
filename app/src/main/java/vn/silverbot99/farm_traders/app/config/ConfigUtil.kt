@@ -1,5 +1,6 @@
 package vn.silverbot99.farm_traders.app.config
 
+import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import kotlinex.boolean.getValueOrDefault
 import vn.silverbot99.core.base.config.ConfigSaver
 import vn.silverbot99.core.base.config.PaperConfigSaverImpl
@@ -28,7 +29,13 @@ class ConfigUtil {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
                 return configSaver.get(ConfigSaver.CONFIG_SETTING_USER_UID)
             }
+        val listFarm: MutableList<ViewModel>?
+            get(){
+                val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
+                return configSaver.get(ConfigSaver.CONFIG_SETTING_LIST_FARM)
+            }
 /*
+
         val passportRequest: PassportRequest?
             get() {
                 val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
@@ -62,6 +69,12 @@ class ConfigUtil {
         fun savePassportUID(passportUid: String?) {
             val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
             configSaver.save(ConfigSaver.CONFIG_SETTING_USER_UID, passportUid)
+        }
+
+        @JvmStatic
+        fun saveListFarm(listFarm: MutableList<ViewModel>?) {
+            val configSaver = PaperConfigSaverImpl(ConfigSaver.CONFIG_PAGER)
+            configSaver.save(ConfigSaver.CONFIG_SETTING_LIST_FARM, listFarm)
         }
 
         @JvmStatic

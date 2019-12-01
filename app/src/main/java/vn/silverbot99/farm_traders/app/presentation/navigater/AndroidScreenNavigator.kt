@@ -1,13 +1,30 @@
 package vn.silverbot99.farm_traders.app.presentation.navigater
 
 import android.content.Intent
+import android.net.Uri
+import android.support.v4.content.ContextCompat.startActivity
 import be.trikke.intentbuilder.Flow
-import com.rabbitmq.client.AMQP
+//import com.rabbitmq.client.AMQP
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.farm_traders.app.presentation.navigation.ScreenNavigator
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
+import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
+import com.mapbox.mapboxsdk.style.expressions.Expression.number
+import android.support.v4.content.ContextCompat.startActivity
+
+
 
 class AndroidScreenNavigator constructor(val mvpActivity: MvpActivity) : ScreenNavigator {
+    override fun gotoMapScreen(locationFarmItemModel: LocationFarmItemModel) {
+        Flow.gotoMapActivity(locationFarmItemModel)
+            .launch(mvpActivity)
+    }
+
+    override fun gotoProductDetailScreen(productItemModel: ProductListItemModel) {
+        Flow.gotoProductDetailActivity(productItemModel)
+            .launch(mvpActivity)
+    }
+
     override fun gotoFarmDetailScreen(farmItemModel: LocationFarmItemModel/*farmId: String*/) {
         Flow.gotoFarmDetailActivity(farmItemModel)
             .launch(mvpActivity)
@@ -48,10 +65,16 @@ class AndroidScreenNavigator constructor(val mvpActivity: MvpActivity) : ScreenN
     }
 
 
-    override fun callToDriver(phoneDriver: String) {
+    override fun callToFarmer(phoneFarmer: String) {
+       // val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneFarmer"))
+        // val intent = Intent(Intent.ACTION_CALL, Uri.fromParts("sms", phoneFarmer, null))
+        //intent.data = Uri.parse("tel:$number")
+        mvpActivity.startActivity(Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneFarmer")))
     }
 
-    override fun sendSMSToDriver(phoneDriver: String) {
+    override fun sendSMSToFarmer(phoneFarmer: String) {
+        mvpActivity.startActivity(Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", phoneFarmer, null)))
+
     }
 
 }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.bartoszlipinski:viewpropertyobjectanimator:1.2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a494f1c0c6d54b1bb8a3f0e7ace5c31b/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a494f1c0c6d54b1bb8a3f0e7ace5c31b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a494f1c0c6d54b1bb8a3f0e7ace5c31b/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

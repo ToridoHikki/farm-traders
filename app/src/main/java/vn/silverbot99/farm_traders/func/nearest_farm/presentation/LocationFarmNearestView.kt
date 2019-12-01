@@ -28,7 +28,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import kotlinex.mvpactivity.showErrorAlert
 import kotlinex.string.getValueOrDefaultIsEmpty
-import kotlinx.android.synthetic.main.layout_medical_gasstation_map.view.*
+import kotlinx.android.synthetic.main.layout_farm_nearest.view.*
 import vn.silverbot99.core.app.util.BitmapUtils
 import vn.silverbot99.core.app.view.SimpleDividerItemDecoration
 import vn.silverbot99.core.app.view.loading.Loadinger
@@ -38,6 +38,7 @@ import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.core.base.presentation.mvp.android.list.LinearRenderConfigFactory
 import vn.silverbot99.core.base.presentation.mvp.android.list.ListViewMvp
 import vn.silverbot99.farm_traders.R
+import vn.silverbot99.farm_traders.app.config.ConfigUtil
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 
@@ -62,7 +63,7 @@ LocationFarmNearestContract.View {
     private val resourceProvider= LocationFarmNearestResourceProvider()
 
     private val listfarm = mutableListOf<MarkerOptions>()
-
+    val listFarmSaved:MutableList<ViewModel> = mutableListOf()
 
     private var isNotDraw = true
     private var selectedMarker: Marker? = null
@@ -79,51 +80,6 @@ LocationFarmNearestContract.View {
 
 
 
-    private fun onClickfaFab() {
-        if (mapboxMap?.getStyle() != null) {
-            enableLocationComponent(mapboxMap!!.style)
-        }
-    }
-
-
-
-/*    private fun initListView(viewBottom: LinearLayout?) {
-        //mPresenter.getMedicalList(page = 1)
-        listViewMvp = ListViewMvp(mvpActivity, viewBottom!!.recyclerview_list_items, renderConfig)
-        listViewMvp?.createView()
-        listViewMvp?.addViewRenderer(LocationMedicalRender(mvpActivity))
-        Log.i("LocationData","Check Ordinal addRender")
-        listViewMvp?.addViewRenderer(LocationGasolineRender(mvpActivity))
-        listViewMvp?.setOnItemRvClickedListener(onActionBottomVehicleItemOnClick)
-//        viewBottom.view_data_empty.visibility = View.GONE
-    }*/
-/*    private val onActionBottomVehicleItemOnClick: OnItemRvClickedListener<ViewModel> = object : OnItemRvClickedListener<ViewModel> {
-        override fun onItemClicked(view: View, position: Int, dataItem: ViewModel) {
-            if (dataItem is LocationFarmItemModel) {
-                selectMedical(dataItem)
-            }
-        }
-    }*/
-    private fun selectMedical(data: LocationFarmItemModel) {
-        runWithCheckMultiTouch("onActionSearch_click_item", object : OnActionNotify {
-            override fun onActionNotify() {
-                val vehiclePosition = CameraPosition.Builder()
-                    .target(LatLng(data.lat, data.long))
-                    .zoom(15.0) // Khoang cach zoom gan hay xa, muon gan thi tang gia tri len
-//                    .tilt(12.0)
-                    .build()
-                selectedMarker?.hideInfoWindow()/*
-                selectedMarker = listfarm.find {
-                    it.title == data.medicalName.getValueOrDefaultIsEmpty()
-                }?.marker*/
-                mapboxMap?.let {
-                    selectedMarker?.showInfoWindow(it, getMapView())
-                    it.animateCamera(CameraUpdateFactory.newCameraPosition(vehiclePosition), 2000)
-                }
-                recyclerVehicleBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
-            }
-        })
-    }
     override fun getOnMapReadyCallback(): OnMapReadyCallback = OnMapReadyCallback { mapBox ->
         mapboxMap = mapBox
         mapboxMap?.setOnFpsChangedListener {
@@ -144,10 +100,9 @@ LocationFarmNearestContract.View {
             isNotDraw = true
         }
         val icon = IconFactory.getInstance(mvpActivity).fromResource(R.drawable.ic_farm_24)
-        /*var  drawable : Drawable?= ResourcesCompat.getDrawable(mvpActivity.resources, R.drawable.ic_gas_station, null);
-        var mBitmap : Bitmap = BitmapUtils.drawableToBitmap(drawable)*/
-        if (listData.isNotEmpty()) {
-            listData.map { item ->
+/*        if (ConfigUtil.listFarm!= null){
+            listFarmSaved.addAll(ConfigUtil.listFarm!!)
+            listFarmSaved.map { item ->
                 if (item is LocationFarmItemModel) {
                     val farmLocation = LatLng(item.lat, item.long)
                     listfarm.add(MarkerOptions()
@@ -161,34 +116,73 @@ LocationFarmNearestContract.View {
             mapboxMap?.setOnInfoWindowClickListener { marker ->
 
                 for (position in 0 until listfarm.size) {
-                    val item = listData[position] as LocationFarmItemModel
+                    val item = listFarmSaved[position] as LocationFarmItemModel
                     if (item.name.equals(marker.title)) {
-                       // mPresenter.getMedicalDetail(item.medicalId)
-                        //todo chuyen den trang trang thong tin nong trai
+                        // mPresenter.getMedicalDetail(item.medicalId)
                         mPresenter.gotoFarmDetail(item)
                         break
                     }
                 }
                 true
             }
-        isNotDraw = false
+            isNotDraw = false
+        }*/
+//        else {
+        if (listData.isNotEmpty()) {
+            listData.map { item ->
+                if (item is LocationFarmItemModel) {
+                    val farmLocation = LatLng(item.lat, item.long)
+                    listfarm.add(
+                        MarkerOptions()
+                            .position(farmLocation)
+                            .icon(icon)
+                            .title(item.name.getValueOrDefaultIsEmpty())
+                    )
+                }
+                mapboxMap?.addMarkers(listfarm)
+            }
+            mapboxMap?.setOnInfoWindowClickListener { marker ->
+
+                for (position in 0 until listfarm.size) {
+                    val item = listData[position] as LocationFarmItemModel
+                    if (item.name.equals(marker.title)) {
+                        // mPresenter.getMedicalDetail(item.medicalId)
+                        mPresenter.gotoFarmDetail(item)
+                        break
+                    }
+                }
+                true
+            }
+            isNotDraw = false
         }
+//        }
     }
 
     override fun getMapView(): MapView {
         return view.mapView
     }
 
-    override fun loadData() {
+/*    override fun loadData() {
         mapboxMap?.clear()
         view.mapView.getMapAsync(getOnMapReadyCallback())
         mPresenter.getFarmList()
-    }
+    }*/
 
     override fun initData() {
         super.initData()
         view.mapView.getMapAsync(getOnMapReadyCallback())
+        /*if (ConfigUtil.listFarm!=null){
+            listData.addAll(ConfigUtil.listFarm!!)
+            listViewMvp?.setItems(listData)
+            listViewMvp?.notifyDataChanged()
+            drawBuldingOnMap()
+            ConfigUtil.saveListFarm(null)
+        }
+        else{
+            mPresenter.getFarmList()
+        }*/
         mPresenter.getFarmList()
+
     }
 
     override fun showLoading() {
@@ -226,7 +220,6 @@ LocationFarmNearestContract.View {
         }
         listViewMvp?.setItems(listData)
         listViewMvp?.notifyDataChanged()
-//        view.bottom_sheet.view_data_empty.visibility = View.GONE
         drawBuldingOnMap()
     }
     @SuppressLint("MissingPermission")

@@ -8,9 +8,15 @@ import retrofit2.Response
 import vn.silverbot99.farm_traders.app.data.network.response.ProductListResponse
 import vn.silverbot99.farm_traders.app.network.ApiInterfac
 import vn.silverbot99.farm_traders.app.network.CustomApiClient
+import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import vn.silverbot99.farm_traders.func.product_list.domain.ProductListMapper
+import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
 
-class ProductListPresenter: ProductListContract.Presenter() {
+class ProductListPresenter(val screenNavigator: AndroidScreenNavigator): ProductListContract.Presenter() {
+    override fun gotoProductDetail(product: ProductListItemModel) {
+        screenNavigator.gotoProductDetailScreen(product)
+    }
+
     override fun getProductList(categoryId: String) {
         val apiService = CustomApiClient.getClient().create(ApiInterfac.ApiInterface::class.java)
 

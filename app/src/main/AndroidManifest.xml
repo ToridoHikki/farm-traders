@@ -45,6 +45,8 @@
         <activity android:name=".func.verification_phone.VerificationActivity" />
         <activity android:name=".func.product_list.ProductListActivity" />
         <activity android:name=".func.farm_detail.FarmDetailActivity" />
+        <activity android:name=".func.product_detail.ProductDetailActivity" />
+        <activity android:name=".func.map.MapActivity" />
 
         <meta-data
                 android:name="io.fabric.ApiKey"

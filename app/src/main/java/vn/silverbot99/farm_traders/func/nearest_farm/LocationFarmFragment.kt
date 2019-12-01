@@ -14,4 +14,5 @@ class LocationFarmFragment : MvpFragment() {
     override fun createAndroidMvpView(): AndroidMvpView {
         return LocationFarmNearestView(getMvpActivity(), LocationFarmNearestView.ViewCreator(getMvpActivity(), null))
     }
+
 }

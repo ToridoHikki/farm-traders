@@ -17,8 +17,6 @@ interface LocationFarmNearestContract {
 
         fun showError(message: String)
 
-        fun loadData()
-
         fun showDetailInfo(data: List<ViewModel>)
         //fun showGasolineStoreDatail(data: List<ViewModel>)
 

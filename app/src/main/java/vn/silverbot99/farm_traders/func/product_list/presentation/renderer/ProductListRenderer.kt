@@ -16,7 +16,7 @@ class ProductListRenderer (mvpActivity: MvpActivity) : ViewRenderer<ProductListI
     override fun bindView(model: ProductListItemModel, viewRoot: View) {
         Glide.with(context).load(model.photo).into(viewRoot.ivProduct)
         viewRoot.tvNameProduct.text = model.name
-        viewRoot.tvDescription.text = model.description
-        viewRoot.tvPrice.text = model.price
+       // viewRoot.tvDescription.text = model.description
+        viewRoot.tvPrice.text = "Giá thị trường: ${model.price}"
     }
 }

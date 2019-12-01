@@ -17,6 +17,10 @@ class ProductListResponse (
         @SerializedName("description")
         var description: String = "",
         @SerializedName("photo")
-        var photo: String = ""
-    )
+        var photo: String = "",
+        @SerializedName("farm_id")
+        var farmId: String = "",
+        @SerializedName("category_id")
+        var categoryId: String = ""
+        )
 }

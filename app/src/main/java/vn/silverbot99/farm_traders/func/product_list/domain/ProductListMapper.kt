@@ -16,7 +16,9 @@ class ProductListMapper : Mapper<ProductListResponse, MutableList<ViewModel>> {
                     photo = it.photo.getValueOrDefaultIsEmpty(),
                     productId = it.productId.getValueOrDefaultIsEmpty(),
                     price = it.price.getValueOrDefaultIsEmpty(),
-                    description = it.description.getValueOrDefaultIsEmpty()
+                    description = it.description.getValueOrDefaultIsEmpty(),
+                    categoryId = it.categoryId.getValueOrDefaultIsEmpty(),
+                    farmId = it.farmId.getValueOrDefaultIsEmpty()
                 )
             )
         }

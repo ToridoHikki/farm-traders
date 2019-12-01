@@ -43,12 +43,14 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewPager"
-            app:tabGravity="fill"
+            app:tabGravity="center"
+            app:tabPadding="@dimen/spacing_tini"
             app:tabIndicatorColor="@android:color/transparent"
             app:tabPaddingEnd="0dp"
-            app:tabPaddingStart="0dp"
-            app:tabSelectedTextColor="@color/md_pink_400"
-            app:tabTextColor="@color/base_color"
+            app:tabPaddingStart="1dp"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/StyleTabLayout"
+            app:tabTextColor="@color/grey"
             tools:visibility="visible">
 
     </android.support.design.widget.TabLayout>

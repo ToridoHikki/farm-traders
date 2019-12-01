@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.View
 import android.view.View.TEXT_ALIGNMENT_CENTER
 import android.view.ViewGroup
@@ -12,11 +13,15 @@ import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import kotlinex.mvpactivity.showErrorAlert
 import kotlinx.android.synthetic.main.layout_product_list.view.*
 import vn.silverbot99.core.app.view.loading.Loadinger
+import vn.silverbot99.core.base.domain.listener.OnActionNotify
 import vn.silverbot99.core.base.presentation.mvp.android.AndroidMvpView
 import vn.silverbot99.core.base.presentation.mvp.android.MvpActivity
 import vn.silverbot99.core.base.presentation.mvp.android.list.GridRenderConfigFactory
 import vn.silverbot99.core.base.presentation.mvp.android.list.ListViewMvp
+import vn.silverbot99.core.base.presentation.mvp.android.list.OnItemRvClickedListener
 import vn.silverbot99.farm_traders.R
+import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
+import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
 import vn.silverbot99.farm_traders.func.product_list.presentation.renderer.ProductListRenderer
 
 class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val categoryKey: String) : AndroidMvpView(mvpActivity,viewCreator),
@@ -25,21 +30,21 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
     private var listViewMvp: ListViewMvp? = null
     private var listData: MutableList<ViewModel> = mutableListOf()
     private val resourceProvider = ProductListResourceProvider()
-    private val mPresenter = ProductListPresenter()
+    private val mPresenter = ProductListPresenter(screenNavigator = AndroidScreenNavigator(mvpActivity))
     private val loadingView = Loadinger.create(mvpActivity, mvpActivity.window)
     private val renderInput = GridRenderConfigFactory.Input(
         context = mvpActivity,
         orientation = GridRenderConfigFactory.Orientation.VERTICAL,
-        spanCount = 1,
+        spanCount = 2,
         spanSizeLookup = getSpanSizeLookup()
     )
     private val renderConfig = GridRenderConfigFactory(renderInput).create()
     private fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                /*if (listViewMvp?.items?.size == 2) {
-                    return 1
-                }*/
+                if (listViewMvp?.items?.size == 2) {
+                    return 2
+                }
                 return 1
             }
         }
@@ -62,9 +67,22 @@ class ProductListView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val ca
         listViewMvp = ListViewMvp(mvpActivity, view.rvProductList,renderConfig)
         listViewMvp?.createView()
         listViewMvp?.addViewRenderer(ProductListRenderer(mvpActivity))
-       // listViewMvp?.setOnItemRvClickedListener(mOnClickCategoryItem)
+        listViewMvp?.setOnItemRvClickedListener(mOnClickCategoryItem)
     }
 
+    private val mOnClickCategoryItem: OnItemRvClickedListener<ViewModel> = object :
+        OnItemRvClickedListener<ViewModel> {
+        override fun onItemClicked(view: View, position: Int, dataItem: ViewModel) {
+            runWithCheckMultiTouch("ListMenuView_click_item", object : OnActionNotify {
+                override fun onActionNotify() {
+                    if (dataItem is ProductListItemModel) {
+                        Log.d("item","onItemClicked ${dataItem.name}")
+                        mPresenter.gotoProductDetail(dataItem)
+                    }
+                }
+            })
+        }
+    }
     override fun showLoading() {
         loadingView.show()
     }

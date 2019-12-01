@@ -30,6 +30,7 @@ import vn.silverbot99.core.app.view.CustomViewPager
 import vn.silverbot99.farm_traders.func.empty.EmptyFragment
 import vn.silverbot99.farm_traders.func.nearest_farm.LocationFarmFragment
 import vn.silverbot99.farm_traders.func.category.CategoryFragment
+import vn.silverbot99.farm_traders.func.price_rate.PriceRateFragment
 
 
 abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : AndroidMvpView(mvpActivity, viewCreator), MainContract.MainView {
@@ -105,7 +106,7 @@ abstract class MainView(mvpActivity: MvpActivity, viewCreator: ViewCreator) : An
         override fun getItem(position: Int): Fragment {
             var fragment: MvpFragment = EmptyFragment()
             when (position) {
-                0 -> fragment = EmptyFragment()
+                0 -> fragment = PriceRateFragment()
                 1 -> fragment = LocationFarmFragment()
                 2 -> fragment = CategoryFragment()
             }

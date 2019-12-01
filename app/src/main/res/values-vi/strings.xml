@@ -91,5 +91,7 @@
     <string name="tab_price_products_today">Giá trong ngày</string>
     <string name="tab_products">Nông sản</string>
     <string name="product_list">Danh sách nông sản</string>
+    <string name="title_product_detail">Chi tiết nông sản</string>
+    <string name="list_price_rate">Danh sách nông sản Trong Ngày</string>
 
 </resources>

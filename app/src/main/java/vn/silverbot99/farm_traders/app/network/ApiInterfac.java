@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import vn.silverbot99.farm_traders.app.data.network.response.CategoriesResponse;
+import vn.silverbot99.farm_traders.app.data.network.response.FarmResponse;
 import vn.silverbot99.farm_traders.app.data.network.response.FarmerResponse;
 import vn.silverbot99.farm_traders.app.data.network.response.LocationFarmNearestResponse;
 import vn.silverbot99.farm_traders.app.data.network.response.ProductListResponse;
@@ -27,6 +28,8 @@ public class ApiInterfac {
         Call<LocationFarmNearestResponse> getFarms();
         @GET("getFarmerByFarmId")
         Call<FarmerResponse> getFarmerByFarmId(@Query("farmId") String farmId);
+        @GET("getFarmsByFarmerId")
+        Call<LocationFarmNearestResponse> getFarmsByFarmerId(@Query("farmerId") String farmerId);
         @GET("getProducts")
         Call<ProductListResponse> getProducts(@Query("farmId") String farmId, @Query("categoryId") String categoryId);
     }

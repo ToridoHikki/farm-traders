@@ -5,6 +5,7 @@ import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import kotlinex.number.getValueOrDefaultIsZero
 import kotlinex.string.getValueOrDefaultIsEmpty
 import vn.silverbot99.core.base.domain.mapper.Mapper
+import vn.silverbot99.farm_traders.app.config.ConfigUtil
 import vn.silverbot99.farm_traders.app.data.network.response.LocationFarmNearestResponse
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
 
@@ -23,7 +24,7 @@ class LocationFarmNearestMapper : Mapper<LocationFarmNearestResponse, MutableLis
             )
         }
         Log.i("LocationData", "Map data LocationFarmNearestResponse success")
+        //ConfigUtil.saveListFarm(list)
         return list
     }
-
 }

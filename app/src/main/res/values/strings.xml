@@ -90,6 +90,8 @@
     <string name="company_name">Tên doanh nghiệp</string>
     <string name="company_owner">Chủ doanh nghiệp</string>
     <string name="product_list">Danh sách nông sản</string>
+    <string name="title_product_detail">Chi tiết nông sản</string>
+    <string name="list_price_rate">Danh sách nông sản Trong Ngày</string>
 
 
 </resources>

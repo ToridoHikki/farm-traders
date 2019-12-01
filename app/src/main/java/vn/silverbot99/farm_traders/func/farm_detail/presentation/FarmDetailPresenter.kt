@@ -10,9 +10,15 @@ import vn.silverbot99.farm_traders.app.data.network.response.ProductListResponse
 import vn.silverbot99.farm_traders.app.network.ApiInterfac
 import vn.silverbot99.farm_traders.app.network.CustomApiClient
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
-import vn.silverbot99.farm_traders.func.product_list.domain.ProductListMapper
+import vn.silverbot99.farm_traders.func.farm_detail.domain.FarmDetailProductListMapper
+import vn.silverbot99.farm_traders.func.farm_detail.presentation.model.FarmDetailProductListItemModel
+import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
 
 class FarmDetailPresenter(val screenNavigator: AndroidScreenNavigator): FarmDetailContract.Presenter() {
+    override fun gotoProductDetail(productListItemModel: ProductListItemModel) {
+        screenNavigator.gotoProductDetailScreen(productListItemModel)
+    }
+
     override fun getProductListOfFarm(farmId: String) {
         val apiService = CustomApiClient.getClient().create(ApiInterfac.ApiInterface::class.java)
 
@@ -22,13 +28,13 @@ class FarmDetailPresenter(val screenNavigator: AndroidScreenNavigator): FarmDeta
                 if (response.isSuccessful){
                     val categories: ProductListResponse? = response.body()
                     categories?.let {
-                        Log.d("response", "okhttp: ${it.productList}")
+                        Log.d("farmProduct", "okhttp: ${it.productList}")
                         if(it.productList.isEmpty()){
                             view?.loadProductList()
                         }
                         else{
                             view?.hideLoading()
-                            view?.showDetailInfo(ProductListMapper().map(it))
+                            view?.showDetailInfo(FarmDetailProductListMapper().map(it))
                         }
                     }
                 }
@@ -43,6 +49,7 @@ class FarmDetailPresenter(val screenNavigator: AndroidScreenNavigator): FarmDeta
     }
 
     override fun getFarmerbyFarmId(farmId: String) {
+        view?.showLoading()
         val apiService = CustomApiClient.getClient().create(ApiInterfac.ApiInterface::class.java)
 
         val call = apiService.getFarmerByFarmId(farmId)
@@ -53,6 +60,7 @@ class FarmDetailPresenter(val screenNavigator: AndroidScreenNavigator): FarmDeta
                     categories?.let {
                         Log.d("response", "okhttp: ${it.farmer}")
                         view?.showFarmerDetail(it)
+                        view?.hideLoading()
                     }
                 }
             }
@@ -60,6 +68,7 @@ class FarmDetailPresenter(val screenNavigator: AndroidScreenNavigator): FarmDeta
             override fun onFailure(call: Call<FarmerResponse>, t: Throwable) {
                 // Log error here since request failed
                 Log.e(ContentValues.TAG, t.toString())
+                view?.hideLoading()
                 view?.showError(t.toString());
             }
         })

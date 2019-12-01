@@ -177,7 +177,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     //Stetho
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+  //  implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 
     //RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
@@ -194,9 +194,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
     //Memory Leak Detection
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:${versionLeakcanaryValue}"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
-    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
+
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:${versionLeakcanaryValue}"
+//    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
+//    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${versionLeakcanaryValue}"
 
     //support
     implementation 'com.rhexgomez.typer:typer-roboto:2.0.0'
@@ -210,7 +211,7 @@ dependencies {
     implementation "com.android.support:design:${versionSupportValue}"
     implementation 'android.arch.work:work-runtime:1.0.0-alpha08'
     //Calendar
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+   // implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
 
     implementation 'br.com.simplepass:loading-button-android:1.6.5'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
@@ -229,8 +230,8 @@ dependencies {
     // use kapt for kotlin apt if you're a Kotlin user
     kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     // dbflow
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+//    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+//    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
     // RXJava 2 support
     implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
@@ -244,16 +245,16 @@ dependencies {
 
     //mapbox
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:7.3.2'
+    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:7.4.0')
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0')
     //db
     implementation 'io.paperdb:paperdb:2.1'
 
     //chart
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 //    implementation 'com.github.lecho:hellocharts-android:v1.5.8'
     //map_header
-//    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.39.0'
-    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:7.4.0')
-    implementation ('com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.6.0')
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.39.0'
 
 
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
@@ -277,10 +278,11 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.5.0-rc1'
 
     // rabbitMQ
-    implementation 'com.rabbitmq:amqp-client:5.6.0'
-    api "com.google.protobuf:protobuf-lite:3.0.1"
+//    implementation 'com.rabbitmq:amqp-client:5.6.0'
+//    api "com.google.protobuf:protobuf-lite:3.0.1"
     //animation
     implementation "com.andkulikov:transitionseverywhere:1.8.1"
+    //implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.4'
 
 
 

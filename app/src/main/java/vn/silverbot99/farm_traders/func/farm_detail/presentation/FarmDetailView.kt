@@ -1,5 +1,6 @@
 package vn.silverbot99.farm_traders.func.farm_detail.presentation
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
@@ -9,9 +10,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import kotlinex.mvpactivity.showErrorAlert
-import kotlinx.android.synthetic.main.item_layout_product_list_vholder.view.*
 import kotlinx.android.synthetic.main.layout_farm_detail.view.*
-import vn.minerva.travinh.func.medical.presentation.renderer.CategoryRender
 import vn.silverbot99.core.app.view.loading.Loadinger
 import vn.silverbot99.core.base.domain.listener.OnActionNotify
 import vn.silverbot99.core.base.presentation.mvp.android.AndroidMvpView
@@ -23,14 +22,14 @@ import vn.silverbot99.farm_traders.R
 import vn.silverbot99.farm_traders.app.data.network.response.FarmerResponse
 import vn.silverbot99.farm_traders.app.presentation.navigater.AndroidScreenNavigator
 import vn.silverbot99.farm_traders.func.nearest_farm.presentation.model.LocationFarmItemModel
+import android.location.Address
+import android.support.design.widget.AppBarLayout
+import android.location.Geocoder
+import kotlinex.string.getValueOrDefaultIsEmpty
+import vn.silverbot99.farm_traders.func.farm_detail.presentation.model.FarmDetailProductListItemModel
+import vn.silverbot99.farm_traders.func.farm_detail.presentation.renderer.FarmDetailProductListRenderer
 import vn.silverbot99.farm_traders.func.product_list.presentation.model.ProductListItemModel
-import vn.silverbot99.farm_traders.func.product_list.presentation.renderer.ProductListRenderer
-import java.util.logging.Handler
-import vn.silverbot99.farm_traders.func.main.MainActivity
-import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
-import android.support.v4.os.HandlerCompat.postDelayed
-
+import java.util.*
 
 
 class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val farm: LocationFarmItemModel/*val farmName: String,val farmId: String,val farmPhoto: String */) : AndroidMvpView(mvpActivity,viewCreator),
@@ -43,6 +42,7 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
     }
 
     private var listViewMvp: ListViewMvp? = null
+    private var appBarExpanded: Boolean = true
     private var listData: MutableList<ViewModel> = mutableListOf()
     private val mPresenter = FarmDetailPresenter(AndroidScreenNavigator(mvpActivity))
     private val loadingView = Loadinger.create(mvpActivity, mvpActivity.window)
@@ -57,9 +57,9 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (listViewMvp?.items?.size == 2) {
-                    return 2
+                    return 1
                 }
-                return 1
+                return 2
             }
         }
     }
@@ -70,40 +70,84 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
         }
         listViewMvp?.setItems(this.listData)
         listViewMvp?.notifyDataChanged()
+        Log.d("farmProduct","listData: $listData")
     }
 
     override fun initCreateView() {
         listViewMvp = ListViewMvp(mvpActivity, view.rvProductListofFarmDetail,renderConfig)
         listViewMvp?.createView()
-        listViewMvp?.addViewRenderer(ProductListRenderer(mvpActivity))
+        listViewMvp?.addViewRenderer(FarmDetailProductListRenderer(mvpActivity))
         Glide.with(mvpActivity).load(farm.photo).into(view.ivFarmDetail)
         view.tvFarmName.text = farm.name
 
+        getTitleFromLatLon(farm.lat,farm.long)
+        val toolbar = view.toolbarFarm
+        mvpActivity.setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { mvpActivity.onBackPressed()}
 
+        initAppBar()
+        listViewMvp?.setOnItemRvClickedListener(mOnClickCategoryItem)
 
-
-        //listViewMvp?.setOnItemRvClickedListener(mOnClickCategoryItem)
+    }
+    private fun getTitleFromLatLon(lat: Double, lon: Double): String{
+        val addresses: List<Address>
+        val geocoder: Geocoder =  Geocoder(mvpActivity, Locale.getDefault())
+        addresses = geocoder.getFromLocation(lat, lon, 1)
+        val location: String = addresses.get(0).getAddressLine(0)
+        Log.d("address","getTitleFromLatLon: $location")
+        view.tvAddress.text = location
+        return addresses.toString()
 
     }
     /*    private val mOnClickMessageItem = (object : View.OnClickListener{
-            override fun onClick(v: View?) {
+            override fun onClick(v: View?) {s
                 EmptyFragment()
             }
         })*/
+    private fun initAppBar() {
+        view.appbar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener{
+            @SuppressLint("RestrictedApi")
+            override fun onOffsetChanged(p0: AppBarLayout?, p1: Int) {
+                if(Math.abs(p1) > 200){
+                    appBarExpanded = false;
+                    view.llFarmName.visibility = View.GONE
+                    view.collapsing.title = farm.name
+                }else{
+                    appBarExpanded = true;
+                    view.llFarmName.visibility = View.VISIBLE
+
+                }
+            }
+
+        })
+    }
     private val mOnClickCategoryItem: OnItemRvClickedListener<ViewModel> = object :
         OnItemRvClickedListener<ViewModel> {
         override fun onItemClicked(view: View, position: Int, dataItem: ViewModel) {
             runWithCheckMultiTouch("ListMenuView_click_item", object : OnActionNotify {
                 override fun onActionNotify() {
-                    if (dataItem is ProductListItemModel) {
+                    if (dataItem is FarmDetailProductListItemModel) {
                         Log.d("item","onItemClicked ${dataItem.name}")
                         //mPresenter.gotoProductList(dataItem.categoryId)
+                        mPresenter.gotoProductDetail(convertObject(dataItem))
                     }
                 }
             })
         }
     }
-
+    private fun convertObject(farmDetailProductListItemModel: FarmDetailProductListItemModel): ProductListItemModel{
+        val productListItemModel: ProductListItemModel = ProductListItemModel()
+        farmDetailProductListItemModel.let {
+            productListItemModel.name = it.name
+            productListItemModel.price = it.price
+            productListItemModel.categoryId = it.categoryId
+            productListItemModel.description = it.description
+            productListItemModel.farmId = it.farmId
+            productListItemModel.productId = it.productId
+            productListItemModel.photo = it.photo
+        }
+        return productListItemModel
+    }
     override fun loadProductList() {
         mPresenter.getProductListOfFarm(farmId = farm.farmId)
     }
@@ -136,6 +180,7 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
     override fun initData() {
         super.initData()
         mPresenter.getFarmerbyFarmId(farm.farmId)
+        mPresenter.getProductListOfFarm(farm.farmId)
     }
 
 
