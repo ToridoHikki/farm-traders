@@ -57,9 +57,9 @@ class FarmDetailView (mvpActivity: MvpActivity, viewCreator: ViewCreator,val far
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (listViewMvp?.items?.size == 2) {
-                    return 1
+                    return 2
                 }
-                return 2
+                return 1
             }
         }
     }

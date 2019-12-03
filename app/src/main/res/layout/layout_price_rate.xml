@@ -25,7 +25,7 @@
             android:gravity="center_horizontal"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
-            android:text="01/12/2019">
+            android:text="04/12/2019">
     </TextView>
 
     <LinearLayout
@@ -46,17 +46,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Tên Nông Sản"/>
-        <TextView
-                android:id="@+id/tvPlaceTitle"
-                android:text="Địa Điểm"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"/>
 
         <TextView
                 android:id="@+id/tvPriceTitle"
@@ -69,9 +58,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                app:layout_constraintLeft_toRightOf="@+id/tvPlaceTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/vLine"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
@@ -91,47 +77,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <TextView
-                    android:id="@+id/tvProductName"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Cam sành"/>
-            <TextView
-                    android:id="@+id/tvPlace"
-                    android:text="Long An"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-
-            <TextView
-                    android:id="@+id/tvPrice"
-                    android:text="25.000 vnd"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-        </TableRow>
-        <View
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/line_divider_blue_grey_700"
-                android:layout_height="1px"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
 
         <TableRow
                 android:layout_width="match_parent"
@@ -144,14 +89,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Chanh Chùm"/>
-            <TextView
-                    android:text="Long An"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
 
             <TextView
                     android:text="20.000 vnd"
@@ -183,14 +120,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Chuối Cao"/>
-            <TextView
-                    android:text="Bến Tre"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
 
             <TextView
                     android:text="19.500 vnd"
@@ -210,11 +139,217 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Chanh không hạt"/>
+
+            <TextView
+                android:text="23.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Thanh long ruột đỏ"/>
+
+            <TextView
+                android:text="32.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Bưởi da xanh"/>
+
+            <TextView
+                android:text="40.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Cam Xoàn"/>
+
+            <TextView
+                android:text="29.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Ổi ruột đỏ"/>
+
+            <TextView
+                android:text="17.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Xoài Cát Hòa Lộc"/>
+
+            <TextView
+                android:text="105.000 vnd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/><TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Táo ta"/>
+
+        <TextView
+            android:text="25.000 vnd"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
+    </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider_blue_grey_700"
+            android:layout_height="1px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductNameTitle"/>
+
     </TableLayout>
 
-
-    <!--    <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvPriceRate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />-->
 </LinearLayout>

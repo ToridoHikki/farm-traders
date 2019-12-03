@@ -49,12 +49,14 @@ class ProductDetailView(mvpActivity: MvpActivity, viewCreator: ViewCreator, val 
     override fun showFarmerDetail(data: FarmerResponse) {
         view.tvProductDetailFarmerName.text = data.farmer.farmerName
         mPresenter.getFarmInfo(data.farmer.farmerId)
+        phoneFarmer = data.farmer.phoneNumber
     }
 
 
     private val mPresenter = ProductDetailPresenter(AndroidScreenNavigator(mvpActivity))
     private val loadingView = Loadinger.create(mvpActivity, mvpActivity.window)
     private var farmItemModel = LocationFarmItemModel()
+    private var phoneFarmer: String = ""
 
     override fun initCreateView() {
 
@@ -85,14 +87,17 @@ class ProductDetailView(mvpActivity: MvpActivity, viewCreator: ViewCreator, val 
         mvpActivity.showAlert("Chọn cách thức liên lạc","","Gọi điện","Nhắn tin",
             object: OnActionNotify{
                 override fun onActionNotify() {
-                    mPresenter.calltoFarmer("0982910058")
+                    if (phoneFarmer != ""){
+                        mPresenter.calltoFarmer(phoneFarmer)
+                    }
                 }
 
             },
             object: OnActionNotify{
                 override fun onActionNotify() {
-                    mPresenter.messToFarmer("0982910058")
-                }
+                    if (phoneFarmer != ""){
+                        mPresenter.messToFarmer(phoneFarmer)
+                    }                }
 
             })
     }
